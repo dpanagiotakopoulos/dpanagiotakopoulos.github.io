@@ -12,20 +12,21 @@
         /* --- SPATIAL UI DESIGN SYSTEM --- */
         :root {
             /* Προεπιλογή: Dark Spatial */
-            --glass-bg: rgba(30, 30, 35, 0.45);
-            --glass-border: rgba(255, 255, 255, 0.15);
+            --glass-bg: rgba(20, 20, 25, 0.55);
+            --glass-border: rgba(255, 255, 255, 0.12);
             --glass-highlight: rgba(255, 255, 255, 0.08);
             --text-main: #ffffff;
             --text-muted: rgba(255, 255, 255, 0.6);
             --accent: #ffffff;
-            --bg-image: url('https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2000&auto=format&fit=crop');
+            /* MINIMAL DARK BACKGROUND */
+            --bg-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2000&auto=format&fit=crop');
         }
 
         [data-theme="light"] {
             /* Light Spatial */
-            --glass-bg: rgba(255, 255, 255, 0.5);
-            --glass-border: rgba(255, 255, 255, 0.8);
-            --glass-highlight: rgba(0, 0, 0, 0.05);
+            --glass-bg: rgba(255, 255, 255, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.6);
+            --glass-highlight: rgba(0, 0, 0, 0.04);
             --text-main: #000000;
             --text-muted: rgba(0, 0, 0, 0.6);
             --accent: #000000;
@@ -51,11 +52,11 @@
 
         .environment-overlay {
             position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.4); /* Ελαφρώς πιο σκοτεινό για καλύτερη αντίθεση */
             z-index: 0; pointer-events: none;
             transition: background 0.4s ease;
         }
-        [data-theme="light"] .environment-overlay { background: rgba(255, 255, 255, 0.2); }
+        [data-theme="light"] .environment-overlay { background: rgba(255, 255, 255, 0.3); }
 
         /* --- SPATIAL LAYOUT --- */
         .spatial-workspace {
@@ -260,7 +261,7 @@
                 <section id="about">
                     <h2 class="section-title" id="lbl-1">01 // Profile</h2>
                     <div style="display: flex; gap: 40px; align-items: flex-start; flex-wrap: wrap;">
-                        <img src="profile.jpg" alt="Profile" style="width: 240px; height: 240px; border-radius: 32px; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                        <img src="profile.jpg.png" alt="Profile" style="width: 240px; height: 240px; border-radius: 32px; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
                         <div style="flex: 1; min-width: 300px;">
                             <p style="font-weight: 500; font-size: 1.2rem;" id="txt-bio-1">Dr. Dimitris Panagiotakopoulos holds a Ph.D. and was a member of the "Design, Interior Architecture & Audiovisual Documentation" research laboratory at the University of West Attica, where he also served as an Academic Fellow (Teaching Assistant).</p>
                             <p id="txt-bio-2">His research interests lie within the broader scope of multimedia science, focusing on interaction design and the production process. His doctoral thesis specifically explores <strong>Digital Scent Technology</strong> within the Metaverse, investigating how multisensory interfaces can enhance user experience.</p>
@@ -636,9 +637,11 @@
         function updateTheme(theme) {
             if (theme === 'light') {
                 document.body.setAttribute('data-theme', 'light');
-                document.body.style.backgroundImage = "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2000&auto=format&fit=crop')";
+                // Φωτεινό minimal αφηρημένο gradient background
+                document.body.style.backgroundImage = "url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?q=80&w=2000&auto=format&fit=crop')";
             } else {
                 document.body.removeAttribute('data-theme');
+                // Επαναφορά στο σκοτεινό minimal
                 document.body.style.backgroundImage = "var(--bg-image)";
             }
         }
