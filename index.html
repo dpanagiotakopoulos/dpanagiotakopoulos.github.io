@@ -119,6 +119,7 @@
             background: var(--glass-card); border: var(--glass-border); border-radius: 12px;
             font-family: var(--font-mono); font-size: 0.8rem; font-weight: bold; color: var(--accent);
             transition: all 0.3s; box-shadow: 0 4px 12px var(--accent-glow);
+            cursor: pointer;
         }
         .cv-download-btn:hover { background: var(--accent); color: #fff; transform: translateY(-2px); }
 
@@ -161,7 +162,7 @@
         .about-text p { font-size: 1.05rem; margin-bottom: 15px; color: var(--fg-muted); }
         .about-text p:first-child { color: var(--fg); }
 
-        /* 3D Container */
+        /* 3D PhD Container */
         .phd-hero {
             display: grid; grid-template-columns: 1fr 1fr;
             background: var(--glass-card); border: var(--glass-border);
@@ -181,15 +182,25 @@
         }
 
         .phd-info { padding: 40px; display: flex; flex-direction: column; justify-content: center; }
-        .phd-info h2 { font-size: 2rem; color: var(--accent); margin-bottom: 20px; line-height: 1.1; }
+        .phd-info h2 { font-size: 2rem; color: var(--accent); margin-bottom: 15px; line-height: 1.1; }
+        .phd-meta-link {
+            font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent);
+            margin-bottom: 20px; display: inline-flex; align-items: center; gap: 6px;
+        }
         .phd-quote { font-family: "Georgia", serif; font-style: italic; opacity: 0.8; padding-left: 20px; border-left: 3px solid var(--accent); }
         
+        /* 3D Pillars Grid */
         .phd-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
-        .phd-col { background: var(--glass-card); border: var(--glass-border); border-radius: 20px; padding: 25px; text-align: center; transition: all 0.3s; }
+        .phd-col { 
+            background: var(--glass-card); border: var(--glass-border); 
+            border-radius: 20px; padding: 20px 15px; text-align: center; 
+            transition: all 0.3s; display: flex; flex-direction: column; align-items: center;
+        }
         .phd-col:hover { transform: translateY(-5px); background: var(--glass-hover); box-shadow: 0 10px 25px var(--accent-glow); }
-        .phd-icon { height: 40px; margin-bottom: 15px; color: var(--accent); }
-        .phd-col h4 { margin-bottom: 10px; font-size: 0.9rem; color: var(--fg); }
-        .phd-col p { font-size: 0.85rem; color: var(--fg-muted); line-height: 1.4; }
+        .pillar-3d-box { width: 100%; height: 110px; margin-bottom: 10px; cursor: grab; }
+        .pillar-3d-box:active { cursor: grabbing; }
+        .phd-col h4 { margin-bottom: 8px; font-size: 0.9rem; color: var(--fg); }
+        .phd-col p { font-size: 0.8rem; color: var(--fg-muted); line-height: 1.4; margin: 0; }
 
         .list-row {
             display: flex; padding: 20px; background: var(--glass-card);
@@ -286,7 +297,8 @@
             .phd-info { padding: 20px; }
             .phd-info h2 { font-size: 1.5rem; }
             .phd-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .phd-col { padding: 15px 10px; border-radius: 16px; }
+            .phd-col { padding: 12px 8px; border-radius: 16px; }
+            .pillar-3d-box { height: 90px; }
             .list-row { padding: 12px; border-radius: 16px; gap: 10px; margin-bottom: 8px; }
             .list-col-left { width: 80px; font-size: 0.75rem; }
             .list-title { font-size: 0.95rem; }
@@ -340,10 +352,11 @@
                     <a href="https://orcid.org/0000-0001-7087-772X" target="_blank">ORCID</a>
                 </div>
 
-                <a href="cv.html" target="_blank" class="cv-download-btn" id="btn-cv-dl">
+                <!-- Instant Download CV Action -->
+                <button class="cv-download-btn" id="btn-cv-dl" onclick="downloadAcademicCV()">
                     <svg style="width: 16px; height: 16px; fill: currentColor;" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
                     <span>ACADEMIC CV (PDF)</span>
-                </a>
+                </button>
             </div>
             
             <nav class="sidebar-nav">
@@ -388,38 +401,46 @@
                 </div>
             </section>
 
-            <!-- 3D PhD DISSERTATION HERO -->
+            <!-- 3D PhD DISSERTATION HERO & 3D PILLARS -->
             <section id="phd">
                 <span class="section-label mono" id="lbl-2">02 // PHD DISSERTATION</span>
                 <div class="phd-hero">
-                    <div class="anim-box-3d" id="three-container">
+                    <div class="anim-box-3d" id="three-hero">
                         <span class="hint-3d mono" id="txt-3d-hint">⟳ DRAG TO ROTATE 3D SENSORY CORE</span>
                     </div>
                     <div class="phd-info">
                         <h2 id="txt-phd-title">Olfactory Metaverse Experience Design</h2>
+                        <a href="https://www.didaktorika.gr/eadd/handle/10442/62414" target="_blank" class="phd-meta-link">
+                            <span>[EADD / National Archive Record: 10442/62414] ↗</span>
+                        </a>
                         <div class="phd-quote" id="txt-phd-quote">
                             "But when from a long-distant past nothing subsists... taste and smell alone... bear unfaltering... the vast structure of recollection." — Marcel Proust
                         </div>
                     </div>
                 </div>
+                
                 <div class="phd-grid">
+                    <!-- Pillar 1: Shift 3D Wave -->
                     <div class="phd-col">
-                        <svg class="phd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="2" y1="12" x2="22" y2="12" stroke-dasharray="4 2"></line><circle cx="18" cy="12" r="3"></circle></svg>
+                        <div class="pillar-3d-box" id="three-shift"></div>
                         <h4 class="mono" id="txt-phd-c1-t">THE SHIFT</h4>
                         <p id="txt-phd-c1-d">Transitioning from <strong>Techno-anosmia</strong> to the <strong>3rd Wave</strong> of digital scent, driven by Perceptual Engineering.</p>
                     </div>
+                    <!-- Pillar 2: Theory 3D Rings -->
                     <div class="phd-col">
-                        <svg class="phd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="12" r="6"></circle><circle cx="16" cy="12" r="6"></circle></svg>
+                        <div class="pillar-3d-box" id="three-theory"></div>
                         <h4 class="mono" id="txt-phd-c2-t">THE THEORY</h4>
                         <p id="txt-phd-c2-d">Defining <strong>Liminal Interaction</strong>: Scent as a connective tissue for <strong>Co-Reality</strong> between physical and digital worlds.</p>
                     </div>
+                    <!-- Pillar 3: Innovation 3D GUI Polyhedron -->
                     <div class="phd-col">
-                        <svg class="phd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                        <div class="pillar-3d-box" id="three-innov"></div>
                         <h4 class="mono" id="txt-phd-c3-t">INNOVATION</h4>
                         <p id="txt-phd-c3-d">Introducing the <strong>OloMET Framework</strong> and the <strong>Spatial Scent GUI</strong> for 3D olfactory diffusion control.</p>
                     </div>
+                    <!-- Pillar 4: Ethics 3D Shield -->
                     <div class="phd-col">
-                        <svg class="phd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        <div class="pillar-3d-box" id="three-ethics"></div>
                         <h4 class="mono" id="txt-phd-c4-t">ETHICS</h4>
                         <p id="txt-phd-c4-d">Proposal for a <strong>Ethical Design Framework</strong> for Neurorights, covering the legal gap in mental privacy.</p>
                     </div>
@@ -435,7 +456,8 @@
                         <span class="list-meta" id="edu-1-d">
                             <strong>University of West Attica</strong> — Dept. of Graphic Design & Visual Communication.<br>
                             <em>Thesis:</em> "Digital Scent Technology in Metaverse Environments"<br>
-                            Conducting independent, high-standard original scientific research under an advisory committee to contribute meaningfully to science and staff academic/research institutions.
+                            Conducting independent, high-standard original scientific research under an advisory committee to contribute meaningfully to science and staff academic/research institutions. 
+                            <a href="https://www.didaktorika.gr/eadd/handle/10442/62414" target="_blank" class="pub-link">[EADD Record: 10442/62414]</a>
                         </span>
                     </div>
                 </div>
@@ -1055,7 +1077,7 @@
                 "txt-phd-c4-t": "ETHICS", "txt-phd-c4-d": "Proposal for a <strong>Ethical Design Framework</strong> for Neurorights, covering the legal gap in mental privacy.",
                 "lbl-3": "03 // EDUCATION",
                 "edu-1-t": "Ph.D. (8 EQF)",
-                "edu-1-d": "<strong>University of West Attica</strong> — Dept. of Graphic Design & Visual Communication.<br><em>Thesis:</em> \"Digital Scent Technology in Metaverse Environments\"<br>Conducting independent, high-standard original scientific research under an advisory committee to contribute meaningfully to science and staff academic/research institutions.",
+                "edu-1-d": "<strong>University of West Attica</strong> — Dept. of Graphic Design & Visual Communication.<br><em>Thesis:</em> \"Digital Scent Technology in Metaverse Environments\"<br>Conducting independent, high-standard original scientific research under an advisory committee to contribute meaningfully to science and staff academic/research institutions. <a href=\"https://www.didaktorika.gr/eadd/handle/10442/62414\" target=\"_blank\" class=\"pub-link\">[EADD Record: 10442/62414]</a>",
                 "edu-2-t": "Pedagogical & Teaching Competence Certification",
                 "edu-2-d": "<strong>Ionian University</strong> — Teaching Practicum: 7th Gymnasium of Corfu.<br>Full certification and professional qualification for teaching Arts and Multimedia in Primary & Secondary Education, focusing on modern instructional design, experiential learning, and interactive methodologies.",
                 "edu-3-t": "MSc in Intelligent Packaging: New Technologies & Marketing",
@@ -1140,7 +1162,7 @@
                 "txt-phd-c4-t": "ΗΘΙΚΗ", "txt-phd-c4-d": "Πρόταση ενός <strong>Πλαισίου Ηθικού Σχεδιασμού</strong> για τα Νευροδικαιώματα, καλύπτοντας το νομικό κενό στην πνευματική ιδιωτικότητα.",
                 "lbl-3": "03 // ΕΚΠΑΙΔΕΥΣΗ",
                 "edu-1-t": "Διδακτορικό Δίπλωμα (Ph.D. - 8 EQF)",
-                "edu-1-d": "<strong>Πανεπιστήμιο Δυτικής Αττικής</strong> — Τμήμα Γραφιστικής και Οπτικής Επικοινωνίας.<br><em>Διατριβή:</em> «Τεχνολογία Ψηφιακής Οσμής σε Περιβάλλοντα Metaverse»<br>Διεξαγωγή αυτοδύναμης πρωτότυπης επιστημονικής έρευνας υψηλών ακαδημαϊκών προτύπων υπό τριμελή επιτροπή, με στόχο την ουσιαστική συνεισφορά στην εξέλιξη της επιστήμης και τη στελέχωση εθνικών και διεθνών ακαδημαϊκών και ερευνητικών φορέων.",
+                "edu-1-d": "<strong>Πανεπιστήμιο Δυτικής Αττικής</strong> — Τμήμα Γραφιστικής και Οπτικής Επικοινωνίας.<br><em>Διατριβή:</em> «Τεχνολογία Ψηφιακής Οσμής σε Περιβάλλοντα Metaverse»<br>Διεξαγωγή αυτοδύναμης πρωτότυπης επιστημονικής έρευνας υψηλών ακαδημαϊκών προτύπων υπό τριμελή επιτροπή, με στόχο την ουσιαστική συνεισφορά στην εξέλιξη της επιστήμης και τη στελέχωση εθνικών και διεθνών ακαδημαϊκών και ερευνητικών φορέων. <a href=\"https://www.didaktorika.gr/eadd/handle/10442/62414\" target=\"_blank\" class=\"pub-link\">[Αρχείο ΕΑΔΔ: 10442/62414]</a>",
                 "edu-2-t": "Πιστοποίηση Παιδαγωγικής και Διδακτικής Επάρκειας",
                 "edu-2-d": "<strong>Ιόνιο Πανεπιστήμιο</strong> — Πρακτική Άσκηση: 7ο Γυμνάσιο Κέρκυρας.<br>Πλήρης πιστοποίηση και επαγγελματική κατάρτιση για τη διδασκαλία μαθημάτων Καλλιτεχνικών και Πολυμέσων στην Πρωτοβάθμια και Δευτεροβάθμια Εκπαίδευση, με έμφαση στην εφαρμογή σύγχρονων διδακτικών μεθοδολογιών, τη βιωματική μάθηση και τον διαδραστικό εκπαιδευτικό σχεδιασμό (Instructional Design).",
                 "edu-3-t": "MSc στην Ευφυή Συσκευασία: Νέες Τεχνολογίες & Marketing",
@@ -1215,13 +1237,13 @@
 
         const themeBtn = document.getElementById('theme-btn');
         function updateTheme(theme) {
-            if (theme === 'dark') {
+            const isDark = theme === 'dark';
+            if (isDark) {
                 document.body.setAttribute('data-theme', 'dark');
-                if (window.update3DTheme) window.update3DTheme(true);
             } else {
                 document.body.removeAttribute('data-theme');
-                if (window.update3DTheme) window.update3DTheme(false);
             }
+            if (window.updateAll3DThemes) window.updateAll3DThemes(isDark);
         }
         
         let savedTheme = 'light'; 
@@ -1256,7 +1278,7 @@
         }
         
         langBtn.addEventListener('click', (e) => {
-            e.preventDefault();
+            e.preventDefault(); 
             currentLang = currentLang === 'en' ? 'gr' : 'en';
             setLanguage(currentLang);
             safeSetItem('lang', currentLang);
@@ -1264,130 +1286,182 @@
 
         setLanguage(currentLang);
 
+        /* --- PDF PRINT / DOWNLOAD FUNCTION --- */
+        function downloadAcademicCV() {
+            const win = window.open('cv.html', '_blank');
+            if (win) {
+                win.focus();
+                win.onload = function() {
+                    win.print();
+                };
+            }
+        }
+
         /* ========================================================
-           🪐 3D INTERACTIVE THREE.JS SENSORY CORE
+           🪐 INTERACTIVE 3D MODELS (HERO + 4 PILLARS)
            ======================================================== */
-        (function initThreeCore() {
-            const container = document.getElementById('three-container');
-            if (!container || !window.THREE) return;
+        (function initAll3D() {
+            if (!window.THREE) return;
+            const themeUpdaters = [];
 
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
-            camera.position.z = 7;
-
-            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-            renderer.setSize(container.clientWidth, container.clientHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-            renderer.domElement.className = 'three-canvas';
-            container.appendChild(renderer.domElement);
-
-            const group = new THREE.Group();
-            scene.add(group);
-
-            // Core Icosahedron Wireframe
-            const geom = new THREE.IcosahedronGeometry(1.6, 1);
-            const mat = new THREE.MeshBasicMaterial({ color: 0x0284c7, wireframe: true, transparent: true, opacity: 0.8 });
-            const coreMesh = new THREE.Mesh(geom, mat);
-            group.add(coreMesh);
-
-            // Inner Core Solid
-            const innerGeom = new THREE.OctahedronGeometry(0.8);
-            const innerMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8, wireframe: true, transparent: true, opacity: 0.4 });
-            const innerMesh = new THREE.Mesh(innerGeom, innerMat);
-            group.add(innerMesh);
-
-            // Olfactory Diffusion Particle Cloud
-            const partCount = 180;
-            const partGeom = new THREE.BufferGeometry();
-            const posArray = new Float32Array(partCount * 3);
-
-            for (let i = 0; i < partCount * 3; i += 3) {
-                const r = 2.0 + Math.random() * 1.8;
-                const theta = Math.random() * Math.PI * 2;
-                const phi = Math.acos((Math.random() * 2) - 1);
-                posArray[i] = r * Math.sin(phi) * Math.cos(theta);
-                posArray[i + 1] = r * Math.sin(phi) * Math.sin(theta);
-                posArray[i + 2] = r * Math.cos(phi);
-            }
-
-            partGeom.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-            const partMat = new THREE.PointsMaterial({ size: 0.04, color: 0x0284c7, transparent: true, opacity: 0.7 });
-            const particleCloud = new THREE.Points(partGeom, partMat);
-            group.add(particleCloud);
-
-            window.update3DTheme = function(isDark) {
-                const clr = isDark ? 0x38bdf8 : 0x0284c7;
-                mat.color.setHex(clr);
-                partMat.color.setHex(clr);
-            };
-
-            // Drag Controls
-            let isDragging = false;
-            let prevMouseX = 0, prevMouseY = 0;
-            let targetRotX = 0, targetRotY = 0;
-
-            container.addEventListener('mousedown', (e) => {
-                isDragging = true;
-                prevMouseX = e.clientX;
-                prevMouseY = e.clientY;
-            });
-
-            window.addEventListener('mouseup', () => { isDragging = false; });
-
-            window.addEventListener('mousemove', (e) => {
-                if (!isDragging) return;
-                const deltaX = e.clientX - prevMouseX;
-                const deltaY = e.clientY - prevMouseY;
-                targetRotY += deltaX * 0.008;
-                targetRotX += deltaY * 0.008;
-                prevMouseX = e.clientX;
-                prevMouseY = e.clientY;
-            });
-
-            // Touch Support
-            container.addEventListener('touchstart', (e) => {
-                if (e.touches.length === 1) {
-                    isDragging = true;
-                    prevMouseX = e.touches[0].clientX;
-                    prevMouseY = e.touches[0].clientY;
-                }
-            }, { passive: true });
-
-            window.addEventListener('touchend', () => { isDragging = false; });
-
-            window.addEventListener('touchmove', (e) => {
-                if (!isDragging || e.touches.length !== 1) return;
-                const deltaX = e.touches[0].clientX - prevMouseX;
-                const deltaY = e.touches[0].clientY - prevMouseY;
-                targetRotY += deltaX * 0.008;
-                targetRotX += deltaY * 0.008;
-                prevMouseX = e.touches[0].clientX;
-                prevMouseY = e.touches[0].clientY;
-            }, { passive: true });
-
-            // Animation Loop
-            function animate() {
-                requestAnimationFrame(animate);
-
-                // Idle Spin + Damped User Rotation
-                targetRotY += 0.002;
-                group.rotation.y += (targetRotY - group.rotation.y) * 0.1;
-                group.rotation.x += (targetRotX - group.rotation.x) * 0.1;
-
-                innerMesh.rotation.y -= 0.005;
-                particleCloud.rotation.y += 0.001;
-
-                renderer.render(scene, camera);
-            }
-            animate();
-
-            // Resize handling
-            window.addEventListener('resize', () => {
+            // Helper function for interactive setup
+            function createInteractiveScene(containerId, buildSceneCallback) {
+                const container = document.getElementById(containerId);
                 if (!container) return;
-                camera.aspect = container.clientWidth / container.clientHeight;
-                camera.updateProjectionMatrix();
+
+                const scene = new THREE.Scene();
+                const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+                camera.position.z = 5;
+
+                const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
                 renderer.setSize(container.clientWidth, container.clientHeight);
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+                container.appendChild(renderer.domElement);
+
+                const group = new THREE.Group();
+                scene.add(group);
+
+                const sceneObjects = buildSceneCallback(group);
+                if (sceneObjects && sceneObjects.updateTheme) {
+                    themeUpdaters.push(sceneObjects.updateTheme);
+                }
+
+                // Damped Interaction Controls
+                let isDragging = false;
+                let prevX = 0, prevY = 0;
+                let targetRotX = 0, targetRotY = 0;
+
+                container.addEventListener('mousedown', (e) => { isDragging = true; prevX = e.clientX; prevY = e.clientY; });
+                window.addEventListener('mouseup', () => { isDragging = false; });
+                window.addEventListener('mousemove', (e) => {
+                    if (!isDragging) return;
+                    targetRotY += (e.clientX - prevX) * 0.01;
+                    targetRotX += (e.clientY - prevY) * 0.01;
+                    prevX = e.clientX; prevY = e.clientY;
+                });
+
+                container.addEventListener('touchstart', (e) => {
+                    if (e.touches.length === 1) { isDragging = true; prevX = e.touches[0].clientX; prevY = e.touches[0].clientY; }
+                }, { passive: true });
+                window.addEventListener('touchend', () => { isDragging = false; });
+                window.addEventListener('touchmove', (e) => {
+                    if (!isDragging || e.touches.length !== 1) return;
+                    targetRotY += (e.touches[0].clientX - prevX) * 0.01;
+                    targetRotX += (e.touches[0].clientY - prevY) * 0.01;
+                    prevX = e.touches[0].clientX; prevY = e.touches[0].clientY;
+                }, { passive: true });
+
+                function animate() {
+                    requestAnimationFrame(animate);
+                    targetRotY += 0.003;
+                    group.rotation.y += (targetRotY - group.rotation.y) * 0.1;
+                    group.rotation.x += (targetRotX - group.rotation.x) * 0.1;
+                    if (sceneObjects && sceneObjects.onFrame) sceneObjects.onFrame();
+                    renderer.render(scene, camera);
+                }
+                animate();
+
+                window.addEventListener('resize', () => {
+                    if (!container) return;
+                    camera.aspect = container.clientWidth / container.clientHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(container.clientWidth, container.clientHeight);
+                });
+            }
+
+            // 1. HERO SENSORY CORE
+            createInteractiveScene('three-hero', (group) => {
+                const geom = new THREE.IcosahedronGeometry(1.6, 1);
+                const mat = new THREE.MeshBasicMaterial({ color: 0x0284c7, wireframe: true, transparent: true, opacity: 0.8 });
+                const coreMesh = new THREE.Mesh(geom, mat);
+                group.add(coreMesh);
+
+                const innerGeom = new THREE.OctahedronGeometry(0.8);
+                const innerMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8, wireframe: true, transparent: true, opacity: 0.4 });
+                const innerMesh = new THREE.Mesh(innerGeom, innerMat);
+                group.add(innerMesh);
+
+                const partCount = 120;
+                const posArray = new Float32Array(partCount * 3);
+                for (let i = 0; i < partCount * 3; i += 3) {
+                    const r = 2.0 + Math.random() * 1.5;
+                    const t = Math.random() * Math.PI * 2;
+                    const p = Math.acos((Math.random() * 2) - 1);
+                    posArray[i] = r * Math.sin(p) * Math.cos(t);
+                    posArray[i+1] = r * Math.sin(p) * Math.sin(t);
+                    posArray[i+2] = r * Math.cos(p);
+                }
+                const partGeom = new THREE.BufferGeometry();
+                partGeom.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+                const partMat = new THREE.PointsMaterial({ size: 0.04, color: 0x0284c7, transparent: true, opacity: 0.7 });
+                const particles = new THREE.Points(partGeom, partMat);
+                group.add(particles);
+
+                return {
+                    onFrame: () => { innerMesh.rotation.y -= 0.005; particles.rotation.y += 0.001; },
+                    updateTheme: (isDark) => {
+                        const clr = isDark ? 0x38bdf8 : 0x0284c7;
+                        mat.color.setHex(clr);
+                        partMat.color.setHex(clr);
+                    }
+                };
             });
+
+            // 2. PILLAR 1: THE SHIFT (WAVE GRID)
+            createInteractiveScene('three-shift', (group) => {
+                const geom = new THREE.TorusGeometry(1.2, 0.35, 12, 32);
+                const mat = new THREE.MeshBasicMaterial({ color: 0x0284c7, wireframe: true });
+                const mesh = new THREE.Mesh(geom, mat);
+                group.add(mesh);
+                return {
+                    onFrame: () => { mesh.rotation.z += 0.005; },
+                    updateTheme: (isDark) => mat.color.setHex(isDark ? 0x38bdf8 : 0x0284c7)
+                };
+            });
+
+            // 3. PILLAR 2: THE THEORY (DUAL RINGS)
+            createInteractiveScene('three-theory', (group) => {
+                const geom1 = new THREE.RingGeometry(0.8, 1.2, 24);
+                const geom2 = new THREE.RingGeometry(0.5, 0.9, 24);
+                const mat = new THREE.MeshBasicMaterial({ color: 0x0284c7, wireframe: true, side: THREE.DoubleSide });
+                const ring1 = new THREE.Mesh(geom1, mat);
+                const ring2 = new THREE.Mesh(geom2, mat);
+                ring2.rotation.x = Math.PI / 2;
+                group.add(ring1);
+                group.add(ring2);
+                return {
+                    onFrame: () => { ring1.rotation.z += 0.005; ring2.rotation.y += 0.005; },
+                    updateTheme: (isDark) => mat.color.setHex(isDark ? 0x38bdf8 : 0x0284c7)
+                };
+            });
+
+            // 4. PILLAR 3: INNOVATION (SPATIAL GUI CONTROLLER)
+            createInteractiveScene('three-innov', (group) => {
+                const geom = new THREE.OctahedronGeometry(1.2, 0);
+                const mat = new THREE.MeshBasicMaterial({ color: 0x0284c7, wireframe: true });
+                const mesh = new THREE.Mesh(geom, mat);
+                group.add(mesh);
+                return {
+                    onFrame: () => { mesh.rotation.x += 0.005; },
+                    updateTheme: (isDark) => mat.color.setHex(isDark ? 0x38bdf8 : 0x0284c7)
+                };
+            });
+
+            // 5. PILLAR 4: ETHICS (NEURORIGHTS SHIELD)
+            createInteractiveScene('three-ethics', (group) => {
+                const geom = new THREE.DodecahedronGeometry(1.2, 0);
+                const mat = new THREE.MeshBasicMaterial({ color: 0x0284c7, wireframe: true });
+                const mesh = new THREE.Mesh(geom, mat);
+                group.add(mesh);
+                return {
+                    onFrame: () => { mesh.rotation.z += 0.003; },
+                    updateTheme: (isDark) => mat.color.setHex(isDark ? 0x38bdf8 : 0x0284c7)
+                };
+            });
+
+            window.updateAll3DThemes = function(isDark) {
+                themeUpdaters.forEach(fn => fn(isDark));
+            };
         })();
     </script>
 </body>
