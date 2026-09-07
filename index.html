@@ -5,1077 +5,1032 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dr. Dimitris Panagiotakopoulos | Academic Profile</title>
     <style>
-        /* --- DESIGN SYSTEM: MIT MEDIA LAB STYLE (SHARP / GRID / BOLD) --- */
+        /* --- MODERN GLASSMORPHISM DESIGN SYSTEM --- */
         :root {
-            --bg: #ffffff;
-            --fg: #000000;
-            --accent: #0055ff;
-            --grid-color: #000000;
-            --subtle-bg: #f4f4f4;
+            /* Light Theme (Soft Cyan) */
+            --bg-gradient: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            --glass-bg: rgba(255, 255, 255, 0.6);
+            --glass-card: rgba(255, 255, 255, 0.4);
+            --glass-border: 1px solid rgba(255, 255, 255, 0.8);
+            --glass-hover: rgba(255, 255, 255, 0.9);
+            --fg: #0f172a;
+            --fg-muted: #475569;
+            --accent: #0284c7;
+            --accent-glow: rgba(2, 132, 199, 0.15);
+            
             /* Typography */
             --font-head: "Helvetica Neue", Helvetica, Arial, sans-serif;
             --font-body: "Helvetica Neue", Helvetica, Arial, sans-serif;
             --font-mono: "Courier New", Courier, monospace;
-            --pad: 24px; /* Default desktop padding */
-        }
-        
-        /* --- SOFT DARK THEME (Ocean / Slate) --- */
-        [data-theme="dark"] {
-            --bg: #0f172a; 
-            --fg: #f8fafc; 
-            --accent: #38bdf8; 
-            --grid-color: #334155; 
-            --subtle-bg: #1e293b; 
         }
 
-        * { box-sizing: border-box; }
-        
-        html { 
-            scroll-behavior: smooth; 
-            scroll-padding-top: 60px; 
+        /* --- SOFT DARK THEME (Ocean / Slate) --- */
+        [data-theme="dark"] {
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #164e63 100%);
+            --glass-bg: rgba(15, 23, 42, 0.5);
+            --glass-card: rgba(30, 41, 59, 0.5);
+            --glass-border: 1px solid rgba(103, 232, 249, 0.1);
+            --glass-hover: rgba(51, 65, 85, 0.7);
+            --fg: #f8fafc;
+            --fg-muted: #cbd5e1;
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.15);
         }
+
+        /* Reset & Base */
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         
         body {
-            background-color: var(--bg);
+            margin: 0; padding: 0;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
             color: var(--fg);
             font-family: var(--font-body);
-            line-height: 1.5;
-            margin: 0;
-            border-left: 1px solid var(--grid-color);
-            border-right: 1px solid var(--grid-color);
-            max-width: 1300px; 
-            margin: 0 auto;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden; /* Only the inside panels will scroll */
+            transition: background 0.5s ease, color 0.5s ease;
         }
-        a { color: inherit; text-decoration: none; cursor: pointer; transition: color 0.2s;}
+
+        a { color: inherit; text-decoration: none; cursor: pointer; transition: color 0.2s; }
         a:hover { color: var(--accent); }
         
-        /* --- TYPOGRAPHY UTILS --- */
-        h1, h2, h3, h4 { margin: 0; font-family: var(--font-head); font-weight: 700; letter-spacing: -0.02em; text-transform: uppercase; }
-        .mono { font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase; }
-        p { margin-bottom: 1rem; text-align: justify; font-size: 1rem; font-weight: 400; color: var(--fg); opacity: 0.9; }
-        
-        /* --- LAYOUT UTILS --- */
-        .section-label {
-            background: var(--fg);
-            color: var(--bg);
-            padding: 8px var(--pad);
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            display: block;
-            border-bottom: 1px solid var(--grid-color);
-            transition: background-color 0.3s ease, color 0.3s ease;
+        /* Animated Background Shapes */
+        .bg-shape { 
+            position: fixed; border-radius: 50%; filter: blur(100px); 
+            z-index: -1; opacity: 0.7; will-change: transform; 
+            animation: float 20s infinite alternate ease-in-out;
         }
+        .bg-shape-1 { width: 500px; height: 500px; background: #38bdf8; top: -100px; left: -100px; }
+        .bg-shape-2 { width: 600px; height: 600px; background: #818cf8; bottom: -200px; right: -100px; }
         
-        /* --- HEADER --- */
-        header {
-            padding: 50px var(--pad);
-            border-bottom: 1px solid var(--grid-color);
-            position: relative;
+        [data-theme="dark"] .bg-shape-1 { background: #0284c7; opacity: 0.3; }
+        [data-theme="dark"] .bg-shape-2 { background: #1e3a8a; opacity: 0.3; }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, 50px) scale(1.1); }
         }
-        h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 0.9; margin-bottom: 20px; }
-        .header-meta { display: flex; gap: 20px; flex-wrap: wrap; color: var(--accent); font-weight: 700; }
-        
-        /* CONTROLS (BUTTONS) */
-        .controls {
-            position: absolute; top: 20px; right: 20px;
-            display: flex; gap: 10px; z-index: 1000;
+
+        /* --- APP LAYOUT (Glassmorphism) --- */
+        .glass-app {
+            display: flex; gap: 20px;
+            width: 100%; max-width: 1600px; height: 95vh;
+            padding: 20px;
         }
+
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: var(--glass-border);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+        }
+
+        /* 1. Thin Controls Pillar */
+        .glass-controls {
+            width: 70px; flex-shrink: 0; border-radius: 40px;
+            display: flex; flex-direction: column; align-items: center;
+            padding: 30px 0; gap: 20px;
+        }
+
         .btn-ctrl {
-            background: var(--bg); border: 1px solid var(--grid-color);
-            cursor: pointer; color: var(--fg); padding: 8px 12px;
-            transition: all 0.2s; font-family: var(--font-mono); font-weight: bold;
+            width: 40px; height: 40px; border-radius: 50%;
+            background: var(--glass-card); border: var(--glass-border);
+            color: var(--fg); cursor: pointer;
             display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s; font-family: var(--font-mono); font-weight: bold; font-size: 0.8rem;
         }
-        .btn-ctrl:hover { background: var(--fg); color: var(--bg); }
-        .btn-ctrl svg { pointer-events: none; }
-        .icon { width: 20px; height: 20px; fill: currentColor; }
-        
-        /* --- STICKY NAV (Lab Style) --- */
-        nav {
-            position: sticky; top: 0; z-index: 1000;
-            background: var(--bg);
-            border-bottom: 1px solid var(--grid-color);
-            display: flex; overflow-x: auto;
-            white-space: nowrap;
+        .btn-ctrl:hover { background: var(--accent); color: #fff; transform: scale(1.1); }
+        .btn-ctrl svg { pointer-events: none; width: 18px; height: 18px; fill: currentColor; }
+
+        /* 2. Main Sidebar (Nav + Info) */
+        .glass-sidebar {
+            width: 340px; flex-shrink: 0; border-radius: 30px;
+            display: flex; flex-direction: column; padding: 40px 30px;
+            overflow-y: auto; scrollbar-width: none;
         }
+        .glass-sidebar::-webkit-scrollbar { display: none; }
+
+        .sidebar-header { margin-bottom: 30px; }
+        .sidebar-header h1 { font-size: 1.8rem; line-height: 1.1; margin-bottom: 15px; font-family: var(--font-head); }
+        .header-meta { font-size: 0.75rem; color: var(--accent); margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 10px; font-weight: bold; }
+        .header-links a { display: block; font-size: 0.8rem; margin-bottom: 8px; color: var(--fg-muted); }
+
+        .sidebar-nav { display: flex; flex-direction: column; gap: 8px; flex-grow: 1; }
         .nav-item {
-            padding: 15px 25px;
-            font-family: var(--font-mono);
-            font-weight: 700; font-size: 0.85rem;
-            border-right: 1px solid var(--grid-color);
-            color: var(--fg);
-            transition: background 0.2s;
+            padding: 12px 20px; border-radius: 12px; color: var(--fg);
+            font-family: var(--font-head); font-weight: 600; font-size: 0.95rem;
+            transition: all 0.3s;
         }
-        .nav-item:hover { background: var(--accent); color: var(--bg); }
+        .nav-item:hover { background: var(--glass-card); color: var(--accent); transform: translateX(8px); }
         
-        /* --- ABOUT (Split Grid) --- */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 350px;
-            border-bottom: 1px solid var(--grid-color);
+        .sidebar-footer { margin-top: 30px; font-size: 0.7rem; color: var(--fg-muted); text-align: center; }
+
+        /* 3. Main Content Area */
+        .glass-main {
+            flex-grow: 1; border-radius: 30px; padding: 50px;
+            overflow-y: auto; scroll-behavior: smooth;
         }
-        .about-text { padding: 40px var(--pad); border-right: 1px solid var(--grid-color); }
-        .profile-img-container { position: relative; height: 100%; min-height: 350px; overflow: hidden; }
-        .profile-img {
-            width: 100%; height: 100%; object-fit: cover;
-            filter: grayscale(100%);
-            transition: filter 0.4s;
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 10px; }
+        [data-theme="dark"] ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+        /* --- CONTENT STYLES --- */
+        .section-label {
+            font-family: var(--font-head); font-size: 2rem; font-weight: 700;
+            margin-bottom: 30px; display: block; color: var(--fg);
+            border-bottom: 2px solid var(--glass-border); padding-bottom: 10px;
+            margin-top: 50px;
         }
+        section:first-child .section-label { margin-top: 0; }
+        
+        .mono { font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; }
+
+        /* About Grid */
+        .about-grid { display: flex; gap: 40px; margin-bottom: 40px; align-items: flex-start; }
+        .profile-img-container { width: 280px; flex-shrink: 0; border-radius: 24px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .profile-img { width: 100%; height: auto; display: block; filter: grayscale(100%); transition: filter 0.4s; }
         .profile-img:hover { filter: grayscale(0%); }
-        
-        /* --- PHD SECTION (Tech Box) --- */
+        .about-text { flex-grow: 1; }
+        .about-text p { font-size: 1.05rem; margin-bottom: 15px; color: var(--fg-muted); }
+        .about-text p:first-child { color: var(--fg); }
+
+        /* PhD Section */
         .phd-hero {
-            display: grid;
-            grid-template-columns: 1fr 1fr; 
-            border-bottom: 1px solid var(--grid-color);
+            display: grid; grid-template-columns: 1fr 1fr;
+            background: var(--glass-card); border: var(--glass-border);
+            border-radius: 24px; overflow: hidden; margin-bottom: 20px;
         }
-        .anim-box {
-            background: var(--subtle-bg); 
-            display: flex; align-items: center; justify-content: center;
-            border-right: 1px solid var(--grid-color);
-            min-height: 300px;
-            overflow: hidden;
-            position: relative;
-        }
-        .phd-info { padding: 40px var(--pad); display: flex; flex-direction: column; justify-content: center; }
+        .anim-box { min-height: 300px; border-right: var(--glass-border); display: flex; align-items: center; justify-content: center; }
+        .phd-info { padding: 40px; display: flex; flex-direction: column; justify-content: center; }
         .phd-info h2 { font-size: 2rem; color: var(--accent); margin-bottom: 20px; line-height: 1.1; }
         .phd-quote { font-family: "Georgia", serif; font-style: italic; opacity: 0.8; padding-left: 20px; border-left: 3px solid var(--accent); }
         
-        /* 4 Pillars Grid */
-        .phd-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            border-bottom: 1px solid var(--grid-color);
-        }
-        .phd-col {
-            padding: 25px;
-            border-right: 1px solid var(--grid-color);
-            text-align: center;
-            transition: background 0.2s;
-        }
-        .phd-col:last-child { border-right: none; }
-        .phd-col:hover { background: var(--subtle-bg); }
-        .phd-icon { height: 40px; margin-bottom: 15px; color: var(--fg); }
-        .phd-col h4 { margin-bottom: 10px; font-size: 0.9rem; color: var(--accent); }
-        .phd-col p { font-size: 0.9rem; line-height: 1.4; margin: 0; }
-        
-        /* --- BENTO GRID (Themes & Art) --- */
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            border-bottom: 1px solid var(--grid-color);
-        }
-        .project-card {
-            border-right: 1px solid var(--grid-color);
-            border-bottom: 1px solid var(--grid-color);
-            display: flex; flex-direction: column;
-            transition: background 0.2s;
-            position: relative;
-        }
-        .project-card:hover { background: var(--subtle-bg); }
-        
-        .card-large { grid-column: span 2; }
-        
-        .p-img {
-            width: 100%; height: 240px; object-fit: cover;
-            border-bottom: 1px solid var(--grid-color);
-            filter: grayscale(100%);
-            transition: filter 0.3s;
-        }
-        .project-card:hover .p-img { filter: grayscale(0%); }
-        
-        .p-content { padding: 25px; flex: 1; display: flex; flex-direction: column; }
-        .p-tag { font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); margin-bottom: 8px; display: block; }
-        .p-title { font-size: 1.3rem; margin-bottom: 10px; line-height: 1.1; }
-        .p-desc { font-size: 0.9rem; margin-bottom: 20px; flex: 1; }
-        .p-arrow { align-self: flex-end; font-size: 1.5rem; opacity: 0; transform: translateX(-10px); transition: all 0.3s; color: var(--accent); }
-        .project-card:hover .p-arrow { opacity: 1; transform: translateX(0); }
-        
-        /* --- STRICT LISTS (CV Style) --- */
-        .list-section { border-bottom: 1px solid var(--grid-color); }
+        .phd-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+        .phd-col { background: var(--glass-card); border: var(--glass-border); border-radius: 20px; padding: 25px; text-align: center; transition: all 0.3s; }
+        .phd-col:hover { transform: translateY(-5px); background: var(--glass-hover); box-shadow: 0 10px 25px var(--accent-glow); }
+        .phd-icon { height: 40px; margin-bottom: 15px; color: var(--accent); }
+        .phd-col h4 { margin-bottom: 10px; font-size: 0.9rem; color: var(--fg); }
+        .phd-col p { font-size: 0.85rem; color: var(--fg-muted); line-height: 1.4; }
+
+        /* List Rows (CV Style) */
         .list-row {
-            display: flex;
-            padding: 15px var(--pad);
-            border-bottom: 1px solid var(--grid-color);
-            align-items: baseline;
+            display: flex; padding: 20px; background: var(--glass-card);
+            border: var(--glass-border); border-radius: 20px; margin-bottom: 12px;
+            transition: all 0.3s;
         }
-        .list-row:last-child { border-bottom: none; }
-        .list-row:hover { background: var(--subtle-bg); }
-        
-        .list-col-left {
-            width: 140px; flex-shrink: 0;
-            font-family: var(--font-mono); font-weight: 700; color: var(--accent);
-        }
+        .list-row:hover { background: var(--glass-hover); transform: translateX(8px); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .list-col-left { width: 140px; font-family: var(--font-mono); font-weight: 700; color: var(--accent); flex-shrink: 0; }
         .list-col-right { flex: 1; }
         .list-title { display: block; font-weight: 700; font-size: 1.05rem; margin-bottom: 4px; }
-        .list-meta { font-size: 0.95rem; opacity: 0.9; }
+        .list-meta { font-size: 0.95rem; color: var(--fg-muted); }
         .pub-link { font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); margin-left: 10px; text-decoration: underline; }
-        
-        /* --- MOBILITY SECTION --- */
+
+        /* Mobility Section */
         .mobility-grid {
-            display: grid;
-            grid-template-columns: 1fr 350px;
-            border-bottom: 1px solid var(--grid-color);
-            min-height: 200px;
+            display: grid; grid-template-columns: 1fr 300px;
+            background: var(--glass-card); border: var(--glass-border);
+            border-radius: 24px; overflow: hidden; margin-bottom: 20px;
         }
-        .mobility-content {
-            border-right: 1px solid var(--grid-color);
-            display: flex;
-            align-items: center;
-        }
-        .mobility-img-box {
-            position: relative;
-            overflow: hidden;
-            height: 100%;
-            min-height: 250px;
-        }
-        .mobility-img {
-            width: 100%; height: 100%; object-fit: cover;
-            filter: grayscale(100%);
-            transition: filter 0.4s;
-        }
+        .mobility-content { padding: 30px; display: flex; flex-direction: column; justify-content: center; }
+        .mobility-img-box { height: 100%; min-height: 250px; position: relative; }
+        .mobility-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: filter 0.4s; position: absolute; top:0; left:0; }
         .mobility-grid:hover .mobility-img { filter: grayscale(0%); }
-        
-        /* --- CONTACT & MAP --- */
-        .contact-cta {
-            padding: 30px var(--pad);
-            border-bottom: 1px solid var(--grid-color);
-            background: var(--subtle-bg);
-            text-align: center;
+
+        /* Bento Grid (Projects/Art) */
+        .bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .project-card {
+            background: var(--glass-card); border: var(--glass-border);
+            border-radius: 24px; overflow: hidden; display: flex; flex-direction: column;
+            transition: all 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            border-bottom: 1px solid var(--grid-color);
-        }
-        .contact-details {
-            padding: 40px var(--pad);
-            border-right: 1px solid var(--grid-color);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+        .project-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px var(--accent-glow); background: var(--glass-hover); }
+        .card-large { grid-column: span 2; }
+        .p-img { width: 100%; height: 220px; object-fit: cover; border-bottom: var(--glass-border); filter: grayscale(100%); transition: filter 0.4s; }
+        .project-card:hover .p-img { filter: grayscale(0%); }
+        .p-content { padding: 25px; flex: 1; display: flex; flex-direction: column; }
+        .p-tag { font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent); margin-bottom: 8px; font-weight: bold; }
+        .p-title { font-size: 1.3rem; margin-bottom: 10px; line-height: 1.2; font-family: var(--font-head); }
+        .p-desc { font-size: 0.9rem; color: var(--fg-muted); flex: 1; margin-bottom: 15px; }
+        .p-arrow { align-self: flex-end; font-size: 1.5rem; color: var(--accent); opacity: 0; transform: translateX(-10px); transition: all 0.3s; }
+        .project-card:hover .p-arrow { opacity: 1; transform: translateX(0); }
+
+        /* Contact Section */
+        .contact-cta { padding: 30px; border-radius: 24px; background: var(--glass-card); border: var(--glass-border); text-align: center; margin-bottom: 20px; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; background: var(--glass-card); border: var(--glass-border); border-radius: 24px; overflow: hidden; }
+        .contact-details { padding: 40px; display: flex; flex-direction: column; justify-content: center; }
         .contact-list { list-style: none; padding: 0; margin: 0; }
-        .contact-list li { margin-bottom: 20px; font-family: var(--font-mono); font-size: 0.95rem; }
-        .contact-list strong { display: block; color: var(--accent); margin-bottom: 5px; text-transform: uppercase; font-family: var(--font-head); }
-        
-        .map-box {
-            position: relative;
-            height: 100%;
-            min-height: 450px;
-            background: var(--subtle-bg);
-            overflow: hidden;
-        }
-        
-        /* MODERN MAP STYLING */
-        .map-frame {
-            width: 100%; height: 100%; border: 0;
-            filter: grayscale(100%) contrast(1.1);
-            transition: all 0.5s ease;
-        }
-        
-        [data-theme="dark"] .map-frame {
-            filter: grayscale(100%) invert(92%) contrast(1.2) hue-rotate(180deg);
-        }
-        
-        .contact-grid:hover .map-frame { 
-            filter: grayscale(0%) invert(0%) contrast(1); 
-        }
-        
-        /* --- ANIMATIONS --- */
+        .contact-list li { margin-bottom: 20px; font-size: 0.95rem; }
+        .contact-list strong { display: block; color: var(--accent); margin-bottom: 5px; text-transform: uppercase; font-family: var(--font-mono); font-size: 0.8rem; }
+        .map-box { position: relative; height: 100%; min-height: 400px; background: var(--glass-bg); }
+        .map-frame { width: 100%; height: 100%; border: 0; filter: grayscale(100%) contrast(1.1); transition: all 0.5s; }
+        [data-theme="dark"] .map-frame { filter: grayscale(100%) invert(92%) contrast(1.2) hue-rotate(180deg); }
+        .contact-grid:hover .map-frame { filter: grayscale(0%) invert(0%) contrast(1); }
+
+        /* --- Animations --- */
         .sensor-ring { animation: pulse-ring 3s infinite; stroke: var(--accent); }
         .sensor-core { fill: var(--accent); }
-        
-        @keyframes pulse-ring { 
-            0% { opacity: 0.5; stroke-width: 1; r: 30; } 
-            50% { opacity: 1; stroke-width: 3; r: 32; } 
-            100% { opacity: 0.5; stroke-width: 1; r: 30; } 
-        }
-        
-        /* --- FOOTER --- */
-        footer { padding: 40px; text-align: center; font-family: var(--font-mono); font-size: 0.8rem; }
-        
-        /* --- RESPONSIVE TABLETS (900px) --- */
-        @media (max-width: 900px) {
-            .about-grid { grid-template-columns: 1fr; }
-            .about-text { border-right: none; border-bottom: 1px solid var(--grid-color); }
-            .profile-img-container { height: 300px; }
+        @keyframes pulse-ring { 0% { opacity: 0.5; stroke-width: 1; r: 30; } 50% { opacity: 1; stroke-width: 3; r: 32; } 100% { opacity: 0.5; stroke-width: 1; r: 30; } }
+
+        /* ========================================================
+           📱 RESPONSIVE DESIGN - MOBILE OPTIMIZED
+           ======================================================== */
+        @media (max-width: 1100px) {
+            .glass-app { flex-direction: column; height: auto; padding: 10px; gap: 15px; }
+            body { overflow: auto; height: auto; display: block; }
             
-            .phd-hero { grid-template-columns: 1fr; }
-            .anim-box { border-right: none; border-bottom: 1px solid var(--grid-color); }
+            /* Controls Horizontal Top */
+            .glass-controls { flex-direction: row; width: 100%; border-radius: 20px; padding: 10px 20px; justify-content: flex-end; order: 1; }
             
-            .phd-grid { grid-template-columns: 1fr 1fr; }
-            .phd-col { border-right: 1px solid var(--grid-color); border-bottom: 1px solid var(--grid-color); }
-            .phd-col:nth-child(2n) { border-right: none; }
+            /* Sidebar becomes Header */
+            .glass-sidebar { width: 100%; order: 2; padding: 25px; border-radius: 20px; }
+            .sidebar-header { margin-bottom: 15px; }
             
-            .mobility-grid { grid-template-columns: 1fr; }
-            .mobility-content { border-right: none; border-bottom: 1px solid var(--grid-color); }
-            .mobility-img-box { height: 250px; }
-            .contact-grid { grid-template-columns: 1fr; }
-            .contact-details { border-right: none; border-bottom: 1px solid var(--grid-color); }
-            .map-box { min-height: 300px; }
+            /* Nav becomes Horizontal Scroll */
+            .sidebar-nav { flex-direction: row; overflow-x: auto; padding-bottom: 10px; gap: 10px; }
+            .nav-item { white-space: nowrap; background: var(--glass-card); border-radius: 10px; font-size: 0.85rem; padding: 10px 15px; }
+            .nav-item:hover { transform: translateY(-3px); }
+            
+            .glass-main { order: 3; padding: 25px; overflow-y: visible; border-radius: 20px; }
+            .card-large { grid-column: span 1; }
         }
 
-        /* --- RESPONSIVE MOBILE COMPACT (600px) --- */
-        @media (max-width: 600px) { 
-            :root {
-                --pad: 15px; /* Μικρότερα περιθώρια στα κινητά για περισσότερο χώρο */
-            }
+        /* 📱 MOBILE COMPACT (Super Optimized 2-Columns) */
+        @media (max-width: 600px) {
+            .glass-main { padding: 15px; }
+            .section-label { font-size: 1.5rem; margin-bottom: 20px; margin-top: 30px; }
             
-            header { padding: 35px var(--pad); }
-            h1 { font-size: 2rem; margin-bottom: 10px; }
-            .header-meta { gap: 10px; font-size: 0.75rem; }
+            /* About Grid (Image Top, Text Bottom) */
+            .about-grid { display: flex; flex-direction: column; gap: 15px; }
+            .profile-img-container { width: 100%; height: 250px; order: -1; border-radius: 16px; }
             
-            /* Λίστες Βιογραφικού: Παραμένουν δίπλα-δίπλα, δεν γίνονται κάθετες */
-            .list-row { align-items: flex-start; }
-            .list-col-left { width: 95px; font-size: 0.75rem; }
+            /* PhD Section */
+            .phd-hero { grid-template-columns: 1fr; border-radius: 16px; }
+            .anim-box { min-height: 200px; border-right: none; border-bottom: var(--glass-border); }
+            .phd-info { padding: 20px; }
+            .phd-info h2 { font-size: 1.5rem; }
+            
+            .phd-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .phd-col { padding: 15px 10px; border-radius: 16px; }
+            
+            /* Strict Lists (Keep Row, make left column thinner) */
+            .list-row { padding: 12px; border-radius: 16px; gap: 10px; margin-bottom: 8px; }
+            .list-col-left { width: 80px; font-size: 0.75rem; }
             .list-title { font-size: 0.95rem; }
-            .list-meta { font-size: 0.85rem; }
+            .list-meta { font-size: 0.8rem; line-height: 1.3; }
+
+            /* Mobility Grid */
+            .mobility-grid { display: flex; flex-direction: column; border-radius: 16px; }
+            .mobility-content { padding: 15px; }
+            .mobility-img-box { height: 180px; min-height: unset; order: -1; position: relative; }
             
-            /* PhD section: Διατήρηση 2 στηλών αντί για 1 (Λιγότερο scroll) */
-            .phd-grid { grid-template-columns: repeat(2, 1fr); }
-            .phd-col { padding: 15px; }
-            
-            /* Projects/Art (Bento Grid): Εξαναγκασμός 2 στηλών στα κινητά για πυκνότερη διάταξη */
-            .bento-grid { grid-template-columns: repeat(2, 1fr); }
-            .project-card { border-right: 1px solid var(--grid-color); border-bottom: 1px solid var(--grid-color); }
-            .project-card:nth-child(2n) { border-right: none; } /* Κρύψιμο δεξιού περιγράμματος για τη 2η στήλη */
-            
-            /* Κάρτες Projects: Πιο compact γραμματοσειρές και εικόνες */
-            .p-img { height: 130px; } 
-            .p-content { padding: 15px; }
-            .p-tag { font-size: 0.65rem; margin-bottom: 5px; }
-            .p-title { font-size: 1rem; margin-bottom: 5px; }
-            .p-desc { font-size: 0.75rem; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; } /* Κόβει το κείμενο αν είναι πολύ μεγάλο */
-            
-            /* Το card-large παραμένει span 2 για να πιάνει όλο το πλάτος */
+            /* 🚀 Bento Grid: 2 COLUMNS ON MOBILE */
+            .bento-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .project-card { border-radius: 16px; }
             .card-large { grid-column: span 2; }
+            .p-img { height: 110px; } 
             .card-large .p-img { height: 160px; }
+            .p-content { padding: 12px; }
+            .p-tag { font-size: 0.6rem; margin-bottom: 4px; }
+            .p-title { font-size: 0.95rem; line-height: 1.1; margin-bottom: 6px; }
+            .p-desc { font-size: 0.75rem; line-height: 1.3; -webkit-line-clamp: 4; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 5px;}
+            
+            /* Contact */
+            .contact-cta { padding: 20px; border-radius: 16px; }
+            .contact-grid { display: flex; flex-direction: column; border-radius: 16px; }
+            .contact-details { padding: 20px; }
+            .map-box { height: 250px; min-height: unset; }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Dr. Dimitris<br>Panagiotakopoulos</h1>
-        <div class="header-meta mono">
-            <span id="txt-h-rank">Ph.D.</span>
-            <span>//</span>
-            <span id="txt-h-uni">RESEARCHER</span>
-            <span>//</span>
-            <span id="txt-h-loc">ATHENS, GREECE</span>
-        </div>
-        <div style="margin-top: 15px;" class="mono">
-            <a href="mailto:dpanagiotakopoulos@uniwa.gr">dpanagiotakopoulos@uniwa.gr</a> | 
-            <a href="https://scholar.google.com/citations?user=KTVlHPwAAAAJ&hl=en" target="_blank">Google Scholar</a> | 
-            <a href="https://orcid.org/0000-0001-7087-772X" target="_blank">ORCID</a>
-        </div>
+
+    <!-- Fluid Background Shapes -->
+    <div class="bg-shape bg-shape-1"></div>
+    <div class="bg-shape bg-shape-2"></div>
+
+    <div class="glass-app">
         
-        <div class="controls">
+        <!-- 1. Controls Pillar -->
+        <aside class="glass-controls glass-panel">
             <button class="btn-ctrl" id="lang-btn">GR</button>
             <button class="btn-ctrl" id="theme-btn" aria-label="Toggle Theme">
-                <svg class="icon" viewBox="0 0 24 24"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z" /></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z" /></svg>
             </button>
-        </div>
-    </header>
+        </aside>
 
-    <nav>
-        <a href="#about" class="nav-item" id="nav-1">About</a>
-        <a href="#phd" class="nav-item" id="nav-2">Dissertation</a>
-        <a href="#education" class="nav-item" id="nav-3">Education</a>
-        <a href="#themes" class="nav-item" id="nav-4">Research Themes</a>
-        <a href="#art" class="nav-item" id="nav-art">Art Portfolio</a>
-        <a href="#projects" class="nav-item" id="nav-prj">Funded Projects</a>
-        <a href="#publications" class="nav-item" id="nav-5">Publications</a>
-        <a href="#activity" class="nav-item" id="nav-6">Activity</a>
-        <a href="#contact" class="nav-item" id="nav-7">Contact</a>
-    </nav>
-
-    <main>
-        <section id="about">
-            <span class="section-label" id="lbl-1">01 // PROFILE</span>
-            <div class="about-grid">
-                <div class="about-text">
-                    <p style="font-size: 1.3rem; font-weight: 700; margin-bottom: 20px;" id="txt-bio-1">
-                        Dr. Dimitris Panagiotakopoulos holds a Ph.D. and was a member of the "Design, Interior Architecture & Audiovisual Documentation" research laboratory at the University of West Attica, where he also served as an Academic Fellow (Teaching Assistant).
-                    </p>
-                    <p id="txt-bio-2">
-                        His research interests lie within the broader scope of multimedia science, focusing on interaction design and the production process. His doctoral thesis specifically explores <strong>Digital Scent Technology</strong> within the Metaverse, investigating how multisensory interfaces can enhance user experience.
-                    </p>
-                    <p id="txt-bio-3">
-                        He has worked at the European Commission (DG DIGIT) in Brussels, and previously served as an editor and producer for television advertisements in the private sector in Milan, Italy. His background in Digital Humanities was established through internships at the University of Bologna (Department of History and Culture)—where he participated in the "BYZART" European research project—and the Ephorate of Palaeoanthropology and Speleology of the Hellenic Ministry of Culture.
-                    </p>
-                    <p id="txt-bio-4">
-                        His academic background combines creative arts with advanced technology. He holds an Integrated Master in Audio Visual Arts from the Ionian University and an MSc in "Intelligent Packaging: New Technologies and Marketing" from the University of West Attica. Additionally, he attended the Master of Fine Arts (MFA) program at Cardiff Metropolitan University via the Erasmus+ program. He also holds a Certificate of Pedagogical and Teaching Competence, fully qualifying him to teach Art subjects in Primary and Secondary Education.
-                    </p>
+        <!-- 2. Profile & Navigation Sidebar -->
+        <aside class="glass-sidebar glass-panel">
+            <div class="sidebar-header">
+                <h1>Dr. Dimitris<br>Panagiotakopoulos</h1>
+                <div class="header-meta mono">
+                    <span id="txt-h-rank">Ph.D.</span><span>//</span>
+                    <span id="txt-h-uni">RESEARCHER</span><span>//</span>
+                    <span id="txt-h-loc">ATHENS, GREECE</span>
                 </div>
-                <div class="profile-img-container">
-                    <img src="profile.jpg" alt="Dr. Dimitris Panagiotakopoulos" class="profile-img">
+                <div class="header-links mono">
+                    <a href="mailto:dpanagiotakopoulos@uniwa.gr">dpanagiotakopoulos@uniwa.gr</a>
+                    <a href="https://scholar.google.com/citations?user=KTVlHPwAAAAJ&hl=en" target="_blank">Google Scholar</a>
+                    <a href="https://orcid.org/0000-0001-7087-772X" target="_blank">ORCID</a>
                 </div>
             </div>
-        </section>
+            <nav class="sidebar-nav">
+                <a href="#about" class="nav-item" id="nav-1">About</a>
+                <a href="#phd" class="nav-item" id="nav-2">Dissertation</a>
+                <a href="#education" class="nav-item" id="nav-3">Education</a>
+                <a href="#themes" class="nav-item" id="nav-4">Research Themes</a>
+                <a href="#art" class="nav-item" id="nav-art">Art Portfolio</a>
+                <a href="#projects" class="nav-item" id="nav-prj">Funded Projects</a>
+                <a href="#publications" class="nav-item" id="nav-5">Publications</a>
+                <a href="#activity" class="nav-item" id="nav-6">Activity</a>
+                <a href="#contact" class="nav-item" id="nav-7">Contact</a>
+            </nav>
+            <footer class="sidebar-footer mono">
+                <p>© 2026 DR. DIMITRIS PANAGIOTAKOPOULOS.<br><span id="footer-txt">ACADEMIC PROFILE.</span></p>
+            </footer>
+        </aside>
 
-        <section id="phd">
-            <span class="section-label" id="lbl-2">02 // PHD DISSERTATION</span>
-            <div class="phd-hero">
-                <div class="anim-box">
-                    <svg viewBox="0 0 400 300" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
-                        <defs>
-                            <pattern id="grid-pattern" width="40" height="40" patternUnits="userSpaceOnUse">
-                                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" opacity="0.1" stroke-width="1"/>
-                            </pattern>
-                            <radialGradient id="sensor-glow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-                                <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.8"/>
-                                <stop offset="100%" stop-color="transparent" stop-opacity="0"/>
-                            </radialGradient>
-                            <linearGradient id="scent-trail" x1="0%" y1="100%" x2="0%" y2="0%">
-                                <stop offset="0%" stop-color="currentColor" stop-opacity="0"/>
-                                <stop offset="50%" stop-color="currentColor" stop-opacity="0.5"/>
-                                <stop offset="100%" stop-color="var(--accent)" stop-opacity="1"/>
-                            </linearGradient>
-                        </defs>
-                        <rect width="100%" height="100%" fill="url(#grid-pattern)" opacity="0.6" />
-                        <g transform="translate(200, 150)">
-                            <circle r="10" fill="none" stroke="var(--accent)" stroke-width="1" opacity="0">
-                                <animate attributeName="r" values="30;120" dur="4s" repeatCount="indefinite" />
-                                <animate attributeName="opacity" values="0.6;0" dur="4s" repeatCount="indefinite" />
-                            </circle>
-                            <circle r="10" fill="none" stroke="var(--accent)" stroke-width="1" opacity="0">
-                                <animate attributeName="r" values="30;120" dur="4s" repeatCount="indefinite" begin="2s"/>
-                                <animate attributeName="opacity" values="0.6;0" dur="4s" repeatCount="indefinite" begin="2s"/>
-                            </circle>
-                            <circle cx="0" cy="0" r="30" fill="none" stroke-width="2" class="sensor-ring"/>
-                            <circle cx="0" cy="0" r="8" class="sensor-core">
-                                <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
-                            </circle>
-                            <circle r="3" fill="url(#scent-trail)" opacity="0">
-                                <animateMotion path="M -80 100 Q -40 50 0 0" dur="3s" repeatCount="indefinite" />
-                                <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite" />
-                            </circle>
-                            <circle r="3" fill="url(#scent-trail)" opacity="0">
-                                <animateMotion path="M 80 100 Q 40 50 0 0" dur="3.5s" repeatCount="indefinite" begin="0.5s"/>
-                                <animate attributeName="opacity" values="0;1;0" dur="3.5s" repeatCount="indefinite" begin="0.5s"/>
-                            </circle>
-                            <circle r="2" fill="currentColor" opacity="0">
-                                <animateMotion path="M 0 120 L 0 0" dur="2.5s" repeatCount="indefinite" begin="1s"/>
-                                <animate attributeName="opacity" values="0;0.5;0" dur="2.5s" repeatCount="indefinite" begin="1s"/>
-                            </circle>
-                        </g>
-                    </svg>
-                </div>
-                <div class="phd-info">
-                    <h2 id="txt-phd-title">Olfactory Metaverse Experience Design</h2>
-                    <div class="phd-quote" id="txt-phd-quote">
-                        "But when from a long-distant past nothing subsists... taste and smell alone... bear unfaltering... the vast structure of recollection." — Marcel Proust
+        <!-- 3. Main Scrolling Content -->
+        <main class="glass-main glass-panel">
+            
+            <section id="about">
+                <span class="section-label mono" id="lbl-1">01 // PROFILE</span>
+                <div class="about-grid">
+                    <div class="profile-img-container">
+                        <img src="profile.jpg" alt="Dr. Dimitris Panagiotakopoulos" class="profile-img">
+                    </div>
+                    <div class="about-text">
+                        <p style="font-size: 1.25rem; font-weight: 700; margin-bottom: 20px;" id="txt-bio-1">
+                            Dr. Dimitris Panagiotakopoulos holds a Ph.D. and was a member of the "Design, Interior Architecture & Audiovisual Documentation" research laboratory at the University of West Attica, where he also served as an Academic Fellow (Teaching Assistant).
+                        </p>
+                        <p id="txt-bio-2">
+                            His research interests lie within the broader scope of multimedia science, focusing on interaction design and the production process. His doctoral thesis specifically explores <strong>Digital Scent Technology</strong> within the Metaverse, investigating how multisensory interfaces can enhance user experience.
+                        </p>
+                        <p id="txt-bio-3">
+                            He has worked at the European Commission (DG DIGIT) in Brussels, and previously served as an editor and producer for television advertisements in the private sector in Milan, Italy. His background in Digital Humanities was established through internships at the University of Bologna (Department of History and Culture)—where he participated in the "BYZART" European research project—and the Ephorate of Palaeoanthropology and Speleology of the Hellenic Ministry of Culture.
+                        </p>
+                        <p id="txt-bio-4">
+                            His academic background combines creative arts with advanced technology. He holds an Integrated Master in Audio Visual Arts from the Ionian University and an MSc in "Intelligent Packaging: New Technologies and Marketing" from the University of West Attica. Additionally, he attended the Master of Fine Arts (MFA) program at Cardiff Metropolitan University via the Erasmus+ program. He also holds a Certificate of Pedagogical and Teaching Competence, fully qualifying him to teach Art subjects in Primary and Secondary Education.
+                        </p>
                     </div>
                 </div>
-            </div>
-            <div class="phd-grid">
-                <div class="phd-col">
-                    <svg class="phd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="2" y1="12" x2="22" y2="12" stroke-dasharray="4 2"></line><circle cx="18" cy="12" r="3"></circle></svg>
-                    <h4 class="mono" id="txt-phd-c1-t">THE SHIFT</h4>
-                    <p id="txt-phd-c1-d">Transitioning from <strong>Techno-anosmia</strong> to the <strong>3rd Wave</strong> of digital scent, driven by Perceptual Engineering.</p>
-                </div>
-                <div class="phd-col">
-                    <svg class="phd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="12" r="6"></circle><circle cx="16" cy="12" r="6"></circle></svg>
-                    <h4 class="mono" id="txt-phd-c2-t">THE THEORY</h4>
-                    <p id="txt-phd-c2-d">Defining <strong>Liminal Interaction</strong>: Scent as a connective tissue for <strong>Co-Reality</strong> between physical and digital worlds.</p>
-                </div>
-                <div class="phd-col">
-                    <svg class="phd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
-                    <h4 class="mono" id="txt-phd-c3-t">INNOVATION</h4>
-                    <p id="txt-phd-c3-d">Introducing the <strong>OloMET Framework</strong> and the <strong>Spatial Scent GUI</strong> for 3D olfactory diffusion control.</p>
-                </div>
-                <div class="phd-col">
-                    <svg class="phd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                    <h4 class="mono" id="txt-phd-c4-t">ETHICS</h4>
-                    <p id="txt-phd-c4-d">Proposal for a <strong>Ethical Design Framework</strong> for Neurorights, covering the legal gap in mental privacy.</p>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="education">
-            <span class="section-label" id="lbl-3">03 // EDUCATION</span>
-            <div class="list-row">
-                <div class="list-col-left">2020 - 2026</div>
-                <div class="list-col-right">
-                    <span class="list-title" id="edu-1-t">Ph.D. (8 EQF)</span>
-                    <span class="list-meta" id="edu-1-d">Dept. of Graphic Design & Visual Communication, University of West Attica.<br><strong>Thesis:</strong> "Digital Scent Technology in Metaverse Environments"</span>
+            <section id="phd">
+                <span class="section-label mono" id="lbl-2">02 // PHD DISSERTATION</span>
+                <div class="phd-hero">
+                    <div class="anim-box">
+                        <svg viewBox="0 0 400 300" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+                            <defs>
+                                <pattern id="grid-pattern" width="40" height="40" patternUnits="userSpaceOnUse">
+                                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" opacity="0.05" stroke-width="1"/>
+                                </pattern>
+                                <linearGradient id="scent-trail" x1="0%" y1="100%" x2="0%" y2="0%">
+                                    <stop offset="0%" stop-color="currentColor" stop-opacity="0"/>
+                                    <stop offset="50%" stop-color="currentColor" stop-opacity="0.3"/>
+                                    <stop offset="100%" stop-color="var(--accent)" stop-opacity="1"/>
+                                </linearGradient>
+                            </defs>
+                            <rect width="100%" height="100%" fill="url(#grid-pattern)" />
+                            <g transform="translate(200, 150)">
+                                <circle r="10" fill="none" stroke="var(--accent)" stroke-width="1" opacity="0">
+                                    <animate attributeName="r" values="30;120" dur="4s" repeatCount="indefinite" />
+                                    <animate attributeName="opacity" values="0.6;0" dur="4s" repeatCount="indefinite" />
+                                </circle>
+                                <circle r="10" fill="none" stroke="var(--accent)" stroke-width="1" opacity="0">
+                                    <animate attributeName="r" values="30;120" dur="4s" repeatCount="indefinite" begin="2s"/>
+                                    <animate attributeName="opacity" values="0.6;0" dur="4s" repeatCount="indefinite" begin="2s"/>
+                                </circle>
+                                <circle cx="0" cy="0" r="30" fill="none" stroke-width="2" class="sensor-ring"/>
+                                <circle cx="0" cy="0" r="8" class="sensor-core">
+                                    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle r="3" fill="url(#scent-trail)" opacity="0">
+                                    <animateMotion path="M -80 100 Q -40 50 0 0" dur="3s" repeatCount="indefinite" />
+                                    <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite" />
+                                </circle>
+                                <circle r="3" fill="url(#scent-trail)" opacity="0">
+                                    <animateMotion path="M 80 100 Q 40 50 0 0" dur="3.5s" repeatCount="indefinite" begin="0.5s"/>
+                                    <animate attributeName="opacity" values="0;1;0" dur="3.5s" repeatCount="indefinite" begin="0.5s"/>
+                                </circle>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="phd-info">
+                        <h2 id="txt-phd-title">Olfactory Metaverse Experience Design</h2>
+                        <div class="phd-quote" id="txt-phd-quote">
+                            "But when from a long-distant past nothing subsists... taste and smell alone... bear unfaltering... the vast structure of recollection." — Marcel Proust
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="list-row">
-                <div class="list-col-left">2023</div>
-                <div class="list-col-right">
-                    <span class="list-title" id="edu-2-t">Special Pedagogy Certification of Teaching Proficiency</span>
-                    <span class="list-meta" id="edu-2-d">Ionian University.</span>
+                <div class="phd-grid">
+                    <div class="phd-col">
+                        <svg class="phd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="2" y1="12" x2="22" y2="12" stroke-dasharray="4 2"></line><circle cx="18" cy="12" r="3"></circle></svg>
+                        <h4 class="mono" id="txt-phd-c1-t">THE SHIFT</h4>
+                        <p id="txt-phd-c1-d">Transitioning from <strong>Techno-anosmia</strong> to the <strong>3rd Wave</strong> of digital scent, driven by Perceptual Engineering.</p>
+                    </div>
+                    <div class="phd-col">
+                        <svg class="phd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="12" r="6"></circle><circle cx="16" cy="12" r="6"></circle></svg>
+                        <h4 class="mono" id="txt-phd-c2-t">THE THEORY</h4>
+                        <p id="txt-phd-c2-d">Defining <strong>Liminal Interaction</strong>: Scent as a connective tissue for <strong>Co-Reality</strong> between physical and digital worlds.</p>
+                    </div>
+                    <div class="phd-col">
+                        <svg class="phd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                        <h4 class="mono" id="txt-phd-c3-t">INNOVATION</h4>
+                        <p id="txt-phd-c3-d">Introducing the <strong>OloMET Framework</strong> and the <strong>Spatial Scent GUI</strong> for 3D olfactory diffusion control.</p>
+                    </div>
+                    <div class="phd-col">
+                        <svg class="phd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        <h4 class="mono" id="txt-phd-c4-t">ETHICS</h4>
+                        <p id="txt-phd-c4-d">Proposal for a <strong>Ethical Design Framework</strong> for Neurorights, covering the legal gap in mental privacy.</p>
+                    </div>
                 </div>
-            </div>
-             <div class="list-row">
-                <div class="list-col-left">2018 - 2020</div>
-                <div class="list-col-right">
-                    <span class="list-title" id="edu-3-t">MSc in Intelligent Packaging: New Technologies & Marketing</span>
-                    <span class="list-meta" id="edu-3-d">University of West Attica (90 ECTS, 7 EQF).</span>
-                </div>
-            </div>
-            <div class="list-row">
-                <div class="list-col-left">2011 - 2017</div>
-                <div class="list-col-right">
-                    <span class="list-title" id="edu-4-t">Integrated Master in Audio Visual Arts</span>
-                    <span class="list-meta" id="edu-4-d">Ionian University (300 ECTS, 7 EQF).</span>
-                </div>
-            </div>
-            <div class="list-row">
-                <div class="list-col-left">2015</div>
-                <div class="list-col-right">
-                    <span class="list-title" id="edu-5-t">Erasmus+ (Master of Fine Arts Module)</span>
-                    <span class="list-meta" id="edu-5-d">Cardiff Metropolitan University.</span>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="awards">
-            <span class="section-label" id="lbl-4">04 // AWARDS & SCHOLARSHIPS</span>
-            <div class="list-row">
-                <div class="list-col-left">2023</div>
-                <div class="list-col-right">
-                    <span class="list-title" id="aw-1-t">Most Popular Article Award</span>
-                    <span class="list-meta" id="aw-1-d">Awarded by <em>IEEE IT Professional</em> for the article "Digital Scent Technology Toward the Internet of Senses and the Metaverse".</span>
+            <section id="education">
+                <span class="section-label mono" id="lbl-3">03 // EDUCATION</span>
+                <div class="list-row">
+                    <div class="list-col-left">2020 - 2026</div>
+                    <div class="list-col-right">
+                        <span class="list-title" id="edu-1-t">Ph.D. (8 EQF)</span>
+                        <span class="list-meta" id="edu-1-d">Dept. of Graphic Design & Visual Communication, University of West Attica.<br><strong>Thesis:</strong> "Digital Scent Technology in Metaverse Environments"</span>
+                    </div>
                 </div>
-            </div>
-            <div class="list-row">
-                <div class="list-col-left">2019 - 2024</div>
-                <div class="list-col-right">
-                    <span class="list-title" id="aw-2-t">Doctorate Scholarship</span>
-                    <span class="list-meta" id="aw-2-d">Special Account for Research Funds (ELKE), University of West Attica.</span>
+                <div class="list-row">
+                    <div class="list-col-left">2023</div>
+                    <div class="list-col-right">
+                        <span class="list-title" id="edu-2-t">Special Pedagogy Certification of Teaching Proficiency</span>
+                        <span class="list-meta" id="edu-2-d">Ionian University.</span>
+                    </div>
                 </div>
-            </div>
-            <div class="list-row">
-                <div class="list-col-left">2016</div>
-                <div class="list-col-right">
-                    <span class="list-title" id="aw-3-t">Erasmus+ Scholarship for Traineeship</span>
-                    <span class="list-meta" id="aw-3-d">University of Bologna, Italy (Digital Humanities).</span>
+                 <div class="list-row">
+                    <div class="list-col-left">2018 - 2020</div>
+                    <div class="list-col-right">
+                        <span class="list-title" id="edu-3-t">MSc in Intelligent Packaging: New Technologies & Marketing</span>
+                        <span class="list-meta" id="edu-3-d">University of West Attica (90 ECTS, 7 EQF).</span>
+                    </div>
                 </div>
-            </div>
-            <div class="list-row">
-                <div class="list-col-left">2015</div>
-                <div class="list-col-right">
-                    <span class="list-title" id="aw-4-t">Erasmus+ Scholarship for Studies</span>
-                    <span class="list-meta" id="aw-4-d">Cardiff Metropolitan University, UK (Master of Fine Arts).</span>
+                <div class="list-row">
+                    <div class="list-col-left">2011 - 2017</div>
+                    <div class="list-col-right">
+                        <span class="list-title" id="edu-4-t">Integrated Master in Audio Visual Arts</span>
+                        <span class="list-meta" id="edu-4-d">Ionian University (300 ECTS, 7 EQF).</span>
+                    </div>
                 </div>
-            </div>
-        </section>
+                <div class="list-row">
+                    <div class="list-col-left">2015</div>
+                    <div class="list-col-right">
+                        <span class="list-title" id="edu-5-t">Erasmus+ (Master of Fine Arts Module)</span>
+                        <span class="list-meta" id="edu-5-d">Cardiff Metropolitan University.</span>
+                    </div>
+                </div>
+            </section>
 
-        <section id="teaching">
-            <span class="section-label" id="lbl-5">05 // TEACHING EXPERIENCE</span>
-            <div class="list-row">
-                <div class="list-col-left">2020 - 2026</div>
-                <div class="list-col-right">
-                    <span class="list-title" id="tea-1-t">Teaching Assistant (Academic Fellow)</span>
-                    <span class="list-meta" id="tea-1-d">University of West Attica. Courses: 1) <em>Multimedia Graphic Design</em>, 2) <em>Digital Interactive Multimedia Applications</em></span>
+            <section id="awards">
+                <span class="section-label mono" id="lbl-4">04 // AWARDS & SCHOLARSHIPS</span>
+                <div class="list-row">
+                    <div class="list-col-left">2023</div>
+                    <div class="list-col-right">
+                        <span class="list-title" id="aw-1-t">Most Popular Article Award</span>
+                        <span class="list-meta" id="aw-1-d">Awarded by <em>IEEE IT Professional</em> for the article "Digital Scent Technology Toward the Internet of Senses and the Metaverse".</span>
+                    </div>
                 </div>
-            </div>
-            <div class="list-row">
-                <div class="list-col-left">2020 - 2026</div>
-                <div class="list-col-right">
-                    <span class="list-title" id="tea-2-t">Mentoring & Thesis Supervision</span>
-                    <span class="list-meta" id="tea-2-d">Master thesis Co-Supervisions & Mentoring programme, University of West Attica.</span>
+                <div class="list-row">
+                    <div class="list-col-left">2019 - 2024</div>
+                    <div class="list-col-right">
+                        <span class="list-title" id="aw-2-t">Doctorate Scholarship</span>
+                        <span class="list-meta" id="aw-2-d">Special Account for Research Funds (ELKE), University of West Attica.</span>
+                    </div>
                 </div>
-            </div>
-        </section>
+                <div class="list-row">
+                    <div class="list-col-left">2016</div>
+                    <div class="list-col-right">
+                        <span class="list-title" id="aw-3-t">Erasmus+ Scholarship for Traineeship</span>
+                        <span class="list-meta" id="aw-3-d">University of Bologna, Italy (Digital Humanities).</span>
+                    </div>
+                </div>
+                <div class="list-row">
+                    <div class="list-col-left">2015</div>
+                    <div class="list-col-right">
+                        <span class="list-title" id="aw-4-t">Erasmus+ Scholarship for Studies</span>
+                        <span class="list-meta" id="aw-4-d">Cardiff Metropolitan University, UK (Master of Fine Arts).</span>
+                    </div>
+                </div>
+            </section>
 
-        <section id="mobility">
-            <span class="section-label" id="lbl-6">06 // INTERNATIONAL MOBILITY</span>
-            
-            <!-- KENYA BLOCK -->
-            <div class="mobility-grid">
-                <div class="mobility-content">
-                    <div style="width: 100%;">
-                        <div class="list-row" style="padding-left: 24px; border-bottom: none;">
-                            <div class="list-col-left">2026</div>
+            <section id="teaching">
+                <span class="section-label mono" id="lbl-5">05 // TEACHING EXPERIENCE</span>
+                <div class="list-row">
+                    <div class="list-col-left">2020 - 2026</div>
+                    <div class="list-col-right">
+                        <span class="list-title" id="tea-1-t">Teaching Assistant (Academic Fellow)</span>
+                        <span class="list-meta" id="tea-1-d">University of West Attica. Courses: 1) <em>Multimedia Graphic Design</em>, 2) <em>Digital Interactive Multimedia Applications</em></span>
+                    </div>
+                </div>
+                <div class="list-row">
+                    <div class="list-col-left">2020 - 2026</div>
+                    <div class="list-col-right">
+                        <span class="list-title" id="tea-2-t">Mentoring & Thesis Supervision</span>
+                        <span class="list-meta" id="tea-2-d">Master thesis Co-Supervisions & Mentoring programme, University of West Attica.</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="mobility">
+                <span class="section-label mono" id="lbl-6">06 // INTERNATIONAL MOBILITY</span>
+                
+                <!-- KENYA BLOCK -->
+                <div class="mobility-grid">
+                    <div class="mobility-content">
+                        <div class="list-row" style="background:transparent; border:none; padding:0; margin:0;">
+                            <div class="list-col-left" style="width:100px;">2026</div>
                             <div class="list-col-right">
                                 <span class="list-title" id="mob-2-t">Visiting Researcher</span>
                                 <span class="list-meta" id="mob-2-d">Kenyatta University, Nairobi, Kenya.</span>
                             </div>
                         </div>
                     </div>
+                    <div class="mobility-img-box">
+                        <img src="kenya.jpg" alt="Kenyatta University" class="mobility-img">
+                    </div>
                 </div>
-                <div class="mobility-img-box">
-                    <img src="kenya.jpg" alt="Dimitris Panagiotakopoulos - Visiting Researcher at Kenyatta University" class="mobility-img">
-                </div>
-            </div>
 
-            <!-- MOLDOVA BLOCK -->
-            <div class="mobility-grid">
-                <div class="mobility-content">
-                    <div style="width: 100%;">
-                        <div class="list-row" style="padding-left: 24px; border-bottom: none;">
-                            <div class="list-col-left">2025</div>
+                <!-- MOLDOVA BLOCK -->
+                <div class="mobility-grid">
+                    <div class="mobility-content">
+                        <div class="list-row" style="background:transparent; border:none; padding:0; margin:0;">
+                            <div class="list-col-left" style="width:100px;">2025</div>
                             <div class="list-col-right">
                                 <span class="list-title" id="mob-1-t">Erasmus+ ICM – Visiting PhD Researcher</span>
                                 <span class="list-meta" id="mob-1-d">Technical University of Moldova (UTM), Chișinău.</span>
                             </div>
                         </div>
                     </div>
+                    <div class="mobility-img-box">
+                        <img src="moldova.jpg" alt="Technical University of Moldova" class="mobility-img">
+                    </div>
                 </div>
-                <div class="mobility-img-box">
-                    <img src="moldova.jpg" alt="Dimitris Panagiotakopoulos - Visiting PhD Researcher at Technical University of Moldova" class="mobility-img">
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="themes">
-            <span class="section-label" id="lbl-7">07 // RESEARCH THEMES & CASE STUDIES</span>
-            <div class="bento-grid">
-                <div class="project-card card-large">
-                    <img src="project8.jpg" alt="Sacred Futurism Art" class="p-img">
-                    <div class="p-content">
-                        <span class="p-tag mono">[ART / AI / THEOLOGY]</span>
-                        <h3 class="p-title" id="pj-1-t">Sacred Futurism</h3>
-                        <p class="p-desc" id="pj-1-d">
-                            The project presents a series of artworks and their analysis under the theme of Sacred Futurism. It explores the contrast between the sacred and technology by depicting robots in the roles of traditional holy figures, rendered in a Byzantine style. Set against post-apocalyptic landscapes, the works address ecological destruction while suggesting that, in a dystopian future, robots may rebuild society based on ethical values and the protection of life. The analysis examines the relationship between religion, the metaverse, robotics, and artificial intelligence, discussing concepts such as transhumanism and "Robot Theology."
-                        </p>
-                        <span class="p-arrow">→</span>
+            <section id="themes">
+                <span class="section-label mono" id="lbl-7">07 // RESEARCH THEMES & CASE STUDIES</span>
+                <div class="bento-grid">
+                    <div class="project-card card-large">
+                        <img src="project8.jpg" alt="Sacred Futurism Art" class="p-img">
+                        <div class="p-content">
+                            <span class="p-tag mono">[ART / AI / THEOLOGY]</span>
+                            <h3 class="p-title" id="pj-1-t">Sacred Futurism</h3>
+                            <p class="p-desc" id="pj-1-d">
+                                The project presents a series of artworks and their analysis under the theme of Sacred Futurism. It explores the contrast between the sacred and technology by depicting robots in the roles of traditional holy figures, rendered in a Byzantine style. Set against post-apocalyptic landscapes, the works address ecological destruction while suggesting that, in a dystopian future, robots may rebuild society based on ethical values and the protection of life. The analysis examines the relationship between religion, the metaverse, robotics, and artificial intelligence, discussing concepts such as transhumanism and "Robot Theology."
+                            </p>
+                            <span class="p-arrow">→</span>
+                        </div>
+                    </div>
+                    <div class="project-card card-large">
+                        <img src="project1.jpg" alt="Digital Scent" class="p-img">
+                        <div class="p-content">
+                            <span class="p-tag mono">[HCI / REVIEW]</span>
+                            <h3 class="p-title" id="pj-2-t">Digital Scent Technology & IoS</h3>
+                            <p class="p-desc" id="pj-2-d">Exploring multisensory interface technologies for HCI, focusing on digital scent. Reviews current electrical interfaces, chemical odor delivery, and the commercial potential of the Internet of Senses (IoS) and 6G infrastructure.</p>
+                            <span class="p-arrow">→</span>
+                        </div>
+                    </div>
+                    <div class="project-card card-large">
+                        <img src="spatial-ui.jpg" alt="Spatial GUI" class="p-img">
+                        <div class="p-content">
+                            <span class="p-tag mono">[UX / PROTOTYPE]</span>
+                            <h3 class="p-title" id="pj-3-t">Spatial User Interfaces</h3>
+                            <p class="p-desc" id="pj-3-d">Developing 3D controls for olfactory diffusion in immersive environments. The project addresses the lack of visual tools for designing scent in the Metaverse.</p>
+                            <span class="p-arrow">→</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="project2.jpg" alt="VR Public" class="p-img">
+                        <div class="p-content">
+                            <span class="p-tag mono">[VR / PUBLIC SECTOR]</span>
+                            <h3 class="p-title" id="pj-4-t">METAVERSE in Public Sector</h3>
+                            <p class="p-desc" id="pj-4-d">Examining the application of Virtual Reality in the public sector. Explores sensory enhancement (haptic, auditory, olfactory) to create immersive experiences.</p>
+                            <span class="p-arrow">→</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="project3.jpg" alt="Erasmus" class="p-img">
+                        <div class="p-content">
+                            <span class="p-tag mono">[METAVERSE / EU]</span>
+                            <h3 class="p-title" id="pj-5-t">Metaverse Erasmus Hub</h3>
+                            <p class="p-desc" id="pj-5-d">A proposal to the European Commission for integrating metaverse technologies into Erasmus+. Enhances physical mobility via AI avatars.</p>
+                            <span class="p-arrow">→</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="project4.jpg" alt="Education" class="p-img">
+                        <div class="p-content">
+                            <span class="p-tag mono">[CASE STUDY]</span>
+                            <h3 class="p-title" id="pj-6-t">Metaverse in Education</h3>
+                            <p class="p-desc" id="pj-6-d">Case study with 20 students using Spatial. Findings indicate increased creativity (50%) and interest in technology integration (70%).</p>
+                            <span class="p-arrow">→</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="project5.jpg" alt="Packaging" class="p-img">
+                        <div class="p-content">
+                            <span class="p-tag mono">[IOT / TOURISM]</span>
+                            <h3 class="p-title" id="pj-7-t">INTELLIGENT Packaging</h3>
+                            <p class="p-desc" id="pj-7-d">Exploring smart packaging as a key trend in tourism, blending physical and digital worlds via IoT, 5G, RFID, and NFC.</p>
+                            <span class="p-arrow">→</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="project6.jpg" alt="Prinzhorn" class="p-img">
+                        <div class="p-content">
+                            <span class="p-tag mono">[VR / PSYCHOLOGY]</span>
+                            <h3 class="p-title" id="pj-8-t">Prinzhorn Collection & VR</h3>
+                            <p class="p-desc" id="pj-8-d">Study on psychiatric artworks (Heidelberg) to explore emotion elicitation and simulate psychosis in VR environments.</p>
+                            <span class="p-arrow">→</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="project7.jpg" alt="Participatory" class="p-img">
+                        <div class="p-content">
+                            <span class="p-tag mono">[ETHICS / 5IR]</span>
+                            <h3 class="p-title" id="pj-9-t">ETHICAL METAVERSE</h3>
+                            <p class="p-desc" id="pj-9-d">Participatory Design (PD) as an ethical necessity for building an inclusive Metaverse. Rooted in the philosophy of Ubuntu.</p>
+                            <span class="p-arrow">→</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="kafka.jpg" alt="Kafkaesque Labyrinth" class="p-img">
+                        <div class="p-content">
+                            <span class="p-tag mono">[HYPERTEXT / LITERATURE / ART]</span>
+                            <h3 class="p-title" id="pj-10-t">KAFKAESQUE LABYRINTH</h3>
+                            <p class="p-desc" id="pj-10-d">
+                                Through an innovative educational approach to Kafka's work, hypertext fiction practices are employed. In search of the thread of interpretation, thoughts, experiences, and reflections are transformed into a creative artistic response. The interpretative process emerges as a field where art and technology intersect. <br><br> @ Panagiotakopoulos / Hyper-Kafka Memory Rooms
+                            </p>
+                            <span class="p-arrow">→</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="flox_box.jpg" alt="FLOQ BOX" class="p-img">
+                        <div class="p-content">
+                            <span class="p-tag mono">[AFFECTIVE COMPUTING / HOLOGRAPHY]</span>
+                            <h3 class="p-title" id="pj-11-t">FLOQ BOX</h3>
+                            <p class="p-desc" id="pj-11-d">
+                                The Flow Box is inspired by the concept of "fluidity" in the modern world and explores human emotions. The device uses Affective Computing technologies to recognize the user's emotions, which it then metabolizes and represents through holographic simulation. With industrial materials (PVC, metal) and sharp geometries, the Flow Box is not just a box, but a communication channel between the subconscious and visual representation, transforming unboxing into a deeply personal, experiential experience.
+                            </p>
+                            <span class="p-arrow">→</span>
+                        </div>
                     </div>
                 </div>
-                <div class="project-card card-large">
-                    <img src="project1.jpg" alt="Digital Scent" class="p-img">
-                    <div class="p-content">
-                        <span class="p-tag mono">[HCI / REVIEW]</span>
-                        <h3 class="p-title" id="pj-2-t">Digital Scent Technology & IoS</h3>
-                        <p class="p-desc" id="pj-2-d">Exploring multisensory interface technologies for HCI, focusing on digital scent. Reviews current electrical interfaces, chemical odor delivery, and the commercial potential of the Internet of Senses (IoS) and 6G infrastructure.</p>
-                        <span class="p-arrow">→</span>
-                    </div>
-                </div>
-                <div class="project-card card-large">
-                    <img src="spatial-ui.jpg" alt="Spatial GUI" class="p-img">
-                    <div class="p-content">
-                        <span class="p-tag mono">[UX / PROTOTYPE]</span>
-                        <h3 class="p-title" id="pj-3-t">Spatial User Interfaces</h3>
-                        <p class="p-desc" id="pj-3-d">Developing 3D controls for olfactory diffusion in immersive environments. The project addresses the lack of visual tools for designing scent in the Metaverse.</p>
-                        <span class="p-arrow">→</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="project2.jpg" alt="VR Public" class="p-img">
-                    <div class="p-content">
-                        <span class="p-tag mono">[VR / PUBLIC SECTOR]</span>
-                        <h3 class="p-title" id="pj-4-t">METAVERSE in Public Sector</h3>
-                        <p class="p-desc" id="pj-4-d">Examining the application of Virtual Reality in the public sector. Explores sensory enhancement (haptic, auditory, olfactory) to create immersive experiences.</p>
-                        <span class="p-arrow">→</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="project3.jpg" alt="Erasmus" class="p-img">
-                    <div class="p-content">
-                        <span class="p-tag mono">[METAVERSE / EU]</span>
-                        <h3 class="p-title" id="pj-5-t">Metaverse Erasmus Hub</h3>
-                        <p class="p-desc" id="pj-5-d">A proposal to the European Commission for integrating metaverse technologies into Erasmus+. Enhances physical mobility via AI avatars.</p>
-                        <span class="p-arrow">→</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="project4.jpg" alt="Education" class="p-img">
-                    <div class="p-content">
-                        <span class="p-tag mono">[CASE STUDY]</span>
-                        <h3 class="p-title" id="pj-6-t">Metaverse in Education</h3>
-                        <p class="p-desc" id="pj-6-d">Case study with 20 students using Spatial. Findings indicate increased creativity (50%) and interest in technology integration (70%).</p>
-                        <span class="p-arrow">→</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="project5.jpg" alt="Packaging" class="p-img">
-                    <div class="p-content">
-                        <span class="p-tag mono">[IOT / TOURISM]</span>
-                        <h3 class="p-title" id="pj-7-t">INTELLIGENT Packaging</h3>
-                        <p class="p-desc" id="pj-7-d">Exploring smart packaging as a key trend in tourism, blending physical and digital worlds via IoT, 5G, RFID, and NFC.</p>
-                        <span class="p-arrow">→</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="project6.jpg" alt="Prinzhorn" class="p-img">
-                    <div class="p-content">
-                        <span class="p-tag mono">[VR / PSYCHOLOGY]</span>
-                        <h3 class="p-title" id="pj-8-t">Prinzhorn Collection & VR</h3>
-                        <p class="p-desc" id="pj-8-d">Study on psychiatric artworks (Heidelberg) to explore emotion elicitation and simulate psychosis in VR environments.</p>
-                        <span class="p-arrow">→</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="project7.jpg" alt="Participatory" class="p-img">
-                    <div class="p-content">
-                        <span class="p-tag mono">[ETHICS / 5IR]</span>
-                        <h3 class="p-title" id="pj-9-t">ETHICAL METAVERSE</h3>
-                        <p class="p-desc" id="pj-9-d">Participatory Design (PD) as an ethical necessity for building an inclusive Metaverse. Rooted in the philosophy of Ubuntu.</p>
-                        <span class="p-arrow">→</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="kafka.jpg" alt="Kafkaesque Labyrinth" class="p-img">
-                    <div class="p-content">
-                        <span class="p-tag mono">[HYPERTEXT / LITERATURE / ART]</span>
-                        <h3 class="p-title" id="pj-10-t">KAFKAESQUE LABYRINTH</h3>
-                        <p class="p-desc" id="pj-10-d">
-                            Through an innovative educational approach to Kafka's work, hypertext fiction practices are employed. In search of the thread of interpretation, thoughts, experiences, and reflections are transformed into a creative artistic response. The interpretative process emerges as a field where art and technology intersect. <br><br> @ Panagiotakopoulos / Hyper-Kafka Memory Rooms
-                        </p>
-                        <span class="p-arrow">→</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="flox_box.jpg" alt="FLOQ BOX" class="p-img">
-                    <div class="p-content">
-                        <span class="p-tag mono">[AFFECTIVE COMPUTING / HOLOGRAPHY]</span>
-                        <h3 class="p-title" id="pj-11-t">FLOQ BOX</h3>
-                        <p class="p-desc" id="pj-11-d">
-                            The Flow Box is inspired by the concept of "fluidity" in the modern world and explores human emotions. The device uses Affective Computing technologies to recognize the user's emotions, which it then metabolizes and represents through holographic simulation. With industrial materials (PVC, metal) and sharp geometries, the Flow Box is not just a box, but a communication channel between the subconscious and visual representation, transforming unboxing into a deeply personal, experiential experience.
-                        </p>
-                        <span class="p-arrow">→</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="art">
-            <span class="section-label" id="lbl-art">08 // ART PORTFOLIO</span>
-            <div class="bento-grid">
-                <div class="project-card">
-                    <img src="art_nature.jpg" alt="Nature" class="p-img">
-                    <div class="p-content">
-                        <span class="p-tag mono">[PHOTOGRAPHY]</span>
-                        <h3 class="p-title" id="art-1-t">Flow in the Forest</h3>
-                        <p class="p-desc" id="art-1-d">Landscape composition with running water and atmospheric fog. A study on nature's textures and forest light.</p>
-                        <span class="p-arrow">→</span>
+            <section id="art">
+                <span class="section-label mono" id="lbl-art">08 // ART PORTFOLIO</span>
+                <div class="bento-grid">
+                    <div class="project-card">
+                        <img src="art_nature.jpg" alt="Nature" class="p-img">
+                        <div class="p-content">
+                            <span class="p-tag mono">[PHOTOGRAPHY]</span>
+                            <h3 class="p-title" id="art-1-t">Flow in the Forest</h3>
+                            <p class="p-desc" id="art-1-d">Landscape composition with running water and atmospheric fog. A study on nature's textures and forest light.</p>
+                            <span class="p-arrow">→</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="art_sculpture.jpg" alt="Sculpture" class="p-img">
+                        <div class="p-content">
+                            <span class="p-tag mono">[MIXED MEDIA / SCULPTURE]</span>
+                            <h3 class="p-title" id="art-2-t">Matter and Motion</h3>
+                            <p class="p-desc" id="art-2-d">Mixed technique with clay and paper strips. The contrast between the solidity of the base and the lightness of geometric lines.</p>
+                            <span class="p-arrow">→</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="art_installation.jpg" alt="Installation" class="p-img">
+                        <div class="p-content">
+                            <span class="p-tag mono">[INSTALLATION]</span>
+                            <h3 class="p-title" id="art-3-t">Symbols and Matter</h3>
+                            <p class="p-desc" id="art-3-d">Spatial installation. Clay with metal elements in dialogue with traditional iconography, exploring memory and decay.</p>
+                            <span class="p-arrow">→</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="art_digital_1.jpg" alt="Digital Art" class="p-img">
+                        <div class="p-content">
+                            <span class="p-tag mono">[DIGITAL ART]</span>
+                            <h3 class="p-title" id="art-4-t">Urban Fragments</h3>
+                            <p class="p-desc" id="art-4-d">Series of three digital compositions. Classical sculpture integrated into a deconstructed urban environment with intense color contrasts.</p>
+                            <span class="p-arrow">→</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="art_abstract.jpg" alt="Abstract" class="p-img">
+                        <div class="p-content">
+                            <span class="p-tag mono">[ABSTRACT / PAINTING]</span>
+                            <h3 class="p-title" id="art-5-t">Abstract 1</h3>
+                            <p class="p-desc" id="art-5-d">Abstract composition on paper. Focusing on the dynamic movement of black color and the intensity of contrast with the white background.</p>
+                            <span class="p-arrow">→</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="art_uncanny.jpg" alt="Staged Photography" class="p-img">
+                        <div class="p-content">
+                            <span class="p-tag mono">[STAGED PHOTOGRAPHY]</span>
+                            <h3 class="p-title" id="art-6-t">Uncanny</h3>
+                            <p class="p-desc" id="art-6-d">Photographic record of a human figure in a state of stillness within a classic domestic environment.</p>
+                            <span class="p-arrow">→</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="art_abstract_2.jpg" alt="Abstract 2" class="p-img">
+                        <div class="p-content">
+                            <span class="p-tag mono">[ABSTRACT / INK]</span>
+                            <h3 class="p-title" id="art-7-t">Abstract 2</h3>
+                            <p class="p-desc" id="art-7-d">An evolution of the gesture series, exploring fluid dynamics and ink dispersion on textured paper.</p>
+                            <span class="p-arrow">→</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="art_abstract_3.jpg" alt="Abstract 3" class="p-img">
+                        <div class="p-content">
+                            <span class="p-tag mono">[DIGITAL / ABSTRACT]</span>
+                            <h3 class="p-title" id="art-8-t">Chrome & Void</h3>
+                            <p class="p-desc" id="art-8-d">Digital abstraction focusing on metallic surfaces and the absence of light in virtual spaces.</p>
+                            <span class="p-arrow">→</span>
+                        </div>
                     </div>
                 </div>
-                <div class="project-card">
-                    <img src="art_sculpture.jpg" alt="Sculpture" class="p-img">
-                    <div class="p-content">
-                        <span class="p-tag mono">[MIXED MEDIA / SCULPTURE]</span>
-                        <h3 class="p-title" id="art-2-t">Matter and Motion</h3>
-                        <p class="p-desc" id="art-2-d">Mixed technique with clay and paper strips. The contrast between the solidity of the base and the lightness of geometric lines.</p>
-                        <span class="p-arrow">→</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="art_installation.jpg" alt="Installation" class="p-img">
-                    <div class="p-content">
-                        <span class="p-tag mono">[INSTALLATION]</span>
-                        <h3 class="p-title" id="art-3-t">Symbols and Matter</h3>
-                        <p class="p-desc" id="art-3-d">Spatial installation. Clay with metal elements in dialogue with traditional iconography, exploring memory and decay.</p>
-                        <span class="p-arrow">→</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="art_digital_1.jpg" alt="Digital Art" class="p-img">
-                    <div class="p-content">
-                        <span class="p-tag mono">[DIGITAL ART]</span>
-                        <h3 class="p-title" id="art-4-t">Urban Fragments</h3>
-                        <p class="p-desc" id="art-4-d">Series of three digital compositions. Classical sculpture integrated into a deconstructed urban environment with intense color contrasts.</p>
-                        <span class="p-arrow">→</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="art_abstract.jpg" alt="Abstract" class="p-img">
-                    <div class="p-content">
-                        <span class="p-tag mono">[ABSTRACT / PAINTING]</span>
-                        <h3 class="p-title" id="art-5-t">Abstract 1</h3>
-                        <p class="p-desc" id="art-5-d">Abstract composition on paper. Focusing on the dynamic movement of black color and the intensity of contrast with the white background.</p>
-                        <span class="p-arrow">→</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="art_uncanny.jpg" alt="Staged Photography" class="p-img">
-                    <div class="p-content">
-                        <span class="p-tag mono">[STAGED PHOTOGRAPHY]</span>
-                        <h3 class="p-title" id="art-6-t">Uncanny</h3>
-                        <p class="p-desc" id="art-6-d">Photographic record of a human figure in a state of stillness within a classic domestic environment.</p>
-                        <span class="p-arrow">→</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="art_abstract_2.jpg" alt="Abstract 2" class="p-img">
-                    <div class="p-content">
-                        <span class="p-tag mono">[ABSTRACT / INK]</span>
-                        <h3 class="p-title" id="art-7-t">Abstract 2</h3>
-                        <p class="p-desc" id="art-7-d">An evolution of the gesture series, exploring fluid dynamics and ink dispersion on textured paper.</p>
-                        <span class="p-arrow">→</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="art_abstract_3.jpg" alt="Abstract 3" class="p-img">
-                    <div class="p-content">
-                        <span class="p-tag mono">[DIGITAL / ABSTRACT]</span>
-                        <h3 class="p-title" id="art-8-t">Chrome & Void</h3>
-                        <p class="p-desc" id="art-8-d">Digital abstraction focusing on metallic surfaces and the absence of light in virtual spaces.</p>
-                        <span class="p-arrow">→</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="projects">
-            <span class="section-label" id="lbl-8">08 // FUNDED RESEARCH PROJECTS</span>
-            <div class="list-row">
-                <div class="list-col-left">EU / CEF</div>
-                <div class="list-col-right">
-                    <span class="list-title">BYZART - Byzantine Art and Archaeology</span>
-                    <span class="list-meta" id="res-1-d">
-                        Creation of a thematic channel for the Europeana platform.
-                        <a href="https://pro.europeana.eu/project/byzantine-art-and-archaeology" target="_blank" class="pub-link">[VIEW PROJECT]</a>
-                    </span>
+            <section id="projects">
+                <span class="section-label mono" id="lbl-8">08 // FUNDED RESEARCH PROJECTS</span>
+                <div class="list-row">
+                    <div class="list-col-left">EU / CEF</div>
+                    <div class="list-col-right">
+                        <span class="list-title">BYZART - Byzantine Art and Archaeology</span>
+                        <span class="list-meta" id="res-1-d">
+                            Creation of a thematic channel for the Europeana platform.
+                            <a href="https://pro.europeana.eu/project/byzantine-art-and-archaeology" target="_blank" class="pub-link">[VIEW PROJECT]</a>
+                        </span>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="publications">
-            <span class="section-label" id="lbl-9">09 // SELECTED PUBLICATIONS</span>
-            <div class="list-row">
-                <div class="list-col-left">2026</div>
-                <div class="list-col-right">
-                    <span class="list-title">Metaverse στην Εποχή του Web 4.0: Προοπτικές για την Καλλιτεχνική Εκπαίδευση και την Οπτικοακουστική Βιομηχανία  [Metaverse in the Age of Web 4.0: Prospects for Art Education and the Audiovisual Industry]</span>
-                    <span class="list-meta">Panagiotakopoulos, Dimitrios; Metzitakos, Rossetos <span class="pub-venue">In 2nd International Scientific Conference "Audiovisual & Film Literacy".</span></span>
+            <section id="publications">
+                <span class="section-label mono" id="lbl-9">09 // SELECTED PUBLICATIONS</span>
+                <div class="list-row">
+                    <div class="list-col-left">2026</div>
+                    <div class="list-col-right">
+                        <span class="list-title">Metaverse στην Εποχή του Web 4.0: Προοπτικές για την Καλλιτεχνική Εκπαίδευση και την Οπτικοακουστική Βιομηχανία  [Metaverse in the Age of Web 4.0: Prospects for Art Education and the Audiovisual Industry]</span>
+                        <span class="list-meta">Panagiotakopoulos, Dimitrios; Metzitakos, Rossetos <span class="pub-venue">In 2nd International Scientific Conference "Audiovisual & Film Literacy".</span></span>
+                    </div>
                 </div>
-            </div>
-            <div class="list-row">
-                <div class="list-col-left">2026</div>
-                <div class="list-col-right">
-                    <span class="list-title">ETHICAL GOVERNANCE AND HUMAN-CENTRIC DESIGN IN THE MULTISENSORY METAVERSE: THE CASE OF DIGITAL OLFACTION</span>
-                    <span class="list-meta">Panagiotakopoulos, Dimitrios <span class="pub-venue">In Metaverse Science, Society and Law.</span> [SciFormat Publishing Inc.]</span>
+                <div class="list-row">
+                    <div class="list-col-left">2026</div>
+                    <div class="list-col-right">
+                        <span class="list-title">ETHICAL GOVERNANCE AND HUMAN-CENTRIC DESIGN IN THE MULTISENSORY METAVERSE: THE CASE OF DIGITAL OLFACTION</span>
+                        <span class="list-meta">Panagiotakopoulos, Dimitrios <span class="pub-venue">In Metaverse Science, Society and Law.</span> [SciFormat Publishing Inc.]</span>
+                    </div>
                 </div>
-            </div>
-            <div class="list-row">
-                <div class="list-col-left">2025</div>
-                <div class="list-col-right">
-                    <span class="list-title">APPLICATION OF RENEWABLE ENERGY EFFICIENCY TECHNOLOGIES FOR SUSTAINABLE URBAN DEVELOPMENT: THE CASE OF IOANNINA, GREECE</span>
-                    <span class="list-meta">Cheirchanteri, Georgia; Tzortzi, Spyridoula; Panagiotakopoulos, Dimitrios; Papakitsos, Evangelos <span class="pub-venue">In World Journal of Engineering Research and Technology WJERT.</span> [WJERT]</span>
+                <div class="list-row">
+                    <div class="list-col-left">2025</div>
+                    <div class="list-col-right">
+                        <span class="list-title">APPLICATION OF RENEWABLE ENERGY EFFICIENCY TECHNOLOGIES FOR SUSTAINABLE URBAN DEVELOPMENT: THE CASE OF IOANNINA, GREECE</span>
+                        <span class="list-meta">Cheirchanteri, Georgia; Tzortzi, Spyridoula; Panagiotakopoulos, Dimitrios; Papakitsos, Evangelos <span class="pub-venue">In World Journal of Engineering Research and Technology WJERT.</span> [WJERT]</span>
+                    </div>
                 </div>
-            </div>
-            <div class="list-row">
-                <div class="list-col-left">2025</div>
-                <div class="list-col-right">
-                    <span class="list-title">Στεγαστική Κρίση και Ψηφιακοί Κόσμοι: Οι Δυνατότητες του Μετασύμπαντος στην Διαμόρφωση Πρακτικών [HOUSING CRISIS AND DIGITAL WORLDS: THE POTENTIAL OF THE METAVERSE INSHAPING PRACTICES]</span>
-                    <span class="list-meta">Panagiotakopoulos, Dimitrios; Cheirchanteri, Georgia <span class="pub-venue">In ΣΥΝΕΔΡΙΟ ΚΑΤΟΙΚΙΑ ΣΕ ΚΡΙΣΗ [Conference "Housing in Crisis"].</span></span>
+                <div class="list-row">
+                    <div class="list-col-left">2025</div>
+                    <div class="list-col-right">
+                        <span class="list-title">Στεγαστική Κρίση και Ψηφιακοί Κόσμοι: Οι Δυνατότητες του Μετασύμπαντος στην Διαμόρφωση Πρακτικών [HOUSING CRISIS AND DIGITAL WORLDS: THE POTENTIAL OF THE METAVERSE INSHAPING PRACTICES]</span>
+                        <span class="list-meta">Panagiotakopoulos, Dimitrios; Cheirchanteri, Georgia <span class="pub-venue">In ΣΥΝΕΔΡΙΟ ΚΑΤΟΙΚΙΑ ΣΕ ΚΡΙΣΗ [Conference "Housing in Crisis"].</span></span>
+                    </div>
                 </div>
-            </div>
-            <div class="list-row">
-                <div class="list-col-left">2025</div>
-                <div class="list-col-right">
-                    <span class="list-title">Participatory Design as a Tool for Inclusive and Ethical Metaverse</span>
-                    <span class="list-meta">Panagiotakopoulos, Dimitrios; Cheirchanteri, Georgia; Tzortzi, Spyridoula <span class="pub-venue">In Cumulus Conference 2025.</span></span>
+                <div class="list-row">
+                    <div class="list-col-left">2025</div>
+                    <div class="list-col-right">
+                        <span class="list-title">Participatory Design as a Tool for Inclusive and Ethical Metaverse</span>
+                        <span class="list-meta">Panagiotakopoulos, Dimitrios; Cheirchanteri, Georgia; Tzortzi, Spyridoula <span class="pub-venue">In Cumulus Conference 2025.</span></span>
+                    </div>
                 </div>
-            </div>
-            <div class="list-row">
-                <div class="list-col-left">2025</div>
-                <div class="list-col-right">
-                    <span class="list-title">The renewable energy sources (RES) efficiency energy technologies: A proposal for the city of Ioannina, Greece</span>
-                    <span class="list-meta">Cheirchanteri, Georgia; Tzortzi, Spyridoula; Panagiotakopoulos, Dimitrios <span class="pub-venue">In Presented at Eur. Conf. Ren. Energy Sys. 26-27 May 2025, Perugia, Italy.</span></span>
+                <div class="list-row">
+                    <div class="list-col-left">2025</div>
+                    <div class="list-col-right">
+                        <span class="list-title">The renewable energy sources (RES) efficiency energy technologies: A proposal for the city of Ioannina, Greece</span>
+                        <span class="list-meta">Cheirchanteri, Georgia; Tzortzi, Spyridoula; Panagiotakopoulos, Dimitrios <span class="pub-venue">In Presented at Eur. Conf. Ren. Energy Sys. 26-27 May 2025, Perugia, Italy.</span></span>
+                    </div>
                 </div>
-            </div>
-            <div class="list-row">
-                <div class="list-col-left">2025</div>
-                <div class="list-col-right">
-                    <span class="list-title">Reimagining the Erasmus+ Experience through the Metaverse Erasmus Hub</span>
-                    <span class="list-meta">Panagiotakopoulos, Dimitrios; Gheorghe, Georgică; Villafranca Jiménez, Inmaculada; Tzortzi, Spyridoula; Patelis, Georgios; Dimas, Triantafyllos; Cheirchanteri, Georgia; Deliyannis, Ioannis; Metzitakos, Rossetos <span class="pub-venue">In NiDS 2025.</span> [Springer]</span>
+                <div class="list-row">
+                    <div class="list-col-left">2025</div>
+                    <div class="list-col-right">
+                        <span class="list-title">Reimagining the Erasmus+ Experience through the Metaverse Erasmus Hub</span>
+                        <span class="list-meta">Panagiotakopoulos, Dimitrios; Gheorghe, Georgică; Villafranca Jiménez, Inmaculada; Tzortzi, Spyridoula; Patelis, Georgios; Dimas, Triantafyllos; Cheirchanteri, Georgia; Deliyannis, Ioannis; Metzitakos, Rossetos <span class="pub-venue">In NiDS 2025.</span> [Springer]</span>
+                    </div>
                 </div>
-            </div>
-            <div class="list-row">
-                <div class="list-col-left">2024</div>
-                <div class="list-col-right">
-                    <span class="list-title">The Metaverse in Art Education: A Deep Dive into Virtual Collaboration and Creativity</span>
-                    <span class="list-meta">Deliyannis, Ioannis; Metzitakos, Rossetos; Panagopoulos, Iakovos; Panagiotakopoulos, Dimitrios <span class="pub-venue">In DCAC 2024, Ionian University, Corfu, Greece.</span></span>
+                <div class="list-row">
+                    <div class="list-col-left">2024</div>
+                    <div class="list-col-right">
+                        <span class="list-title">The Metaverse in Art Education: A Deep Dive into Virtual Collaboration and Creativity</span>
+                        <span class="list-meta">Deliyannis, Ioannis; Metzitakos, Rossetos; Panagopoulos, Iakovos; Panagiotakopoulos, Dimitrios <span class="pub-venue">In DCAC 2024, Ionian University, Corfu, Greece.</span></span>
+                    </div>
                 </div>
-            </div>
-            <div class="list-row">
-                <div class="list-col-left">2024</div>
-                <div class="list-col-right">
-                    <span class="list-title">Recycling and practices in the interdisciplinary field of Intelligent packaging. Interaction elements of urban environment and metaverse</span>
-                    <span class="list-meta">Mountzouri, Athina; Xeirxanteri, Georgia; Nomikos, Spyridon; Panagiotakopoulos, Dimitrios; Georgi, Rozina; Giannoula, Zgouleta [RETASTE: Rethink Food Resources, Losses, and Waste Conference 2024]</span>
+                <div class="list-row">
+                    <div class="list-col-left">2024</div>
+                    <div class="list-col-right">
+                        <span class="list-title">Recycling and practices in the interdisciplinary field of Intelligent packaging. Interaction elements of urban environment and metaverse</span>
+                        <span class="list-meta">Mountzouri, Athina; Xeirxanteri, Georgia; Nomikos, Spyridon; Panagiotakopoulos, Dimitrios; Georgi, Rozina; Giannoula, Zgouleta [RETASTE: Rethink Food Resources, Losses, and Waste Conference 2024]</span>
+                    </div>
                 </div>
-            </div>
-            <div class="list-row">
-                <div class="list-col-left">2024</div>
-                <div class="list-col-right">
-                    <span class="list-title">The Sensory Enrichment and Interactivity of Immersive User Experiences in the Public Sector: The Ionian Film Office Metaverse</span>
-                    <span class="list-meta">Deliyannis, Ioannis; Panagopoulos, Iakovos; Panagiotakopoulos, Dimitrios; Marentakis, Georgios; Metzitakos, Rossetos <span class="pub-venue">In Augmented and Virtual Reality in the Metaverse.</span> [Springer]</span>
+                <div class="list-row">
+                    <div class="list-col-left">2024</div>
+                    <div class="list-col-right">
+                        <span class="list-title">The Sensory Enrichment and Interactivity of Immersive User Experiences in the Public Sector: The Ionian Film Office Metaverse</span>
+                        <span class="list-meta">Deliyannis, Ioannis; Panagopoulos, Iakovos; Panagiotakopoulos, Dimitrios; Marentakis, Georgios; Metzitakos, Rossetos <span class="pub-venue">In Augmented and Virtual Reality in the Metaverse.</span> [Springer]</span>
+                    </div>
                 </div>
-            </div>
-            <div class="list-row">
-                <div class="list-col-left">2022</div>
-                <div class="list-col-right">
-                    <span class="list-title">Gentrification and crime</span>
-                    <span class="list-meta">Semi, Giovanni; La Spina, Antonio; Mirabile, Mario; Cabras, Edoardo</span>
+                <div class="list-row">
+                    <div class="list-col-left">2022</div>
+                    <div class="list-col-right">
+                        <span class="list-title">Gentrification and crime</span>
+                        <span class="list-meta">Semi, Giovanni; La Spina, Antonio; Mirabile, Mario; Cabras, Edoardo</span>
+                    </div>
                 </div>
-            </div>
-            <div class="list-row">
-                <div class="list-col-left">2022</div>
-                <div class="list-col-right">
-                    <span class="list-title">Πρακτικά 6ου Επιστημονικού Συνεδρίου 2022, Ευφυής Συσκευασία: Προοπτικές και Προκλήσεις</span>
-                    <span class="list-meta"></span>
+                <div class="list-row">
+                    <div class="list-col-left">2022</div>
+                    <div class="list-col-right">
+                        <span class="list-title">Πρακτικά 6ου Επιστημονικού Συνεδρίου 2022, Ευφυής Συσκευασία: Προοπτικές και Προκλήσεις</span>
+                        <span class="list-meta"></span>
+                    </div>
                 </div>
-            </div>
-            <div class="list-row">
-                <div class="list-col-left">2022</div>
-                <div class="list-col-right">
-                    <span class="list-title">Digital Scent Technology: Toward the Internet of Senses and the Metaverse</span>
-                    <span class="list-meta">Panagiotakopoulos, Dimitrios; Marentakis, Georgios; Metzitakos, Rossetos; Deliyannis, Ioannis; Dedes, Fanourios <span class="pub-venue">In IT Professional, IEEE.</span> [https://doi.ieeecomputersociety.org/10.1109/MITP.2022.3177292]</span>
+                <div class="list-row">
+                    <div class="list-col-left">2022</div>
+                    <div class="list-col-right">
+                        <span class="list-title">Digital Scent Technology: Toward the Internet of Senses and the Metaverse</span>
+                        <span class="list-meta">Panagiotakopoulos, Dimitrios; Marentakis, Georgios; Metzitakos, Rossetos; Deliyannis, Ioannis; Dedes, Fanourios <span class="pub-venue">In IT Professional, IEEE.</span> [https://doi.ieeecomputersociety.org/10.1109/MITP.2022.3177292]</span>
+                    </div>
                 </div>
-            </div>
-            <div class="list-row">
-                <div class="list-col-left">2021</div>
-                <div class="list-col-right">
-                    <span class="list-title">Augmented Reality and Intelligent Packaging for Smart Tourism: A Systematic Review and Analysis</span>
-                    <span class="list-meta">Panagiotakopoulos, Dimitrios; Christodoulou, Marina; Mountzouri, Athina; Konstantinou, Panagiota; Nomikou, Maria-Georgia; Metzitakos, Rossetos; Stathakis, Georgios; Papapostolou, Apostolos <span class="pub-venue">In Augmented Reality in Tourism, Museums and Heritage.</span> [Springer]</span>
+                <div class="list-row">
+                    <div class="list-col-left">2021</div>
+                    <div class="list-col-right">
+                        <span class="list-title">Augmented Reality and Intelligent Packaging for Smart Tourism: A Systematic Review and Analysis</span>
+                        <span class="list-meta">Panagiotakopoulos, Dimitrios; Christodoulou, Marina; Mountzouri, Athina; Konstantinou, Panagiota; Nomikou, Maria-Georgia; Metzitakos, Rossetos; Stathakis, Georgios; Papapostolou, Apostolos <span class="pub-venue">In Augmented Reality in Tourism, Museums and Heritage.</span> [Springer]</span>
+                    </div>
                 </div>
-            </div>
-            <div class="list-row">
-                <div class="list-col-left">2021</div>
-                <div class="list-col-right">
-                    <span class="list-title">AR and NFC Technologies in Smart Tourism Experience</span>
-                    <span class="list-meta">Panagiotakopoulos, Dimitrios; Christodoulou, Marina <span class="pub-venue">In Prospects for the Development of Tourism and Hospitality: Challenges and Opportunities in new Realities.</span></span>
+                <div class="list-row">
+                    <div class="list-col-left">2021</div>
+                    <div class="list-col-right">
+                        <span class="list-title">AR and NFC Technologies in Smart Tourism Experience</span>
+                        <span class="list-meta">Panagiotakopoulos, Dimitrios; Christodoulou, Marina <span class="pub-venue">In Prospects for the Development of Tourism and Hospitality: Challenges and Opportunities in new Realities.</span></span>
+                    </div>
                 </div>
-            </div>
-            <div class="list-row">
-                <div class="list-col-left">2021</div>
-                <div class="list-col-right">
-                    <span class="list-title">Intelligent ticket and its interaction with transmedia content in the COVID-19 smart tourism era</span>
-                    <span class="list-meta">Panagiotakopoulos, Dimitrios; Mountzouri, Athina; Christodoulou, Marina; Papapostolou, Apostolos; Metzitakos, Rossetos <span class="pub-venue">In Strategic Innovative Marketing and Tourism in the COVID-19 Era: 9th ICSIMAT Conference 2020.</span> [Springer International Publishing Cham]</span>
+                <div class="list-row">
+                    <div class="list-col-left">2021</div>
+                    <div class="list-col-right">
+                        <span class="list-title">Intelligent ticket and its interaction with transmedia content in the COVID-19 smart tourism era</span>
+                        <span class="list-meta">Panagiotakopoulos, Dimitrios; Mountzouri, Athina; Christodoulou, Marina; Papapostolou, Apostolos; Metzitakos, Rossetos <span class="pub-venue">In Strategic Innovative Marketing and Tourism in the COVID-19 Era: 9th ICSIMAT Conference 2020.</span> [Springer International Publishing Cham]</span>
+                    </div>
                 </div>
-            </div>
-            <div class="list-row">
-                <div class="list-col-left">2021</div>
-                <div class="list-col-right">
-                    <span class="list-title">Video Games as Technological Ruins of a Recent Past</span>
-                    <span class="list-meta">Metzitakos, Rossetos; Panagiotakopoulos, Dimitrios; Christodoulou, Marina <span class="pub-venue">In Design|Arts|Culture.</span> [Design, Interior Architecture and Audiovisual Documentation Lab, University …]</span>
+                <div class="list-row">
+                    <div class="list-col-left">2021</div>
+                    <div class="list-col-right">
+                        <span class="list-title">Video Games as Technological Ruins of a Recent Past</span>
+                        <span class="list-meta">Metzitakos, Rossetos; Panagiotakopoulos, Dimitrios; Christodoulou, Marina <span class="pub-venue">In Design|Arts|Culture.</span> [Design, Interior Architecture and Audiovisual Documentation Lab, University …]</span>
+                    </div>
                 </div>
-            </div>
-            <div class="list-row">
-                <div class="list-col-left">2020</div>
-                <div class="list-col-right">
-                    <span class="list-title">Intelligent ticket with augmented reality applications for archaeological sites</span>
-                    <span class="list-meta">Panagiotakopoulos, Dimitrios; Dimitrantzou, Konstantina <span class="pub-venue">In Strategic Innovative Marketing and Tourism: 8th ICSIMAT, Northern Aegean, Greece, 2019.</span> [Springer International Publishing Cham]</span>
+                <div class="list-row">
+                    <div class="list-col-left">2020</div>
+                    <div class="list-col-right">
+                        <span class="list-title">Intelligent ticket with augmented reality applications for archaeological sites</span>
+                        <span class="list-meta">Panagiotakopoulos, Dimitrios; Dimitrantzou, Konstantina <span class="pub-venue">In Strategic Innovative Marketing and Tourism: 8th ICSIMAT, Northern Aegean, Greece, 2019.</span> [Springer International Publishing Cham]</span>
+                    </div>
                 </div>
-            </div>
-            <div class="list-row">
-                <div class="list-col-left">2020</div>
-                <div class="list-col-right">
-                    <span class="list-title">Introducing Intelligent Ticket's Dual Role in Degraded Areas: Electronic Monitoring of Crime and Transmedia Content Presentation to Users</span>
-                    <span class="list-meta">Panagiotakopoulos, Dimitrios <span class="pub-venue">In Gentrification & Crime: New Configurations and Challenges for the City.</span> [BK BOOKS (TU Delft Open)]</span>
+                <div class="list-row">
+                    <div class="list-col-left">2020</div>
+                    <div class="list-col-right">
+                        <span class="list-title">Introducing Intelligent Ticket's Dual Role in Degraded Areas: Electronic Monitoring of Crime and Transmedia Content Presentation to Users</span>
+                        <span class="list-meta">Panagiotakopoulos, Dimitrios <span class="pub-venue">In Gentrification & Crime: New Configurations and Challenges for the City.</span> [BK BOOKS (TU Delft Open)]</span>
+                    </div>
                 </div>
-            </div>
-            <div class="list-row">
-                <div class="list-col-left">2020</div>
-                <div class="list-col-right">
-                    <span class="list-title">Gentrification & Crime New Configurations and Challenges for the City</span>
-                    <span class="list-meta">Panagiotakopoulos, Dimitrios <span class="pub-venue">In Gentrification & Crime New Configurations and Challenges for the City.</span></span>
+                <div class="list-row">
+                    <div class="list-col-left">2020</div>
+                    <div class="list-col-right">
+                        <span class="list-title">Gentrification & Crime New Configurations and Challenges for the City</span>
+                        <span class="list-meta">Panagiotakopoulos, Dimitrios <span class="pub-venue">In Gentrification & Crime New Configurations and Challenges for the City.</span></span>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="activity">
-            <span class="section-label" id="lbl-10">10 // ACADEMIC SERVICE & EDITORIAL ACTIVITY</span>
-            <div class="list-row">
-                <div class="list-col-left">2025 - Pres.</div>
-                <div class="list-col-right">
-                    <span class="list-title" id="act-1-t">Editorial Board Member</span>
-                    <span class="list-meta"><em>Modern Sciences and Sustainable Living (MSSL).</em> <a href="https://sciformat.ca/journals/index.php/mssl" target="_blank" class="pub-link">[Journal Website]</a></span>
+            <section id="activity">
+                <span class="section-label mono" id="lbl-10">10 // ACADEMIC SERVICE & EDITORIAL ACTIVITY</span>
+                <div class="list-row">
+                    <div class="list-col-left">2025 - Pres.</div>
+                    <div class="list-col-right">
+                        <span class="list-title" id="act-1-t">Editorial Board Member</span>
+                        <span class="list-meta"><em>Modern Sciences and Sustainable Living (MSSL).</em> <a href="https://sciformat.ca/journals/index.php/mssl" target="_blank" class="pub-link">[Journal Website]</a></span>
+                    </div>
                 </div>
-            </div>
-            <div class="list-row">
-                <div class="list-col-left">2026</div>
-                <div class="list-col-right">
-                    <span class="list-title" id="act-2-t">Peer Reviewer</span>
-                    <span class="list-meta" id="act-2-d">Cumulus Athens 2026 Conference. Evaluation and comments on submitted articles.</span>
+                <div class="list-row">
+                    <div class="list-col-left">2026</div>
+                    <div class="list-col-right">
+                        <span class="list-title" id="act-2-t">Peer Reviewer</span>
+                        <span class="list-meta" id="act-2-d">Cumulus Athens 2026 Conference. Evaluation and comments on submitted articles.</span>
+                    </div>
                 </div>
-            </div>
-            <div class="list-row">
-                <div class="list-col-left">2022</div>
-                <div class="list-col-right">
-                    <span class="list-title" id="act-3-t">Publication Editor</span>
-                    <span class="list-meta" id="act-3-d"><em>Proceedings of the 6th Scientific Conference: Intelligent Packaging.</em> ISBN: 978-618-5690-02-1.</span>
+                <div class="list-row">
+                    <div class="list-col-left">2022</div>
+                    <div class="list-col-right">
+                        <span class="list-title" id="act-3-t">Publication Editor</span>
+                        <span class="list-meta" id="act-3-d"><em>Proceedings of the 6th Scientific Conference: Intelligent Packaging.</em> ISBN: 978-618-5690-02-1.</span>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="talks">
-            <span class="section-label" id="lbl-11">11 // INVITED TALKS</span>
-            <div class="list-row">
-                <div class="list-col-left">2024</div>
-                <div class="list-col-right">
-                    <span class="list-title" id="tlk-1-t">Introduction to the Metaverse Phenomenon</span>
-                    <span class="list-meta" id="tlk-1-d">14th Primary of Corfu, Scientific Project Partner of CulturePolis.</span>
+            <section id="talks">
+                <span class="section-label mono" id="lbl-11">11 // INVITED TALKS</span>
+                <div class="list-row">
+                    <div class="list-col-left">2024</div>
+                    <div class="list-col-right">
+                        <span class="list-title" id="tlk-1-t">Introduction to the Metaverse Phenomenon</span>
+                        <span class="list-meta" id="tlk-1-d">14th Primary of Corfu, Scientific Project Partner of CulturePolis.</span>
+                    </div>
                 </div>
-            </div>
-            <div class="list-row">
-                <div class="list-col-left">2021</div>
-                <div class="list-col-right">
-                    <span class="list-title" id="tlk-2-t">Enhancing Experience in Intelligent Packaging</span>
-                    <span class="list-meta">Syskevasia Virtual EXPO.</span>
+                <div class="list-row">
+                    <div class="list-col-left">2021</div>
+                    <div class="list-col-right">
+                        <span class="list-title" id="tlk-2-t">Enhancing Experience in Intelligent Packaging</span>
+                        <span class="list-meta">Syskevasia Virtual EXPO.</span>
+                    </div>
                 </div>
-            </div>
-            <div class="list-row">
-                <div class="list-col-left">2016</div>
-                <div class="list-col-right">
-                    <span class="list-title" id="tlk-3-t">From Reality to Digital (3D Survey)</span>
-                    <span class="list-meta">University of Bologna & Minghetti High School.</span>
+                <div class="list-row">
+                    <div class="list-col-left">2016</div>
+                    <div class="list-col-right">
+                        <span class="list-title" id="tlk-3-t">From Reality to Digital (3D Survey)</span>
+                        <span class="list-meta">University of Bologna & Minghetti High School.</span>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="languages">
-            <span class="section-label" id="lbl-12">12 // LANGUAGES</span>
-            <div style="padding: var(--pad);">
-                <p id="txt-lang">Greek (Native), English (Fluent), Italian (Fluent).</p>
-            </div>
-        </section>
+            <section id="languages">
+                <span class="section-label mono" id="lbl-12">12 // LANGUAGES</span>
+                <div style="padding: 10px;">
+                    <p id="txt-lang" style="margin: 0; font-weight: bold; color: var(--accent);">Greek (Native), English (Fluent), Italian (Fluent).</p>
+                </div>
+            </section>
 
-        <section id="contact">
-            <span class="section-label" id="lbl-13">13 // CONTACT & LOCATION</span>
-            <div class="contact-cta">
-                <p style="text-align: center; margin-bottom: 0; font-style: italic; font-size: 1.1rem; color: var(--accent);" id="txt-contact-quote">
-                    "Feel free to reach out for research inquiries, collaborations, or student supervision. I am always open to discussing innovative projects and ideas."
-                </p>
-            </div>
-            <div class="contact-grid">
-                <div class="contact-details">
-                    <ul class="contact-list">
-                        <li>
-                            <strong id="c-1">Status</strong>
-                            <span id="c-dept">Independent Researcher</span>
-                        </li>
-                        <li>
-                            <strong id="c-2">Location</strong>
-                            <span id="c-uni">Athens</span><br>
-                            <span id="c-str">Greece</span><br>
-                            <span id="c-city"></span>
-                        </li>
-                        <li>
-                            <strong>Email</strong>
-                            <a href="mailto:dpanagiotakopoulos@uniwa.gr" style="text-decoration: underline;">dpanagiotakopoulos@uniwa.gr</a>
-                        </li>
-                        <li>
-                            <strong id="c-3">Hours</strong>
-                            <span id="c-hrs">By Appointment</span>
-                        </li>
-                    </ul>
+            <section id="contact">
+                <span class="section-label mono" id="lbl-13">13 // CONTACT & LOCATION</span>
+                <div class="contact-cta">
+                    <p style="margin: 0; font-style: italic; font-size: 1.1rem; color: var(--accent);" id="txt-contact-quote">
+                        "Feel free to reach out for research inquiries, collaborations, or student supervision. I am always open to discussing innovative projects and ideas."
+                    </p>
                 </div>
-                <div class="map-box">
-                    <iframe
-                        class="map-frame"
-                        width="100%"
-                        height="100%"
-                        frameborder="0"
-                        scrolling="no"
-                        marginheight="0"
-                        marginwidth="0"
-                        src="https://maps.google.com/maps?q=Athens,%20Greece&t=&z=13&ie=UTF8&iwloc=&output=embed">
-                    </iframe>
+                <div class="contact-grid">
+                    <div class="contact-details">
+                        <ul class="contact-list">
+                            <li>
+                                <strong id="c-1">Status</strong>
+                                <span id="c-dept">Independent Researcher</span>
+                            </li>
+                            <li>
+                                <strong id="c-2">Location</strong>
+                                <span id="c-uni">Athens</span><br>
+                                <span id="c-str">Greece</span><br>
+                                <span id="c-city"></span>
+                            </li>
+                            <li>
+                                <strong>Email</strong>
+                                <a href="mailto:dpanagiotakopoulos@uniwa.gr" style="text-decoration: underline;">dpanagiotakopoulos@uniwa.gr</a>
+                            </li>
+                            <li>
+                                <strong id="c-3">Hours</strong>
+                                <span id="c-hrs">By Appointment</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="map-box">
+                        <iframe
+                            class="map-frame"
+                            width="100%"
+                            height="100%"
+                            frameborder="0"
+                            scrolling="no"
+                            marginheight="0"
+                            marginwidth="0"
+                            src="https://maps.google.com/maps?q=Athens,%20Greece&t=&z=13&ie=UTF8&iwloc=&output=embed">
+                        </iframe>
+                    </div>
                 </div>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p class="mono">© 2026 DR. DIMITRIS PANAGIOTAKOPOULOS. <span id="footer-txt">ACADEMIC PROFILE.</span></p>
-    </footer>
+            </section>
+        </main>
+    </div>
 
     <script>
         // --- TRANSLATION DATA ---
@@ -1242,26 +1197,15 @@
             catch (e) { /* ignore */ }
         }
 
-        // --- THEME LOGIC (Εξαναγκασμός Light Theme αρχικά) ---
+        // --- THEME LOGIC ---
         const themeBtn = document.getElementById('theme-btn');
         function updateTheme(theme) {
             if (theme === 'dark') document.body.setAttribute('data-theme', 'dark');
             else document.body.removeAttribute('data-theme');
         }
         
-        // Διαγράφουμε πιθανό παλιό 'dark' state ώστε να μπαίνει ΠΑΝΤΑ σε light 
-        // αν ο χρήστης δεν το έχει πατήσει ρητά από τη στιγμή που μπήκε.
-        // Αν θες να μην το θυμάται ΚΑΘΟΛΟΥ μεταξύ sessions (να ανοίγει πάντα light),
-        // χρησιμοποιούμε sessionStorage, αλλά εδώ απλά το κάνουμε "hard reset" 
-        // αν δεν υπάρχει ρητή προτίμηση, ή απλά καθαρίζουμε το localstorage για αρχή.
-        
-        let savedTheme = safeGetItem('theme', 'light');
-        // Για να διασφαλίσουμε ότι δεν "κόλλησε" στο dark από προηγούμενο test:
-        if (savedTheme !== 'light' && savedTheme !== 'dark') savedTheme = 'light';
-        
-        // Αν θες ΝΑ ΞΕΚΙΝΑΕΙ ΠΑΝΤΑ LIGHT άσχετα με το τι πάτησε πριν, σβήσε τα `//` στην από κάτω γραμμή:
-        savedTheme = 'light'; 
-
+        // 🔒 Αναγκαστική εκκίνηση ΠΑΝΤΑ με Light theme 
+        let savedTheme = 'light'; 
         updateTheme(savedTheme);
         safeSetItem('theme', savedTheme);
 
