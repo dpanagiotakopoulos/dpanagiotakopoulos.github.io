@@ -1,0 +1,11 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Panagiotakopoulos;Dimitris;Dr.;;
+FN:Dr. Dimitris Panagiotakopoulos
+TITLE:Ph.D. Researcher
+ORG:University of West Attica
+EMAIL;TYPE=INTERNET,WORK:dpanagiotakopoulos@uniwa.gr
+URL:https://dpanagiotakopoulos.github.io/
+TEL;TYPE=CELL:+306976919698
+NOTE:Metaverse, Multisensory Experiences, Visual Communication
+END:VCARD
