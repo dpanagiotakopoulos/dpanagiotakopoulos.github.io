@@ -52,7 +52,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            overflow: hidden; /* Only the inside panels will scroll */
+            overflow: hidden;
             transition: background 0.5s ease, color 0.5s ease;
         }
 
@@ -248,14 +248,10 @@
             .glass-app { flex-direction: column; height: auto; padding: 10px; gap: 15px; }
             body { overflow: auto; height: auto; display: block; }
             
-            /* Controls Horizontal Top */
             .glass-controls { flex-direction: row; width: 100%; border-radius: 20px; padding: 10px 20px; justify-content: flex-end; order: 1; }
-            
-            /* Sidebar becomes Header */
             .glass-sidebar { width: 100%; order: 2; padding: 25px; border-radius: 20px; }
             .sidebar-header { margin-bottom: 15px; }
             
-            /* Nav becomes Horizontal Scroll */
             .sidebar-nav { flex-direction: row; overflow-x: auto; padding-bottom: 10px; gap: 10px; }
             .nav-item { white-space: nowrap; background: var(--glass-card); border-radius: 10px; font-size: 0.85rem; padding: 10px 15px; }
             .nav-item:hover { transform: translateY(-3px); }
@@ -264,16 +260,14 @@
             .card-large { grid-column: span 1; }
         }
 
-        /* 📱 MOBILE COMPACT (Super Optimized 2-Columns) */
+        /* 📱 MOBILE COMPACT (2 Columns) */
         @media (max-width: 600px) {
             .glass-main { padding: 15px; }
             .section-label { font-size: 1.5rem; margin-bottom: 20px; margin-top: 30px; }
             
-            /* About Grid (Image Top, Text Bottom) */
             .about-grid { display: flex; flex-direction: column; gap: 15px; }
             .profile-img-container { width: 100%; height: 250px; order: -1; border-radius: 16px; }
             
-            /* PhD Section */
             .phd-hero { grid-template-columns: 1fr; border-radius: 16px; }
             .anim-box { min-height: 200px; border-right: none; border-bottom: var(--glass-border); }
             .phd-info { padding: 20px; }
@@ -282,18 +276,15 @@
             .phd-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .phd-col { padding: 15px 10px; border-radius: 16px; }
             
-            /* Strict Lists (Keep Row, make left column thinner) */
             .list-row { padding: 12px; border-radius: 16px; gap: 10px; margin-bottom: 8px; }
             .list-col-left { width: 80px; font-size: 0.75rem; }
             .list-title { font-size: 0.95rem; }
             .list-meta { font-size: 0.8rem; line-height: 1.3; }
 
-            /* Mobility Grid */
             .mobility-grid { display: flex; flex-direction: column; border-radius: 16px; }
             .mobility-content { padding: 15px; }
             .mobility-img-box { height: 180px; min-height: unset; order: -1; position: relative; }
             
-            /* 🚀 Bento Grid: 2 COLUMNS ON MOBILE */
             .bento-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .project-card { border-radius: 16px; }
             .card-large { grid-column: span 2; }
@@ -304,7 +295,6 @@
             .p-title { font-size: 0.95rem; line-height: 1.1; margin-bottom: 6px; }
             .p-desc { font-size: 0.75rem; line-height: 1.3; -webkit-line-clamp: 4; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 5px;}
             
-            /* Contact */
             .contact-cta { padding: 20px; border-radius: 16px; }
             .contact-grid { display: flex; flex-direction: column; border-radius: 16px; }
             .contact-details { padding: 20px; }
@@ -462,35 +452,51 @@
                     <div class="list-col-left">2020 - 2026</div>
                     <div class="list-col-right">
                         <span class="list-title" id="edu-1-t">Ph.D. (8 EQF)</span>
-                        <span class="list-meta" id="edu-1-d">Dept. of Graphic Design & Visual Communication, University of West Attica.<br><strong>Thesis:</strong> "Digital Scent Technology in Metaverse Environments"</span>
+                        <span class="list-meta" id="edu-1-d">
+                            <strong>University of West Attica</strong> — Dept. of Graphic Design & Visual Communication.<br>
+                            <em>Thesis:</em> "Digital Scent Technology in Metaverse Environments"<br>
+                            Conducting independent, high-standard original scientific research under an advisory committee to contribute meaningfully to science and staff academic/research institutions.
+                        </span>
                     </div>
                 </div>
                 <div class="list-row">
                     <div class="list-col-left">2023</div>
                     <div class="list-col-right">
-                        <span class="list-title" id="edu-2-t">Special Pedagogy Certification of Teaching Proficiency</span>
-                        <span class="list-meta" id="edu-2-d">Ionian University.</span>
+                        <span class="list-title" id="edu-2-t">Pedagogical & Teaching Competence Certification</span>
+                        <span class="list-meta" id="edu-2-d">
+                            <strong>Ionian University</strong> — Teaching Practicum: 7th Gymnasium of Corfu.<br>
+                            Full certification and professional qualification for teaching Arts and Multimedia in Primary & Secondary Education, focusing on modern instructional design, experiential learning, and interactive methodologies.
+                        </span>
                     </div>
                 </div>
                  <div class="list-row">
                     <div class="list-col-left">2018 - 2020</div>
                     <div class="list-col-right">
                         <span class="list-title" id="edu-3-t">MSc in Intelligent Packaging: New Technologies & Marketing</span>
-                        <span class="list-meta" id="edu-3-d">University of West Attica (90 ECTS, 7 EQF).</span>
+                        <span class="list-meta" id="edu-3-d">
+                            <strong>University of West Attica</strong> (90 ECTS, 7 EQF).<br>
+                            Bridging the physical and digital worlds through intelligent packaging technologies, innovative design, mobile technology integration, and comprehensive marketing strategy.
+                        </span>
                     </div>
                 </div>
                 <div class="list-row">
                     <div class="list-col-left">2011 - 2017</div>
                     <div class="list-col-right">
                         <span class="list-title" id="edu-4-t">Integrated Master in Audio Visual Arts</span>
-                        <span class="list-meta" id="edu-4-d">Ionian University (300 ECTS, 7 EQF).</span>
+                        <span class="list-meta" id="edu-4-d">
+                            <strong>Ionian University</strong> — Dept. of Audio & Visual Arts (300 ECTS, 7 EQF).<br>
+                            Five-year program covering a broad spectrum of audiovisual approaches, offering a strong theoretical foundation that empowers creative and interactive digital arts.
+                        </span>
                     </div>
                 </div>
                 <div class="list-row">
                     <div class="list-col-left">2015</div>
                     <div class="list-col-right">
-                        <span class="list-title" id="edu-5-t">Erasmus+ (Master of Fine Arts Module)</span>
-                        <span class="list-meta" id="edu-5-d">Cardiff Metropolitan University.</span>
+                        <span class="list-title" id="edu-5-t">Erasmus+ Exchange (MFA Module)</span>
+                        <span class="list-meta" id="edu-5-d">
+                            <strong>Cardiff Metropolitan University</strong> (UK).<br>
+                            Fine arts studio practice, critical research, and artistic experimentation in sculpture and spatial installations within an international academic setting.
+                        </span>
                     </div>
                 </div>
             </section>
@@ -1055,11 +1061,16 @@
                 "txt-phd-c3-t": "INNOVATION", "txt-phd-c3-d": "Introducing the <strong>OloMET Framework</strong> and the <strong>Spatial Scent GUI</strong> for 3D olfactory diffusion control.",
                 "txt-phd-c4-t": "ETHICS", "txt-phd-c4-d": "Proposal for a <strong>Ethical Design Framework</strong> for Neurorights, covering the legal gap in mental privacy.",
                 "lbl-3": "03 // EDUCATION",
-                "edu-1-t": "Ph.D. (8 EQF)", "edu-1-d": "Dept. of Graphic Design & Visual Communication, University of West Attica.<br><strong>Thesis:</strong> \"Digital Scent Technology in Metaverse Environments\"",
-                "edu-2-t": "Specialized Programme of Studies for Certification of Pedagogical and Teaching Competence", "edu-2-d": "Ionian University. Teaching Practicum: 7th Gymnasium of Corfu, Greece.",
-                "edu-3-t": "MSc in Intelligent Packaging: New Technologies & Marketing", "edu-3-d": "University of West Attica (90 ECTS, 7 EQF).",
-                "edu-4-t": "Integrated Master in Audio Visual Arts", "edu-4-d": "Ionian University (300 ECTS, 7 EQF).",
-                "edu-5-t": "Erasmus+ (MFA Module)", "edu-5-d": "Cardiff Metropolitan University.",
+                "edu-1-t": "Ph.D. (8 EQF)",
+                "edu-1-d": "<strong>University of West Attica</strong> — Dept. of Graphic Design & Visual Communication.<br><em>Thesis:</em> \"Digital Scent Technology in Metaverse Environments\"<br>Conducting independent, high-standard original scientific research under an advisory committee to contribute meaningfully to science and staff academic/research institutions.",
+                "edu-2-t": "Pedagogical & Teaching Competence Certification",
+                "edu-2-d": "<strong>Ionian University</strong> — Teaching Practicum: 7th Gymnasium of Corfu.<br>Full certification and professional qualification for teaching Arts and Multimedia in Primary & Secondary Education, focusing on modern instructional design, experiential learning, and interactive methodologies.",
+                "edu-3-t": "MSc in Intelligent Packaging: New Technologies & Marketing",
+                "edu-3-d": "<strong>University of West Attica</strong> (90 ECTS, 7 EQF).<br>Bridging the physical and digital worlds through intelligent packaging technologies, innovative design, mobile technology integration, and comprehensive marketing strategy.",
+                "edu-4-t": "Integrated Master in Audio Visual Arts",
+                "edu-4-d": "<strong>Ionian University</strong> — Dept. of Audio & Visual Arts (300 ECTS, 7 EQF).<br>Five-year program covering a broad spectrum of audiovisual approaches, offering a strong theoretical foundation that empowers creative and interactive digital arts.",
+                "edu-5-t": "Erasmus+ Exchange (MFA Module)",
+                "edu-5-d": "<strong>Cardiff Metropolitan University</strong> (UK).<br>Fine arts studio practice, critical research, and artistic experimentation in sculpture and spatial installations within an international academic setting.",
                 "lbl-4": "04 // AWARDS & SCHOLARSHIPS",
                 "aw-1-t": "Most Popular Article Award", "aw-1-d": "Awarded by <em>IEEE IT Professional</em> for the article \"Digital Scent Technology Toward the Internet of Senses and the Metaverse\".",
                 "aw-2-t": "Doctorate Scholarship", "aw-2-d": "Special Account for Research Funds (ELKE), University of West Attica.",
@@ -1130,11 +1141,16 @@
                 "txt-phd-c3-t": "ΚΑΙΝΟΤΟΜΙΑ", "txt-phd-c3-d": "Εισαγωγή του πλαισίου <strong>OloMET</strong> και του <strong>Spatial Scent GUI</strong> για τον έλεγχο της οσφρητικής διάχυσης σε 3D χώρο.",
                 "txt-phd-c4-t": "ΗΘΙΚΗ", "txt-phd-c4-d": "Πρόταση ενός <strong>Πλαισίου Ηθικού Σχεδιασμού</strong> για τα Νευροδικαιώματα, καλύπτοντας το νομικό κενό στην πνευματική ιδιωτικότητα.",
                 "lbl-3": "03 // ΕΚΠΑΙΔΕΥΣΗ",
-                "edu-1-t": "Διδάκτωρ (8 EQF)", "edu-1-d": "Τμήμα Γραφιστικής & Οπτικής Επικοινωνίας, Πανεπιστήμιο Δυτικής Αττικής.<br><strong>Διατριβή:</strong> «Τεχνολογία Ψηφιακής Οσμής σε Περιβάλλοντα Metaverse»",
-                "edu-2-t": " Ειδικό Πρόγραμμα Σπουδών Πιστοποίησης Παιδαγωγικής και Διδακτικής Επάρκειας", "edu-2-d": "Ιόνιο Πανεπιστήμιο. Πρακτική Άσκηση στο 7ο Γυμνάσιο Κέρκυρας.",
-                "edu-3-t": "MSc στην Ευφυή Συσκευασία: Νέες Τεχνολογίες & Μάρκετινγκ", "edu-3-d": "Πανεπιστήμιο Δυτικής Αττικής (90 ECTS, 7 EQF).",
-                "edu-4-t": "Ενιαίος και Αδιάσπαστος Τίτλος Σπουδών Μεταπτυχιακού Επιπέδου (Integrated Master) στις Οπτικοακουστικές Τέχνες", "edu-4-d": "Ιόνιο Πανεπιστήμιο (300 ECTS, 7 EQF).",
-                "edu-5-t": "Erasmus+ (Master of Fine Arts)", "edu-5-d": "Cardiff Metropolitan University.",
+                "edu-1-t": "Διδακτορικό Δίπλωμα (Ph.D. - 8 EQF)",
+                "edu-1-d": "<strong>Πανεπιστήμιο Δυτικής Αττικής</strong> — Τμήμα Γραφιστικής και Οπτικής Επικοινωνίας.<br><em>Διατριβή:</em> «Τεχνολογία Ψηφιακής Οσμής σε Περιβάλλοντα Metaverse»<br>Διεξαγωγή αυτοδύναμης πρωτότυπης επιστημονικής έρευνας υψηλών ακαδημαϊκών προτύπων υπό τριμελή επιτροπή, με στόχο την ουσιαστική συνεισφορά στην εξέλιξη της επιστήμης και τη στελέχωση εθνικών και διεθνών ακαδημαϊκών και ερευνητικών φορέων.",
+                "edu-2-t": "Πιστοποίηση Παιδαγωγικής και Διδακτικής Επάρκειας",
+                "edu-2-d": "<strong>Ιόνιο Πανεπιστήμιο</strong> — Πρακτική Άσκηση: 7ο Γυμνάσιο Κέρκυρας.<br>Πλήρης πιστοποίηση και επαγγελματική κατάρτιση για τη διδασκαλία μαθημάτων Καλλιτεχνικών και Πολυμέσων στην Πρωτοβάθμια και Δευτεροβάθμια Εκπαίδευση, με έμφαση στην εφαρμογή σύγχρονων διδακτικών μεθοδολογιών, τη βιωματική μάθηση και τον διαδραστικό εκπαιδευτικό σχεδιασμό (Instructional Design).",
+                "edu-3-t": "MSc στην Ευφυή Συσκευασία: Νέες Τεχνολογίες & Marketing",
+                "edu-3-d": "<strong>Πανεπιστήμιο Δυτικής Αττικής</strong> (90 ECTS, 7 EQF).<br>Σύνδεση του φυσικού με τον ψηφιακό κόσμο μέσα από τεχνολογίες ευφυούς συσκευασίας, μελέτη και σχεδιασμό καινοτόμων εφαρμογών, αξιοποίηση της κινητής τηλεφωνίας και ολοκληρωμένη προώθηση μέσω της επιστήμης του Marketing.",
+                "edu-4-t": "Integrated Master στις Οπτικοακουστικές Τέχνες",
+                "edu-4-d": "<strong>Ιόνιο Πανεπιστήμιο</strong> — Τμήμα Τεχνών Ήχου & Εικόνας (300 ECTS, 7 EQF).<br>Πενταετές πρόγραμμα σπουδών που καλύπτει ένα ευρύ φάσμα προσεγγίσεων της εικόνας και του ήχου, προσφέροντας ένα ισχυρό θεωρητικό υπόβαθρο πάνω στο οποίο θεμελιώνονται οι δημιουργικές πτυχές των οπτικοακουστικών και διαδραστικών τεχνών.",
+                "edu-5-t": "Erasmus+ Σπουδές (MFA Module)",
+                "edu-5-d": "<strong>Cardiff Metropolitan University</strong> (Ηνωμένο Βασίλειο).<br>Εργαστηριακή πρακτική καλών τεχνών, κριτική έρευνα και καλλιτεχνικός πειραματισμός στη γλυπτική και τις χωρικές εγκαταστάσεις σε διεθνές ακαδημαϊκό περιβάλλον.",
                 "lbl-4": "04 // ΒΡΑΒΕΙΑ & ΥΠΟΤΡΟΦΙΕΣ",
                 "aw-1-t": "Βραβείο Δημοφιλέστερου Άρθρου", "aw-1-d": "Απονεμήθηκε από το <em>IEEE IT Professional</em> για το άρθρο «Digital Scent Technology Toward the Internet of Senses and the Metaverse».",
                 "aw-2-t": "Υποτροφία Διδακτορικών Σπουδών", "aw-2-d": "Ειδικός Λογαριασμός Κονδυλίων Έρευνας (ΕΛΚΕ), ΠΑΔΑ.",
@@ -1204,7 +1220,6 @@
             else document.body.removeAttribute('data-theme');
         }
         
-        // 🔒 Αναγκαστική εκκίνηση ΠΑΝΤΑ με Light theme 
         let savedTheme = 'light'; 
         updateTheme(savedTheme);
         safeSetItem('theme', savedTheme);
@@ -1239,7 +1254,7 @@
             setLanguage(currentLang);
             safeSetItem('lang', currentLang);
         });
-        
+
         // Initialize Language
         setLanguage(currentLang);
     </script>
