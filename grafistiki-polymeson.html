@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N1-5020 | Γραφιστική Πολυμέσων: Τηλεοπτικά Idents & Promo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=JetBrains+Mono:wght@500;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* DESIGN SYSTEM: STRICT WHITE / ACCENT BLUE */
+        :root { --bg: #ffffff; --fg: #000000; --accent: #2563eb; --accent-soft: #eff6ff; --grid: #e0e0e0; --lab-bg: #f8f9fa; }
+        body { font-family: 'Inter', system-ui, sans-serif; background-color: var(--bg); color: var(--fg); margin: 0; overflow-x: hidden; }
+        .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+        :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+        /* GRID BACKGROUNDS */
+        .lab-grid { background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px); background-size: 40px 40px; }
+        .lab-grid-blue { background-image: linear-gradient(rgba(37, 99, 235, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(37, 99, 235, 0.1) 1px, transparent 1px); background-size: 20px 20px; }
+
+        /* COVER TYPOGRAPHY */
+        .hero-title { font-size: clamp(3.2rem, 13vw, 10rem); font-weight: 900; line-height: 0.9; letter-spacing: -0.05em; color: var(--fg); margin-left: -5px; }
+        .hero-desc { font-size: 1.1rem; line-height: 1.6; max-width: 650px; margin-top: 2rem; font-weight: 500; color: #333; }
+        .keyword { color: var(--accent); font-weight: 900; }
+
+        /* ANIMATIONS */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .slide-anim { animation: fadeIn 0.4s ease-out; }
+        @keyframes draw { to { stroke-dashoffset: 0; } }
+        .anim-stroke { stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: draw 2s ease-out forwards; }
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
+        .anim-float { animation: float 6s ease-in-out infinite; }
+        @keyframes scan { 0% { transform: translateY(-100px); opacity: 0; } 50% { opacity: 1; } 100% { transform: translateY(100px); opacity: 0; } }
+        .anim-scan { animation: scan 4s ease-in-out infinite; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.08); opacity: 0.55; } }
+        .anim-pulse { animation: pulse 2.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .anim-spin { animation: spin 24s linear infinite; transform-box: fill-box; transform-origin: center; }
+        @keyframes assemble { from { transform: translate(var(--dx, -60px), var(--dy, 0px)); opacity: 0; } to { transform: translate(0, 0); opacity: 1; } }
+        .anim-in { animation: assemble 1.2s cubic-bezier(.2,.8,.2,1) both; transform-box: fill-box; }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation: none !important; transition: none !important; }
+            .anim-stroke { stroke-dashoffset: 0; }
+        }
+
+        /* COMPONENTS */
+        .sidebar-item { padding: 14px 20px; border-bottom: 1px solid var(--grid); cursor: pointer; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; text-transform: uppercase; transition: background 0.2s; line-height: 1.5; }
+        .sidebar-item:hover { background: #f0f0f0; }
+        .sidebar-item .sub { display: block; font-weight: 500; text-transform: none; opacity: 0.6; margin-top: 2px; }
+        .sidebar-item .tba { display: inline-block; margin-left: 6px; font-size: 9px; border: 1px solid currentColor; padding: 0 4px; opacity: 0.6; }
+        .sidebar-item.active { background: var(--fg); color: var(--bg); }
+        .sidebar-item-lab.active { background: var(--accent); color: white; }
+
+        .btn-nav { border: 2px solid var(--fg); background: white; color: black; padding: 12px 30px; font-weight: 900; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; transition: 0.2s; cursor: pointer; }
+        .btn-nav:hover:not(:disabled) { background: var(--fg); color: var(--bg); }
+        .btn-nav.btn-blue { border-color: var(--accent); color: var(--accent); }
+        .btn-nav.btn-blue:hover { background: var(--accent); color: white; }
+        .btn-nav:disabled { opacity: 0.3; cursor: not-allowed; }
+
+        .img-box { width: 100%; height: 300px; border: 2px solid black; background: #fafafa; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+        .academic-note { border-left: 4px solid var(--accent); padding-left: 1rem; margin-top: 1.5rem; font-style: italic; color: #444; font-size: 0.9em; }
+        .case-box { border: 2px solid black; background: var(--accent-soft); padding: 1rem 1.25rem; margin-top: 1.5rem; box-shadow: 4px 4px 0 var(--accent); font-size: 0.95em; }
+        .case-box h4 { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 900; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
+
+        .slide-content ul, .slide-content ol { margin-left: 1.5rem; list-style-type: disc; margin-bottom: 1rem; }
+        .slide-content ol { list-style-type: decimal; }
+        .slide-content li { margin-bottom: 0.5rem; }
+        .slide-content p { margin-bottom: 1rem; max-width: 72ch; }
+        .slide-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.92em; }
+        .slide-content th, .slide-content td { border: 2px solid black; padding: 0.6rem 0.8rem; text-align: left; vertical-align: top; }
+        .slide-content th { background: black; color: white; font-family: 'JetBrains Mono', monospace; font-size: 0.8em; }
+        .table-wrap { overflow-x: auto; }
+
+        .tool-badge { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; border: 2px solid black; padding: 2px 8px; margin: 0 6px 6px 0; background: white; }
+        .tool-badge.t-ae { background: black; color: white; }
+        .tool-badge.t-an { background: var(--accent); color: white; border-color: var(--accent); }
+        .tool-badge.t-pr { background: white; color: var(--accent); border-color: var(--accent); }
+
+        /* LAB COMPONENTS */
+        .lab-card { border: 2px solid black; background: white; padding: 2rem; box-shadow: 4px 4px 0px black; margin-bottom: 2rem; }
+        .lab-card-title { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 900; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid black; padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+        .level-card { border: 2px solid black; background: white; padding: 1.25rem; box-shadow: 4px 4px 0 black; }
+        .level-card ol, .level-card ul { margin-left: 1.25rem; font-size: 0.95rem; color: #333; }
+        .level-card ol { list-style: decimal; } .level-card ul { list-style: disc; }
+        .level-card li { margin-bottom: 0.4rem; }
+        .level-card pre { background: #f3f4f6; border: 1px solid #d1d5db; padding: 0.75rem; font-size: 0.8rem; overflow-x: auto; margin: 0.5rem 0; }
+        .rubric-row { display: grid; grid-template-columns: 1fr 70px; gap: 1rem; border-bottom: 1px solid var(--grid); padding: 0.75rem 0; }
+        .rubric-bar { height: 8px; background: var(--accent); margin-top: 6px; }
+
+        .cover-visual { position: absolute; top: 10%; right: 5%; width: 45vw; height: 45vw; opacity: 1; z-index: 0; pointer-events: none; }
+
+        /* QUIZ BUTTONS */
+        .quiz-btn { display: block; width: 100%; text-align: left; padding: 1rem; margin-bottom: 0.5rem; border: 2px solid black; background: white; cursor: pointer; transition: 0.2s; font-weight: 600; }
+        .quiz-btn:hover:not(:disabled) { background: black; color: white; }
+        .quiz-btn.correct { background: #4ade80; border-color: #166534; color: #166534; }
+        .quiz-btn.wrong { background: #f87171; border-color: #991b1b; color: #991b1b; }
+        .quiz-btn:disabled { cursor: default; }
+
+        /* FLASHCARDS */
+        .perspective-1000 { perspective: 1000px; }
+        .transform-style-3d { transform-style: preserve-3d; }
+        .backface-hidden { -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+        .rotate-y-180 { transform: rotateY(180deg); }
+
+        /* MOBILE SIDEBAR */
+        .menu-btn { display: none; }
+        @media (max-width: 767px) {
+            .menu-btn { display: inline-block; }
+            .side-panel { position: absolute; top: 0; left: 0; bottom: 0; z-index: 35; transform: translateX(-105%); transition: transform 0.25s ease; box-shadow: 6px 0 0 black; }
+            .side-panel.open { transform: translateX(0); }
+            .btn-nav { padding: 10px 14px; font-size: 11px; }
+            .lab-card { padding: 1.25rem; }
+            .cover-visual { opacity: 0.25; width: 90vw; height: 90vw; }
+        }
+    </style>
+</head>
+<body class="lab-grid flex flex-col min-h-screen">
+
+    <!-- HERO SECTION -->
+    <section id="cover" class="relative min-h-screen flex flex-col justify-between p-6 md:p-16 z-50 bg-white overflow-hidden">
+        <div class="cover-visual anim-float" aria-hidden="true">
+            <svg viewBox="0 0 500 500" fill="none" stroke="black" stroke-width="1.5">
+                <defs><pattern id="smallGrid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="#2563eb" stroke-width="0.5" opacity="0.2"/></pattern></defs>
+                <rect width="500" height="500" fill="url(#smallGrid)" />
+                <!-- TV frame with safe areas -->
+                <rect x="70" y="110" width="360" height="220" fill="white" stroke="black" stroke-width="3"/>
+                <rect x="88" y="121" width="324" height="198" stroke="#2563eb" stroke-dasharray="6 6" opacity="0.6"/>
+                <!-- abstract logo assembling -->
+                <rect x="210" y="180" width="38" height="38" fill="black" class="anim-in" style="--dx:-160px; --dy:-40px; animation-delay:.2s"/>
+                <rect x="252" y="180" width="38" height="38" fill="#2563eb" stroke="none" class="anim-in" style="--dx:160px; --dy:-60px; animation-delay:.4s"/>
+                <rect x="210" y="222" width="38" height="38" fill="#2563eb" stroke="none" class="anim-in" style="--dx:-120px; --dy:80px; animation-delay:.6s"/>
+                <rect x="252" y="222" width="38" height="38" fill="black" class="anim-in" style="--dx:140px; --dy:70px; animation-delay:.8s"/>
+                <line x1="200" y1="370" x2="300" y2="370" stroke="black" stroke-width="3"/>
+                <line x1="250" y1="330" x2="250" y2="370" stroke="black" stroke-width="3"/>
+                <line x1="0" y1="250" x2="500" y2="250" stroke="#2563eb" opacity="0.5" class="anim-scan" />
+            </svg>
+        </div>
+
+        <div class="flex justify-between items-start border-b-2 border-black pb-4 z-10 relative gap-4">
+            <div class="mono text-xs font-bold text-blue-600 uppercase tracking-widest leading-relaxed">
+                // Πανεπιστήμιο Δυτικής Αττικής<br>
+                // Τμήμα Γραφιστικής & Οπτικής Επικοινωνίας
+            </div>
+            <div class="text-right">
+                <div class="mono text-xs font-bold">N1-5020 / Ε΄ ΕΞΑΜΗΝΟ</div>
+                <div class="mono text-xs font-black text-blue-600 mt-1">2026 EDITION</div>
+            </div>
+        </div>
+
+        <div class="relative z-10 my-auto py-10">
+            <h1 class="hero-title">ΓΡΑΦΙΣΤΙΚΗ<br><span class="text-blue-600">ΠΟΛΥΜΕΣΩΝ</span></h1>
+            <h2 class="text-2xl md:text-3xl font-black uppercase tracking-tight mt-4 pl-2 border-l-8 border-blue-600">
+                Τηλεοπτικά Idents & Promo Τρέιλερ
+            </h2>
+            <div class="hero-desc">
+                <p>Η ταυτότητα ενός τηλεοπτικού καναλιού σε κίνηση: από τη στρατηγική και το λογότυπο μέχρι τη σειρά των idents και τα τρέιλερ για τις σειρές και τις ταινίες που προβάλλει. Υλοποίηση σε <span class="keyword">Adobe Animate</span>, <span class="keyword">After Effects</span> και <span class="keyword">Premiere</span>.</p>
+            </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-8 justify-between items-start md:items-end border-t-2 border-black pt-8 z-10 bg-white/90 backdrop-blur-sm">
+            <div>
+                <p class="mono text-xs font-bold text-blue-600 mb-2">ΥΠΕΥΘΥΝΟΣ ΜΑΘΗΜΑΤΟΣ</p>
+                <p class="text-lg font-bold uppercase leading-tight">ΔΡ. ΔΗΜΗΤΡΗΣ ΠΑΝΑΓΙΩΤΑΚΟΠΟΥΛΟΣ</p>
+                <p class="text-sm font-medium text-gray-600 mt-1">📧 dpanagiotakopoulos@uniwa.gr</p>
+                <p class="text-sm font-medium text-gray-600 mt-1">eClass: <a class="underline text-blue-600" href="https://eclass.uniwa.gr/courses/GRAF146/" target="_blank" rel="noopener">GRAF146</a></p>
+            </div>
+            <div class="flex flex-col md:flex-row gap-4 w-full md:w-auto">
+                <button onclick="enterCourse()" class="btn-nav bg-black text-white hover:bg-blue-600 border-none text-lg py-4 px-8 shadow-lg w-full md:w-auto">Θεωρία</button>
+                <button onclick="enterLab()" class="btn-nav btn-blue text-lg py-4 px-8 shadow-lg w-full md:w-auto">Εργαστήριο</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- THEORY APPLICATION -->
+    <div id="app" class="hidden min-h-screen flex-col bg-white text-black">
+        <nav class="sticky top-0 z-40 border-b-2 border-black bg-white px-4 md:px-6 py-4 flex justify-between items-center gap-3">
+            <div class="flex items-center gap-3">
+                <button class="menu-btn mono text-[11px] font-bold border-2 border-black px-2 py-1" onclick="toggleSidebar('sidebar')" aria-label="Εβδομάδες">☰ ΕΒΔ.</button>
+                <span class="mono text-[10px] font-bold text-black bg-yellow-300 px-2 py-1 uppercase tracking-widest inline-block w-max border border-black">THEORY MODE</span>
+            </div>
+            <div class="flex gap-4 md:gap-6 items-center">
+                <button onclick="enterLab()" class="mono text-[11px] font-bold text-blue-600 hover:text-black underline">SWITCH TO LAB</button>
+                <button onclick="goHome()" class="mono text-[11px] font-bold hover:text-blue-600 underline">EXIT</button>
+            </div>
+        </nav>
+
+        <div class="flex flex-grow h-[calc(100vh-70px)] overflow-hidden relative">
+            <aside id="sidebar" class="side-panel w-72 border-r-2 border-black overflow-y-auto bg-gray-50 flex-shrink-0 pb-20"></aside>
+            <main class="flex-grow flex flex-col relative bg-white min-w-0">
+                <div id="slide-viewer" class="flex-grow overflow-y-auto p-6 md:p-16"></div>
+                <div class="h-24 border-t-2 border-black bg-gray-50 flex items-center justify-between px-4 md:px-8 flex-shrink-0">
+                    <button onclick="prevSlide()" id="btn-prev" class="btn-nav">PREV</button>
+                    <div class="text-center">
+                        <div class="mono text-[12px] font-bold text-blue-600 uppercase" id="week-display">WEEK 1</div>
+                        <div class="mono text-[10px] opacity-50" id="slide-display">SLIDE 1/X</div>
+                    </div>
+                    <button onclick="nextSlide()" id="btn-next" class="btn-nav">NEXT</button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- LAB APPLICATION -->
+    <div id="lab" class="hidden min-h-screen flex-col bg-[var(--lab-bg)] text-black">
+        <nav class="sticky top-0 z-40 border-b-2 border-black bg-black text-white px-4 md:px-6 py-4 flex justify-between items-center gap-3">
+            <div class="flex items-center gap-3">
+                <button class="menu-btn mono text-[11px] font-bold border-2 border-white px-2 py-1" onclick="toggleSidebar('lab-sidebar')" aria-label="Εργαστήρια">☰ LAB</button>
+                <span class="mono text-[10px] font-bold text-black bg-blue-500 px-2 py-1 uppercase tracking-widest inline-block w-max border border-black">LAB MODE</span>
+            </div>
+            <div class="flex gap-4 md:gap-6 items-center">
+                <button onclick="enterCourse()" class="mono text-[11px] font-bold text-yellow-300 hover:text-white underline">SWITCH TO THEORY</button>
+                <button onclick="goHome()" class="mono text-[11px] font-bold hover:text-blue-400 underline">EXIT</button>
+            </div>
+        </nav>
+
+        <div class="flex flex-grow h-[calc(100vh-70px)] overflow-hidden relative">
+            <aside id="lab-sidebar" class="side-panel w-72 border-r-2 border-black overflow-y-auto bg-white flex-shrink-0 pb-20"></aside>
+            <main class="flex-grow overflow-y-auto p-5 md:p-16 lab-grid-blue relative min-w-0" id="lab-content"></main>
+        </div>
+    </div>
+
+    <script>
+        // =========================================================================
+        // COURSE DATA
+        // Κάθε εβδομάδα είναι ένα αντικείμενο. Οι εβδομάδες χωρίς slides/lab
+        // εμφανίζονται αυτόματα ως «Σύντομα» με το προγραμματισμένο θέμα.
+        // =========================================================================
+        const courseData = [
+            // ================= ΕΒΔΟΜΑΔΑ 1 =================
+            {
+                week: 1,
+                title: "Τι είναι το Ident: Ιστορία & Λειτουργίες",
+                tools: ["After Effects", "Animate", "Premiere"],
+                labPlan: "Ανάλυση idents & στήσιμο παραγωγής",
+                objectives: [
+                    "Να ορίζεις το ident και να το διακρίνεις από το sting, το bumper και το promo.",
+                    "Να εξηγείς τη θέση του ident μέσα στην τηλεοπτική «ροή» και τις λειτουργίες που εξυπηρετεί.",
+                    "Να αναγνωρίζεις τους σταθμούς στην ιστορία των idents (BBC, Channel 4, MTV) και τι άλλαξε ο καθένας.",
+                    "Να αναλύεις ένα ident ως σύστημα σταθερών και μεταβλητών στοιχείων.",
+                    "Να στήνεις σωστά ένα project 1920×1080 / 25 fps σε Animate, After Effects και Premiere."
+                ],
+                agenda: [
+                    { min: 70, label: "Θεωρία: 15 ενότητες" },
+                    { min: 15, label: "Συζήτηση στην τάξη" },
+                    { min: 15, label: "Βίντεο εργαστηρίου" },
+                    { min: 15, label: "Quiz & flashcards" },
+                    { min: 65, label: "Άσκηση εργαστηρίου (3 επίπεδα)" },
+                    { min: 60, label: "Κριτική: παρουσίαση concepts" }
+                ],
+                readings: [
+                    { type: "ΥΠΟΧΡΕΩΤΙΚΟ", ref: "Down With Design: The Art of the Ident", url: "http://www.downwithdesign.com/logo-design/the-art-of-the-ident/" },
+                    { type: "ΑΡΧΕΙΟ", ref: "idents.tv: αρχείο και blog για τηλεοπτικά idents", url: "http://idents.tv/blog/" },
+                    { type: "ΑΡΧΕΙΟ", ref: "The Ident Gallery: αρχείο idents ανά κανάλι και χρονιά", url: "https://theident.gallery/" },
+                    { type: "ΣΥΜΠΛΗΡΩΜΑΤΙΚΟ", ref: "Lambie-Nairn, M. (1997). Brand Identity for Television: With Knobs On. London: Phaidon." },
+                    { type: "ΣΥΜΠΛΗΡΩΜΑΤΙΚΟ", ref: "Williams, R. (1974). Television: Technology and Cultural Form. London: Fontana (η έννοια της «ροής»)." },
+                    { type: "ΣΥΜΠΛΗΡΩΜΑΤΙΚΟ", ref: "Krasner, J. Motion Graphic Design: Applied History and Aesthetics. Focal Press." },
+                    { type: "ΠΕΡΙΓΡΑΜΜΑ", ref: "Vaughan, T. Multimedia: Making It Work. McGraw-Hill (γενικό υπόβαθρο πολυμέσων)." }
+                ],
+                slides: [
+                    {
+                        t: "1.1 Τι είναι το Ident;",
+                        c: `<p>Το <strong>ident</strong> (από το <em>station identification</em>) είναι μια σύντομη οπτικοακουστική σεκάνς που προβάλλεται ανάμεσα στα προγράμματα και δηλώνει στον θεατή ποιο κανάλι παρακολουθεί. Η διάρκειά του κυμαίνεται συνήθως από λίγα δευτερόλεπτα έως περίπου μισό λεπτό.</p>
+                            <p>Το ident είναι κάτι περισσότερο από «ένα λογότυπο που κινείται». Είναι η στιγμή όπου τα στοιχεία της ταυτότητας του καναλιού (λογότυπο, τυπογραφία, χρώμα, ήχος) γίνονται <strong>εμπειρία μέσα στον χρόνο</strong>. Γι' αυτό θεωρείται το πιο συμπυκνωμένο προϊόν του motion branding.</p>
+                            <p>Στο μάθημα θα μελετήσουμε το ident μαζί με το «αδελφό» του είδος, το <strong>promo / τρέιλερ</strong>, με το οποίο το κανάλι προωθεί τις σειρές και τις ταινίες που προβάλλει κάθε εβδομάδα.</p>`,
+                        note: "Κράτα αυτή τη διάκριση για όλο το εξάμηνο: το λογότυπο είναι ένα σημείο. Το ident είναι η συμπεριφορά αυτού του σημείου μέσα στον χρόνο.",
+                        v: "screen"
+                    },
+                    {
+                        t: "1.2 Η τηλεόραση ως «ροή»",
+                        c: `<p>Ο θεωρητικός των μέσων <strong>Raymond Williams</strong> (1974) παρατήρησε ότι η εμπειρία της τηλεόρασης δεν είναι μια σειρά από ξεχωριστά προγράμματα, αλλά μια <strong>συνεχής, σχεδιασμένη ροή (flow)</strong>: προγράμματα, διαφημίσεις, τρέιλερ και ανακοινώσεις που διαδέχονται το ένα το άλλο χωρίς διακοπή.</p>
+                            <p>Το ident λειτουργεί ακριβώς στους «αρμούς» αυτής της ροής. Κλείνει μια ενότητα, ανοίγει την επόμενη και κυρίως κρατά τον θεατή <strong>μέσα στο κανάλι</strong> τη στιγμή που είναι πιο πιθανό να αλλάξει σταθμό.</p>
+                            <p>Στους τηλεοπτικούς σταθμούς, η ροή αυτή οργανώνεται από τα τμήματα <em>presentation</em> ή <em>continuity</em>, που αποφασίζουν ποιο ident, promo ή end board θα παίξει σε κάθε μετάβαση.</p>`,
+                        note: "Williams, R. (1974). Television: Technology and Cultural Form. Η έννοια του flow παραμένει βασικό εργαλείο για να καταλάβουμε γιατί τα κανάλια επενδύουν στα idents.",
+                        v: "flow"
+                    },
+                    {
+                        t: "1.3 Οι λειτουργίες του Ident",
+                        c: `<p>Ένα καλό ident εξυπηρετεί ταυτόχρονα πολλούς σκοπούς:</p>
+                            <ul>
+                                <li><strong>Αναγνώριση:</strong> ο θεατής καταλαβαίνει αμέσως σε ποιο κανάλι βρίσκεται.</li>
+                                <li><strong>Μετάβαση (στίξη):</strong> λειτουργεί σαν σημείο στίξης ανάμεσα σε δύο περιεχόμενα, όπως η τελεία ανάμεσα σε δύο προτάσεις.</li>
+                                <li><strong>Ρύθμιση διάθεσης:</strong> πολλά κανάλια έχουν διαφορετικά idents πριν από μια κωμωδία και πριν από ένα δελτίο ειδήσεων.</li>
+                                <li><strong>Επικοινωνία αξιών:</strong> δείχνει τι «πιστεύει» το κανάλι: τόλμη, παράδοση, χιούμορ, κύρος.</li>
+                                <li><strong>Διαφοροποίηση:</strong> σε μια αγορά με εκατοντάδες κανάλια, το ident είναι από τους λίγους χώρους όπου το κανάλι μιλά για τον εαυτό του και όχι μέσα από τα προγράμματά του.</li>
+                            </ul>`,
+                        caseStudy: `<p>Παρακολούθησε ένα κανάλι για μία ώρα και σημείωσε κάθε ident που βλέπεις. Είναι το ίδιο κάθε φορά; Αλλάζει ανάλογα με το πρόγραμμα που ακολουθεί;</p>`,
+                        v: "functions"
+                    },
+                    {
+                        t: "1.4 Πρώιμη εποχή: κάρτες, μοντέλα, κάμερα",
+                        c: `<p>Στις πρώτες δεκαετίες της τηλεόρασης, τα idents ήταν συχνά <strong>στατικές κάρτες</strong> με το όνομα του σταθμού ή <strong>φυσικά μοντέλα</strong> που κινηματογραφούνταν με κάμερα. Το πιο γνωστό παράδειγμα είναι η περιστρεφόμενη υδρόγειος του BBC, που χρησιμοποιήθηκε σε διάφορες εκδοχές από τη δεκαετία του '60.</p>
+                            <p>Οι τεχνικοί περιορισμοί διαμόρφωσαν το design:</p>
+                            <ul>
+                                <li>ασπρόμαυρη εικόνα και χαμηλή ανάλυση, άρα απλά γεωμετρικά σχήματα και έντονη αντίθεση,</li>
+                                <li>μηχανική κίνηση (περιστροφή, μετατόπιση) αντί για ελεύθερο animation,</li>
+                                <li>έμφαση στην αναγνωσιμότητα του ονόματος.</li>
+                            </ul>
+                            <p>Στα μέσα της δεκαετίας του '80 η υδρόγειος του BBC άρχισε να παράγεται ηλεκτρονικά. Ήταν ένα από τα σημάδια ότι το ident περνούσε από το στούντιο στον υπολογιστή.</p>`,
+                        note: "Ένα διαχρονικό δίδαγμα: οι περιορισμοί του μέσου (τότε ανάλυση, σήμερα οθόνη κινητού ή βουβή αναπαραγωγή) είναι αφετηρία σχεδιασμού, όχι εμπόδιο.",
+                        v: "timeline"
+                    },
+                    {
+                        t: "1.5 1982: Channel 4 και η ψηφιακή στροφή",
+                        c: `<p>Όταν το βρετανικό <strong>Channel 4</strong> ξεκίνησε τη μετάδοση το 1982, η ταυτότητά του σχεδιάστηκε από τον <strong>Martin Lambie-Nairn</strong>. Στο ident, χρωματιστά τρισδιάστατα κομμάτια ταξιδεύουν στον χώρο από διαφορετικές κατευθύνσεις και <strong>συναρμολογούνται</strong> στο λογότυπο.</p>
+                            <p>Ήταν από τα πρώτα idents που δημιουργήθηκαν με τρισδιάστατο animation υπολογιστή. Επειδή στη Βρετανία δεν υπήρχε τότε η κατάλληλη υποδομή, η παραγωγή έγινε στις ΗΠΑ.</p>
+                            <p>Η ιδέα είχε και νόημα: το κανάλι δεν παρήγαγε το ίδιο τα προγράμματά του αλλά τα ανέθετε σε ανεξάρτητους παραγωγούς. Τα κομμάτια που έρχονται από παντού και σχηματίζουν ένα σύνολο «λένε» ακριβώς αυτό.</p>`,
+                        note: "Το κεντρικό μάθημα: το λογότυπο του Channel 4 σχεδιάστηκε από την αρχή για να κινείται. Στο project σας, σκεφτείτε την κίνηση από την πρώτη μέρα και όχι αφού τελειώσει το λογότυπο.",
+                        v: "blocks"
+                    },
+                    {
+                        t: "1.6 1991: BBC Two και η γέννηση του συστήματος",
+                        c: `<p>Το 1991 το γραφείο του Lambie-Nairn επανασχεδίασε την ταυτότητα του <strong>BBC Two</strong>. Το ψηφίο «2» έγινε ένα <strong>φυσικό αντικείμενο</strong> που σε κάθε ident εμφανιζόταν με διαφορετικό υλικό, σε διαφορετική κατάσταση ή με διαφορετική «προσωπικότητα».</p>
+                            <p>Η αρχή ήταν απλή και επαναστατική: <strong>σταθερή μορφή, μεταβλητή εκτέλεση</strong>. Το σχήμα του «2» δεν άλλαζε ποτέ, άρα η αναγνώριση ήταν εγγυημένη. Όλα τα υπόλοιπα μπορούσαν να αλλάζουν ελεύθερα.</p>
+                            <p>Αυτό επέτρεψε στο κανάλι να παράγει δεκάδες idents μέσα στα χρόνια χωρίς να κουράζει τον θεατή και χωρίς να χάνει τη συνοχή του. Επιπλέον, το κατάλληλο ident μπορούσε να επιλεγεί ανάλογα με τη διάθεση του προγράμματος που ακολουθούσε.</p>`,
+                        caseStudy: `<p>Αναζήτησε στο <em>theident.gallery</em> ή στο <em>idents.tv</em> τα idents του BBC Two της δεκαετίας του '90. Βρες τρία και σημείωσε: τι μένει ίδιο και τι αλλάζει;</p>`,
+                        v: "system"
+                    },
+                    {
+                        t: "1.7 Σταθερά και μεταβλητά στοιχεία",
+                        c: `<p>Από το 1991 και μετά, σχεδόν κάθε επιτυχημένη ταυτότητα καναλιού μπορεί να περιγραφεί ως ένας πίνακας σταθερών και μεταβλητών:</p>
+                            <div class="table-wrap"><table>
+                                <tr><th>Σταθερά (εγγυώνται αναγνώριση)</th><th>Μεταβλητά (δίνουν ποικιλία)</th></tr>
+                                <tr><td>Σχήμα ή «πυρήνας» του λογοτύπου</td><td>Περιβάλλον, σκηνικό, τοποθεσία</td></tr>
+                                <tr><td>Τυπογραφία</td><td>Υλικό και υφή</td></tr>
+                                <tr><td>Χρωματική παλέτα (ή ο κανόνας της)</td><td>Μικρή ιστορία ή δράση</td></tr>
+                                <tr><td>Ηχητικό μοτίβο (sonic logo)</td><td>Διάθεση: χιούμορ, ένταση, ηρεμία</td></tr>
+                                <tr><td>Διάρκεια και ρυθμός</td><td>Εποχή, επικαιρότητα, γιορτές</td></tr>
+                                <tr><td>Τελικό καρέ (end frame)</td><td>Κάμερα και κίνηση</td></tr>
+                            </table></div>
+                            <p>Όσο περισσότερα σταθερά, τόσο ισχυρότερη η αναγνώριση αλλά τόσο μικρότερη η ποικιλία. Όσο περισσότερα μεταβλητά, τόσο πιο ζωντανό το σύστημα αλλά τόσο μεγαλύτερος ο κίνδυνος να χαθεί η ταυτότητα. <strong>Η σχεδιαστική πρόκληση είναι η ισορροπία.</strong></p>`,
+                        note: "Αυτός ο πίνακας θα είναι το βασικό εργαλείο ανάλυσης στο σημερινό εργαστήριο και το εργαλείο σχεδιασμού στην Εβδομάδα 5.",
+                        v: "grid"
+                    },
+                    {
+                        t: "1.8 MTV 1981: Το λογότυπο ως «δοχείο»",
+                        c: `<p>Το <strong>MTV</strong> ξεκίνησε το 1981 με ένα λογότυπο που σχεδίασε το στούντιο <strong>Manhattan Design</strong>: ένα μεγάλο, συμπαγές «M» με το «TV» γραμμένο πάνω του σαν γκράφιτι.</p>
+                            <p>Η ριζοσπαστική ιδέα ήταν ότι μόνο το <strong>περίγραμμα</strong> έμενε σταθερό. Η επιφάνεια, το χρώμα, η υφή και η κίνηση άλλαζαν συνεχώς, σε κάθε εμφάνιση. Το λογότυπο λειτουργούσε σαν «δοχείο» που μπορούσε να γεμίσει με οτιδήποτε.</p>
+                            <p>Για ένα μουσικό κανάλι που απευθυνόταν σε νέους, η αστάθεια ήταν η ίδια η ταυτότητα. Η προσέγγιση αυτή προανήγγειλε τις σύγχρονες <strong>δυναμικές ταυτότητες</strong> (dynamic identities).</p>`,
+                        note: "Σύγκρινε με το BBC Two: εκεί το σχήμα ήταν σταθερό και το υλικό άλλαζε. Στο MTV ισχύει κάτι παρόμοιο, αλλά η αλλαγή είναι ο ίδιος ο χαρακτήρας του καναλιού.",
+                        v: "container"
+                    },
+                    {
+                        t: "1.9 BBC One: από την υδρόγειο στον κύκλο",
+                        c: `<p>Το BBC One κράτησε την υδρόγειο ως κεντρικό μοτίβο για δεκαετίες. Το 2002 την αντικατέστησε με τα idents <strong>«Rhythm & Movement»</strong>, όπου χορευτές διαφορετικών στυλ χορεύουν σε ποικίλα περιβάλλοντα.</p>
+                            <p>Το 2006 ακολούθησαν τα idents του <strong>κύκλου</strong> (Circle): άνθρωποι, ζώα ή αντικείμενα σχηματίζουν έναν κύκλο μέσα σε πραγματικές σκηνές. Ο κύκλος μπορεί να διαβαστεί ως αφηρημένη «ανάμνηση» της υδρογείου: η κληρονομιά διατηρείται ως σχήμα, όχι ως εικόνα.</p>
+                            <p>Εδώ βλέπουμε κάτι σημαντικό: το σταθερό στοιχείο δεν χρειάζεται να είναι το λογότυπο. Μπορεί να είναι ένα <strong>σχήμα, μια κίνηση ή μια ιδέα</strong> που επαναλαμβάνεται.</p>`,
+                        caseStudy: `<p>Βρες ένα ident του BBC One από την περίοδο του κύκλου. Σε ποιο δευτερόλεπτο «σχηματίζεται» ο κύκλος; Τι συμβαίνει πριν και τι μετά;</p>`,
+                        v: "circle"
+                    },
+                    {
+                        t: "1.10 Channel 4: από τα blocks σε έναν ολόκληρο κόσμο",
+                        c: `<p>Το Channel 4 κράτησε τα χρωματιστά κομμάτια του 1982 ως πυρήνα της ταυτότητάς του για πάνω από τρεις δεκαετίες, αλλά τα επανερμήνευσε πολλές φορές.</p>
+                            <ul>
+                                <li><strong>2004:</strong> τα κομμάτια κρύβονται μέσα σε πραγματικά τοπία (κτίρια, πυλώνες, αντικείμενα) και ευθυγραμμίζονται στο λογότυπο μόνο από ένα συγκεκριμένο σημείο θέασης. Ο θεατής «ανακαλύπτει» το λογότυπο καθώς κινείται η κάμερα (αναμόρφωση).</li>
+                                <li><strong>2015:</strong> το εσωτερικό δημιουργικό τμήμα 4Creative συνεργάστηκε με τον σκηνοθέτη Jonathan Glazer. Τα blocks έγιναν μέρος ενός σουρεαλιστικού κόσμου με ένα γιγάντιο πλάσμα, και τα idents λειτουργούν σαν μικρές ταινίες.</li>
+                            </ul>
+                            <p>Το μάθημα: μια ισχυρή ιδέα μπορεί να <strong>εξελίσσεται</strong> για δεκαετίες, αρκεί να προστατεύεται ο πυρήνας της.</p>`,
+                        v: "anamorph"
+                    },
+                    {
+                        t: "1.11 Ανατομία του On-Air Package",
+                        c: `<p>Το ident δεν είναι μόνο του. Είναι μέρος ενός <strong>on-air package</strong>, του συνόλου των γραφικών που «ντύνουν» το κανάλι:</p>
+                            <ul>
+                                <li><strong>Ident:</strong> η κύρια σεκάνς ταυτότητας ανάμεσα στα προγράμματα.</li>
+                                <li><strong>Sting:</strong> πολύ σύντομη εκδοχή (λίγα δευτερόλεπτα) για γρήγορες μεταβάσεις.</li>
+                                <li><strong>Bumper:</strong> σηματοδοτεί την είσοδο ή την έξοδο από το διαφημιστικό διάλειμμα.</li>
+                                <li><strong>Promo / τρέιλερ:</strong> διαφήμιση προγράμματος του ίδιου του καναλιού.</li>
+                                <li><strong>End board (end card):</strong> η τελική κάρτα ενός promo ή το διαχωρισμένο κάδρο στο τέλος ενός προγράμματος με πληροφορίες για το επόμενο.</li>
+                                <li><strong>DOG (Digital On-screen Graphic):</strong> το μόνιμο λογότυπο στη γωνία της οθόνης.</li>
+                                <li><strong>Lower third:</strong> γραφικό στο κάτω τρίτο της οθόνης για ονόματα, τίτλους, πληροφορίες.</li>
+                            </ul>
+                            <p>Όλα πρέπει να μιλούν την ίδια οπτική γλώσσα: ίδια τυπογραφία, ίδια παλέτα, ίδιος τρόπος κίνησης.</p>`,
+                        note: "Στο τελικό project θα παραδώσετε τουλάχιστον μια σειρά από 3 idents και ένα promo με end board. Τα υπόλοιπα στοιχεία είναι προαιρετικά αλλά ενισχύουν την αξιολόγηση της μεθοδολογίας.",
+                        v: "package"
+                    },
+                    {
+                        t: "1.12 Ident και promo: η ταυτότητα στην υπηρεσία του προγράμματος",
+                        c: `<p>Κάθε εβδομάδα ένα κανάλι προωθεί τις μεγάλες του σειρές και τις ταινίες box office που θα προβάλει. Τα <strong>promos</strong> αυτά έχουν διπλό ρόλο: πουλάνε το πρόγραμμα και ταυτόχρονα ενισχύουν την ταυτότητα του καναλιού.</p>
+                            <p>Η ένταση είναι πραγματική. Μια ξένη σειρά ή μια ταινία έχει ήδη τη δική της αισθητική (key art, τρέιλερ, τυπογραφία τίτλου). Το κανάλι πρέπει να «τυλίξει» αυτό το υλικό με τη δική του ταυτότητα, συνήθως μέσω:</p>
+                            <ul>
+                                <li>της τυπογραφίας στις κάρτες κειμένου,</li>
+                                <li>των μεταβάσεων και του ρυθμού,</li>
+                                <li>του <strong>end board</strong> με ημέρα, ώρα και λογότυπο,</li>
+                                <li>του ήχου (voice-over, sonic logo στο τέλος).</li>
+                            </ul>
+                            <p>Η βασική δομή ενός promo, που θα αναλύσουμε στην Εβδομάδα 10: <strong>hook → κλιμάκωση → κορύφωση → call to action</strong> (πότε και πού).</p>`,
+                        v: "trailer"
+                    },
+                    {
+                        t: "1.13 Μετά την τηλεόραση: streaming, social, sonic logos",
+                        c: `<p>Με το streaming, η γραμμική «ροή» του Williams αδυνατίζει: ο θεατής επιλέγει τι θα δει και πότε. Η ταυτότητα όμως δεν εξαφανίζεται. Μετακινείται:</p>
+                            <ul>
+                                <li>στις <strong>εισαγωγικές σεκάνς</strong> πριν από κάθε σειρά ή ταινία μιας πλατφόρμας,</li>
+                                <li>στα <strong>sonic logos</strong>, όπως ο σύντομος ήχος που συνοδεύει το animated λογότυπο του Netflix,</li>
+                                <li>στα κοινωνικά δίκτυα, σε κάθετες (9:16) και τετράγωνες (1:1) εκδοχές,</li>
+                                <li>σε πολύ μικρότερες διάρκειες, π.χ. bumpers των 6 δευτερολέπτων.</li>
+                            </ul>
+                            <p>Σχεδιαστική συνέπεια: μια σύγχρονη ταυτότητα πρέπει να είναι <strong>προσαρμόσιμη</strong>. Πρέπει να λειτουργεί σε πολλές αναλογίες οθόνης και, επειδή πολλά βίντεο στα social βλέπονται βουβά, και <strong>χωρίς ήχο</strong>.</p>`,
+                        caseStudy: `<p>Άνοιξε τον λογαριασμό ενός τηλεοπτικού καναλιού στο Instagram ή στο TikTok. Υπάρχει εκεί κάποια εκδοχή των idents του; Πώς έχει προσαρμοστεί;</p>`,
+                        v: "devices"
+                    },
+                    {
+                        t: "1.14 Πώς «διαβάζουμε» ένα Ident",
+                        c: `<p>Για να αναλύσουμε ένα ident συστηματικά (και όχι με «μου αρέσει / δεν μου αρέσει»), χρησιμοποιούμε έξι ερωτήσεις:</p>
+                            <ol>
+                                <li><strong>Διάρκεια και ρυθμός:</strong> πόσα δευτερόλεπτα; Πού επιταχύνει, πού σταματά;</li>
+                                <li><strong>Λογότυπο:</strong> πότε και πώς εμφανίζεται; Αποκαλύπτεται (reveal), είναι παρόν από την αρχή, κρύβεται μέσα στη σκηνή;</li>
+                                <li><strong>Χρώμα και τυπογραφία:</strong> ποια παλέτα; Υπάρχει κείμενο;</li>
+                                <li><strong>Ήχος:</strong> μουσική, sonic logo, ηχητικά εφέ ή σιωπή;</li>
+                                <li><strong>Σύστημα:</strong> τι είναι σταθερό και τι μεταβλητό, αν το συγκρίνουμε με άλλα idents του ίδιου καναλιού;</li>
+                                <li><strong>Νόημα:</strong> τι λέει για τις αξίες και το κοινό του καναλιού;</li>
+                            </ol>
+                            <p><strong>Τεχνική τριπλής παρακολούθησης:</strong> δες το ident μία φορά κανονικά, μία φορά χωρίς ήχο και μία φορά καρέ-καρέ.</p>`,
+                        note: "Αυτές οι έξι ερωτήσεις είναι οι στήλες του φύλλου ανάλυσης στο σημερινό εργαστήριο.",
+                        v: "analysis"
+                    },
+                    {
+                        t: "1.15 Το project του εξαμήνου",
+                        c: `<p>Ατομικά ή σε ομάδες 2–3 ατόμων, θα <strong>επινοήσετε ένα φανταστικό τηλεοπτικό κανάλι</strong> και θα σχεδιάσετε την ταυτότητά του σε κίνηση. Το project χτίζεται βήμα-βήμα κάθε εβδομάδα:</p>
+                            <div class="table-wrap"><table>
+                                <tr><th>Εβδ.</th><th>Βήμα</th><th>Εργαλείο</th></tr>
+                                <tr><td>2–3</td><td>Έρευνα, moodboard, concept & positioning</td><td>Έρευνα</td></tr>
+                                <tr><td>4</td><td>Λογότυπο για οθόνη</td><td>Animate</td></tr>
+                                <tr><td>5–6</td><td>Storyboards & animatic</td><td>Animate, Premiere</td></tr>
+                                <tr><td>7</td><td>Παρουσίαση προεργασίας</td><td>Κριτική</td></tr>
+                                <tr><td>8–9</td><td>Ήχος & παραγωγή 3 idents</td><td>After Effects, Animate, Premiere</td></tr>
+                                <tr><td>10–12</td><td>Promo τρέιλερ, φινίρισμα, προδιαγραφές</td><td>Premiere, After Effects</td></tr>
+                                <tr><td>13</td><td>Τελική παρουσίαση</td><td>Κριτική</td></tr>
+                            </table></div>
+                            <p><strong>Ποιο πρόγραμμα για τι:</strong> <em>Animate</em> για σχεδίαση σε vector, 2D χαρακτήρες και frame-by-frame animation. <em>After Effects</em> για motion graphics, κινητική τυπογραφία και compositing. <em>Premiere</em> για μοντάζ, ήχο και εξαγωγή.</p>
+                            <p><strong>Αξιολόγηση (σύμφωνα με το περίγραμμα):</strong> Έρευνα, Μεθοδολογία, Παρουσία στο εργαστήριο, Τελική εργασία.</p>`,
+                        v: "project"
+                    }
+                ],
+                discussion: [
+                    "Μπορεί ένα κανάλι να έχει ισχυρή ταυτότητα χωρίς σταθερό λογότυπο; Φέρτε ένα παράδειγμα υπέρ ή κατά.",
+                    "Γιατί ένα σύστημα σταθερών και μεταβλητών αντέχει περισσότερο στον χρόνο από ένα μεμονωμένο, εντυπωσιακό ident;",
+                    "Πόσο πρέπει το promo μιας ξένης σειράς να «φοράει» την ταυτότητα του ελληνικού καναλιού που την προβάλλει; Πού είναι το όριο;",
+                    "Τι χάνεται και τι κερδίζεται όταν ένα ident μεταφέρεται από την οθόνη της τηλεόρασης στην κάθετη οθόνη του κινητού;"
+                ],
+                glossary: [
+                    { term: "Ident", def: "Σύντομη σεκάνς ταυτότητας που προβάλλεται ανάμεσα στα προγράμματα και δηλώνει το κανάλι." },
+                    { term: "Sting", def: "Πολύ σύντομη εκδοχή ident (λίγα δευτερόλεπτα) για γρήγορες μεταβάσεις." },
+                    { term: "Bumper", def: "Γραφικό που σηματοδοτεί την είσοδο ή έξοδο από διαφημιστικό διάλειμμα." },
+                    { term: "Promo / Τρέιλερ", def: "Διαφήμιση προγράμματος του ίδιου του καναλιού (σειρά, ταινία, εκπομπή)." },
+                    { term: "End board", def: "Τελική κάρτα με πληροφορίες μετάδοσης (ημέρα, ώρα, λογότυπο) ή για το επόμενο πρόγραμμα." },
+                    { term: "DOG", def: "Digital On-screen Graphic: το μόνιμο λογότυπο στη γωνία της οθόνης." },
+                    { term: "Lower third", def: "Γραφικό στο κάτω τρίτο της οθόνης για ονόματα και πληροφορίες." },
+                    { term: "On-air package", def: "Το σύνολο των γραφικών και ήχων που «ντύνουν» ένα κανάλι." },
+                    { term: "Flow (ροή)", def: "Η έννοια του R. Williams για την τηλεόραση ως συνεχή, σχεδιασμένη ακολουθία περιεχομένων." },
+                    { term: "Continuity", def: "Το τμήμα που οργανώνει τη ροή του προγράμματος και τις μεταβάσεις." },
+                    { term: "Sonic logo", def: "Σύντομο ηχητικό μοτίβο που λειτουργεί ως «λογότυπο» για το αυτί." },
+                    { term: "Σύστημα ταυτότητας", def: "Ο συνδυασμός σταθερών και μεταβλητών στοιχείων που επιτρέπει πολλές παραλλαγές χωρίς απώλεια αναγνώρισης." }
+                ],
+                lab: {
+                    title: "Ανάλυση Idents & Στήσιμο Παραγωγής",
+                    videos: [
+                        { title: "Βίντεο εργαστηρίου 1: Τι είναι το Ident (NotebookLM)", url: "" }
+                    ],
+                    quiz: [
+                        {
+                            q: "1. Ποιος είναι ο πιο ακριβής ορισμός του τηλεοπτικού ident;",
+                            options: [
+                                "Α) Ένα διαφημιστικό σποτ τρίτης εταιρείας που προβάλλεται στο διάλειμμα.",
+                                "Β) Μια σύντομη σεκάνς ανάμεσα στα προγράμματα που δηλώνει ποιο κανάλι βλέπει ο θεατής.",
+                                "Γ) Οι τίτλοι αρχής μιας τηλεοπτικής σειράς.",
+                                "Δ) Το στατικό λογότυπο στη γωνία της οθόνης."
+                            ],
+                            correct: 1,
+                            explanation: "Το ident (station identification) είναι σύντομη σεκάνς ταυτότητας ανάμεσα στα προγράμματα. Το στατικό λογότυπο στη γωνία είναι το DOG, κάτι διαφορετικό."
+                        },
+                        {
+                            q: "2. Τι περιγράφει η έννοια της «ροής» (flow) του Raymond Williams;",
+                            options: [
+                                "Α) Την ταχύτητα μετάδοσης του σήματος.",
+                                "Β) Τη σειρά των καρέ σε ένα animation.",
+                                "Γ) Την τηλεοπτική εμπειρία ως συνεχή, σχεδιασμένη ακολουθία προγραμμάτων, διαφημίσεων και τρέιλερ.",
+                                "Δ) Τον αριθμό των θεατών ανά ώρα."
+                            ],
+                            correct: 2,
+                            explanation: "Ο Williams (1974) υποστήριξε ότι η τηλεόραση βιώνεται ως συνεχής ροή και όχι ως ξεχωριστά προγράμματα. Το ident λειτουργεί στους «αρμούς» αυτής της ροής."
+                        },
+                        {
+                            q: "3. Ποια ήταν η βασική αρχή των idents του BBC Two το 1991;",
+                            options: [
+                                "Α) Κάθε ident είχε εντελώς διαφορετικό λογότυπο.",
+                                "Β) Σταθερή μορφή του «2», μεταβλητή εκτέλεση (υλικό, κατάσταση, διάθεση).",
+                                "Γ) Χρήση μόνο ασπρόμαυρης εικόνας.",
+                                "Δ) Διάρκεια ακριβώς ενός δευτερολέπτου."
+                            ],
+                            correct: 1,
+                            explanation: "Το σχήμα του «2» έμενε σταθερό και εγγυόταν την αναγνώριση, ενώ όλα τα άλλα άλλαζαν. Έτσι γεννήθηκε η ιδέα του ident ως συστήματος."
+                        },
+                        {
+                            q: "4. Τι έκανε το ident του Channel 4 (1982) να ξεχωρίζει;",
+                            options: [
+                                "Α) Ήταν το πρώτο ident με ζωντανούς ηθοποιούς.",
+                                "Β) Δεν είχε καθόλου λογότυπο.",
+                                "Γ) Ήταν από τα πρώτα με τρισδιάστατο animation υπολογιστή, με κομμάτια που συναρμολογούνται στο λογότυπο.",
+                                "Δ) Γυρίστηκε εξ ολοκλήρου σε εξωτερικούς χώρους."
+                            ],
+                            correct: 2,
+                            explanation: "Ο Martin Lambie-Nairn σχεδίασε ένα λογότυπο που κινείται: χρωματιστά κομμάτια ταξιδεύουν στον χώρο και σχηματίζουν το σύνολο, κάτι που αντανακλούσε και τη φιλοσοφία του καναλιού."
+                        },
+                        {
+                            q: "5. Σε τι διαφέρει ένα sting από ένα ident;",
+                            options: [
+                                "Α) Το sting είναι πολύ πιο σύντομο και χρησιμοποιείται για γρήγορες μεταβάσεις.",
+                                "Β) Το sting είναι πάντα μεγαλύτερο από ένα λεπτό.",
+                                "Γ) Το sting δεν έχει ποτέ ήχο.",
+                                "Δ) Δεν υπάρχει διαφορά."
+                            ],
+                            correct: 0,
+                            explanation: "Το sting διαρκεί λίγα δευτερόλεπτα και λειτουργεί σαν γρήγορη «στίξη» μέσα στη ροή του προγράμματος."
+                        },
+                        {
+                            q: "6. Τι είναι το DOG;",
+                            options: [
+                                "Α) Ένα είδος τρέιλερ για ταινίες.",
+                                "Β) Το μόνιμο λογότυπο στη γωνία της οθόνης (Digital On-screen Graphic).",
+                                "Γ) Η τελική κάρτα ενός promo.",
+                                "Δ) Ένα φίλτρο χρώματος στο Premiere."
+                            ],
+                            correct: 1,
+                            explanation: "Το DOG παραμένει στην οθόνη κατά τη διάρκεια του προγράμματος και υπενθυμίζει συνεχώς στον θεατή ποιο κανάλι βλέπει."
+                        },
+                        {
+                            q: "7. Ποιος είναι ο ρόλος του end board σε ένα promo;",
+                            options: [
+                                "Α) Να δείξει τους τίτλους τέλους με τους συντελεστές.",
+                                "Β) Να δώσει πληροφορίες μετάδοσης (ημέρα, ώρα) μαζί με την ταυτότητα του καναλιού.",
+                                "Γ) Να αντικαταστήσει το ident.",
+                                "Δ) Να περιέχει μόνο μουσική."
+                            ],
+                            correct: 1,
+                            explanation: "Το end board είναι το call to action του promo: λέει στον θεατή πότε και πού θα δει το πρόγραμμα, με τα στοιχεία ταυτότητας του καναλιού."
+                        },
+                        {
+                            q: "8. Ποια ήταν η καινοτομία του λογοτύπου του MTV (1981);",
+                            options: [
+                                "Α) Ήταν πάντα κόκκινο.",
+                                "Β) Χρησιμοποιούσε μόνο serif γραμματοσειρά.",
+                                "Γ) Κρατούσε σταθερό το περίγραμμα, ενώ επιφάνεια, χρώμα και κίνηση άλλαζαν συνεχώς.",
+                                "Δ) Εμφανιζόταν μόνο στο τέλος κάθε εκπομπής."
+                            ],
+                            correct: 2,
+                            explanation: "Το λογότυπο λειτουργούσε ως «δοχείο». Η συνεχής αλλαγή έγινε η ίδια η ταυτότητα και προανήγγειλε τις δυναμικές ταυτότητες."
+                        },
+                        {
+                            q: "9. Τι σημαίνει για τον σχεδιασμό ότι πολλά βίντεο στα social media βλέπονται βουβά;",
+                            options: [
+                                "Α) Ότι ο ήχος δεν χρειάζεται πια.",
+                                "Β) Ότι η ταυτότητα πρέπει να είναι αναγνωρίσιμη και χωρίς ήχο, αλλά και σε διάφορες αναλογίες οθόνης.",
+                                "Γ) Ότι τα idents πρέπει να έχουν μόνο κείμενο.",
+                                "Δ) Ότι πρέπει να χρησιμοποιούνται μόνο ασπρόμαυρα γραφικά."
+                            ],
+                            correct: 1,
+                            explanation: "Ο ήχος παραμένει σημαντικός (sonic logos), αλλά η οπτική ταυτότητα πρέπει να στέκεται και μόνη της, σε 16:9, 9:16 και 1:1."
+                        },
+                        {
+                            q: "10. Στο project μας, ποιο πρόγραμμα είναι το καταλληλότερο για κινητική τυπογραφία και compositing;",
+                            options: [
+                                "Α) After Effects",
+                                "Β) Premiere",
+                                "Γ) Animate",
+                                "Δ) Κανένα, γίνεται μόνο με κώδικα."
+                            ],
+                            correct: 0,
+                            explanation: "Το After Effects είναι το βιομηχανικό πρότυπο για motion graphics. Το Animate το χρησιμοποιούμε για vector σχεδίαση και frame-by-frame animation, και το Premiere για μοντάζ, ήχο και εξαγωγή."
+                        }
+                    ],
+                    flashcards: [
+                        { q: "Τι είναι το ident;", a: "Σύντομη οπτικοακουστική σεκάνς ανάμεσα στα προγράμματα που δηλώνει το κανάλι. Η ταυτότητα του καναλιού ως εμπειρία μέσα στον χρόνο." },
+                        { q: "Ποιες είναι οι πέντε λειτουργίες του ident;", a: "Αναγνώριση, μετάβαση (στίξη), ρύθμιση διάθεσης, επικοινωνία αξιών, διαφοροποίηση." },
+                        { q: "Τι είναι η «ροή» (flow) κατά τον Raymond Williams;", a: "Η τηλεοπτική εμπειρία ως συνεχής, σχεδιασμένη ακολουθία προγραμμάτων, διαφημίσεων και τρέιλερ (1974)." },
+                        { q: "Ποιος σχεδίασε τα idents του Channel 4 (1982) και του BBC Two (1991);", a: "Ο Martin Lambie-Nairn και το γραφείο του." },
+                        { q: "Ποια είναι η αρχή «σταθερή μορφή, μεταβλητή εκτέλεση»;", a: "Ένα στοιχείο (π.χ. το σχήμα του λογοτύπου) μένει πάντα ίδιο για να εξασφαλίζει αναγνώριση, ενώ υλικό, σκηνικό και διάθεση αλλάζουν ελεύθερα." },
+                        { q: "Γιατί το λογότυπο του MTV λέγεται «δοχείο»;", a: "Επειδή μόνο το περίγραμμά του έμενε σταθερό. Το εσωτερικό του γέμιζε κάθε φορά με διαφορετικό χρώμα, υφή και κίνηση." },
+                        { q: "Ποια είναι η διαφορά ident, sting και bumper;", a: "Ident: κύρια σεκάνς ταυτότητας. Sting: πολύ σύντομη εκδοχή για γρήγορες μεταβάσεις. Bumper: σηματοδοτεί είσοδο/έξοδο από διαφημίσεις." },
+                        { q: "Τι είναι το end board;", a: "Η τελική κάρτα ενός promo με ημέρα, ώρα και λογότυπο: το call to action." },
+                        { q: "Τι είναι η αναμόρφωση στα idents του Channel 4 (2004);", a: "Κομμάτια σκορπισμένα σε πραγματικά τοπία που σχηματίζουν το λογότυπο μόνο από ένα συγκεκριμένο σημείο θέασης." },
+                        { q: "Ποιες είναι οι έξι ερωτήσεις ανάλυσης ενός ident;", a: "Διάρκεια/ρυθμός, λογότυπο, χρώμα/τυπογραφία, ήχος, σύστημα (σταθερά/μεταβλητά), νόημα." },
+                        { q: "Τι είναι η τεχνική τριπλής παρακολούθησης;", a: "Βλέπεις το ident μία φορά κανονικά, μία χωρίς ήχο και μία καρέ-καρέ." },
+                        { q: "Ποιες ρυθμίσεις project χρησιμοποιούμε στο μάθημα;", a: "1920×1080, square pixels, 25 fps (ευρωπαϊκό τηλεοπτικό πρότυπο), ίδιες σε Animate, After Effects και Premiere." }
+                    ],
+                    exercise: {
+                        intro: `<p><strong>Στόχος:</strong> να μάθεις να «διαβάζεις» idents με μέθοδο, να στήσεις σωστά το περιβάλλον παραγωγής για όλο το εξάμηνο και να κάνεις τα πρώτα βήματα προς το δικό σου κανάλι. Ξεκίνα από το βασικό επίπεδο. Όποιος τελειώνει νωρίτερα, προχωρά στο επόμενο.</p>`,
+                        levels: [
+                            {
+                                level: "Βασικό",
+                                title: "Φύλλο ανάλυσης 5 idents",
+                                time: "~25′",
+                                html: `<ol>
+                                    <li>Άνοιξε το <a class="underline text-blue-600" href="https://theident.gallery/" target="_blank" rel="noopener">theident.gallery</a> ή το <a class="underline text-blue-600" href="http://idents.tv/blog/" target="_blank" rel="noopener">idents.tv</a>.</li>
+                                    <li>Διάλεξε <strong>5 idents από τουλάχιστον 3 διαφορετικά κανάλια</strong>. Ένα από αυτά να είναι ελληνικού καναλιού.</li>
+                                    <li>Για το καθένα εφάρμοσε την τεχνική τριπλής παρακολούθησης (κανονικά, χωρίς ήχο, καρέ-καρέ).</li>
+                                    <li>Συμπλήρωσε έναν πίνακα με τις έξι στήλες της ενότητας 1.14: διάρκεια/ρυθμός, λογότυπο, χρώμα/τυπογραφία, ήχος, σταθερά/μεταβλητά, νόημα.</li>
+                                    <li>Κλείσε με μία πρόταση: ποιο από τα πέντε είναι το πιο ισχυρό <em>σύστημα</em> και γιατί.</li>
+                                </ol>`
+                            },
+                            {
+                                level: "Ενδιάμεσο",
+                                title: "Στήσιμο παραγωγής σε Animate, After Effects & Premiere",
+                                time: "~30′",
+                                html: `<p class="mb-2"><strong>α) Δομή φακέλων</strong> (θα τη χρησιμοποιείς όλο το εξάμηνο):</p>
+<pre>CHANNEL_ΟΝΟΜΑ/
+  01_RESEARCH/
+  02_DESIGN/
+  03_ANIMATE/
+  04_AFTER_EFFECTS/
+  05_PREMIERE/
+  06_AUDIO/
+  07_EXPORT/</pre>
+                                    <p class="mt-4 mb-2"><strong>β) Animate</strong></p>
+                                    <ol>
+                                        <li>File &gt; New. Ορίστε πλάτος 1920, ύψος 1080, Frame Rate <strong>25</strong>, Platform Type <strong>ActionScript 3.0</strong> (κατάλληλο για εξαγωγή σε βίντεο).</li>
+                                        <li>Σχεδίασε ένα τετράγωνο με το Rectangle Tool στο καρέ 1.</li>
+                                        <li>Στο καρέ 50 (2 δευτερόλεπτα) πάτα F6 για keyframe και μετακίνησε το τετράγωνο.</li>
+                                        <li>Δεξί κλικ ανάμεσα στα keyframes &gt; <strong>Create Classic Tween</strong>.</li>
+                                        <li>Αποθήκευσε στο <code>03_ANIMATE</code> και εξήγαγε με File &gt; Export &gt; Export Video/Media στο <code>07_EXPORT</code>.</li>
+                                    </ol>
+                                    <p class="mt-4 mb-2"><strong>γ) After Effects</strong></p>
+                                    <ol>
+                                        <li>Composition &gt; New Composition: 1920×1080, Square Pixels, <strong>25 fps</strong>, διάρκεια 0:00:10:00. Όνομα: <code>IDENT_TEST</code>.</li>
+                                        <li>Κάνε import το βίντεο από το Animate και τοποθέτησέ το στο composition.</li>
+                                        <li>Πρόσθεσε ένα Text layer με ένα προσωρινό όνομα καναλιού. Πάτα <strong>T</strong> για Opacity και βάλε keyframes 0% → 100% σε 1 δευτερόλεπτο.</li>
+                                        <li>Composition &gt; Add to Media Encoder Queue (ή Render Queue) και εξαγωγή στο <code>07_EXPORT</code>.</li>
+                                    </ol>
+                                    <p class="mt-4 mb-2"><strong>δ) Premiere</strong></p>
+                                    <ol>
+                                        <li>File &gt; New &gt; Project, αποθήκευση στο <code>05_PREMIERE</code>.</li>
+                                        <li>File &gt; New &gt; Sequence &gt; Settings: Editing Mode <em>Custom</em>, 1920×1080, <strong>25 fps</strong>.</li>
+                                        <li>Κάνε import τα δύο βίντεο και τοποθέτησέ τα διαδοχικά στο track V1. Πρόσθεσε ένα μουσικό κομμάτι χωρίς πνευματικά δικαιώματα στο A1.</li>
+                                        <li>File &gt; Export &gt; Media (H.264) στο <code>07_EXPORT</code>.</li>
+                                    </ol>`
+                            },
+                            {
+                                level: "Challenge",
+                                title: "Τρία concepts για το δικό σου κανάλι",
+                                time: "~10′ + σπίτι",
+                                html: `<p class="mb-2">Γράψε τρεις διαφορετικές ιδέες για το φανταστικό κανάλι του project. Για καθεμία:</p>
+                                    <ul>
+                                        <li><strong>Όνομα</strong> και είδος (π.χ. κινηματογραφικό, ντοκιμαντέρ, παιδικό, αθλητικό, πολιτιστικό).</li>
+                                        <li><strong>Κοινό:</strong> ποιον απευθύνεται και ποια ώρα βλέπει τηλεόραση;</li>
+                                        <li><strong>Τρία επίθετα</strong> που περιγράφουν την προσωπικότητά του.</li>
+                                        <li><strong>Ιδέα συστήματος:</strong> ένα σκίτσο ή μία πρόταση. Τι θα είναι σταθερό και τι θα αλλάζει στα idents του;</li>
+                                    </ul>
+                                    <p class="mt-3">Θα τις παρουσιάσεις στην 4η ώρα.</p>`
+                            }
+                        ]
+                    },
+                    deliverable: `<p>Ανέβασε στο <a class="underline text-blue-600" href="https://eclass.uniwa.gr/courses/GRAF146/" target="_blank" rel="noopener">eClass</a> <strong>ένα PDF 2–4 σελίδων</strong> πριν από το μάθημα της Εβδομάδας 2, με: (α) το φύλλο ανάλυσης των 5 idents, (β) ένα screenshot της δομής φακέλων και ένα καρέ από το τελικό export του Premiere, (γ) τα τρία concepts καναλιού.</p>`,
+                    rubric: [
+                        { criterion: "Βάθος ανάλυσης", weight: 30, desc: "Χρήση και των έξι ερωτήσεων, τεκμηρίωση με συγκεκριμένες παρατηρήσεις (δευτερόλεπτα, καρέ)." },
+                        { criterion: "Κατανόηση του συστήματος", weight: 20, desc: "Σωστή διάκριση σταθερών και μεταβλητών στοιχείων." },
+                        { criterion: "Τεχνικό στήσιμο", weight: 20, desc: "Σωστές ρυθμίσεις (1920×1080, 25 fps) και οργάνωση αρχείων." },
+                        { criterion: "Πρωτοτυπία των concepts", weight: 30, desc: "Σαφές κοινό, διακριτή προσωπικότητα, αρχική ιδέα συστήματος." }
+                    ],
+                    critique: `<p class="mb-3">Κάθε φοιτητής ή ομάδα παρουσιάζει τα τρία concepts σε <strong>2 λεπτά</strong>. Ακολουθούν <strong>3 λεπτά</strong> ανατροφοδότησης από την τάξη, με τρεις φράσεις-οδηγούς:</p>
+                        <ul class="list-disc ml-5 mb-3 space-y-1">
+                            <li><strong>«Μου αρέσει…»</strong>: τι λειτουργεί ήδη;</li>
+                            <li><strong>«Αναρωτιέμαι…»</strong>: τι δεν είναι ακόμα σαφές;</li>
+                            <li><strong>«Τι θα γινόταν αν…»</strong>: μια πρόταση για εξέλιξη.</li>
+                        </ul>
+                        <p class="mb-3">Στο τέλος, κάθε ομάδα επιλέγει <strong>ένα concept</strong> για να συνεχίσει στην Εβδομάδα 2, λαμβάνοντας υπόψη τα σχόλια.</p>
+                        <p class="text-sm text-gray-600">Η συμμετοχή στην κριτική μετρά στην «Παρουσία στο εργαστήριο», ένα από τα τέσσερα κριτήρια αξιολόγησης του περιγράμματος.</p>`
+                }
+            },
+
+            // ================= ΕΒΔΟΜΑΔΕΣ 2–13 (προγραμματισμένες) =================
+            { week: 2,  title: "Ανατομία του On-Air Branding", tools: ["Έρευνα"], labPlan: "Έρευνα & moodboard υπαρκτών καναλιών", slides: [], lab: null },
+            { week: 3,  title: "Στρατηγική Brand για Τηλεοπτικό Κανάλι", tools: ["Έρευνα", "Animate"], labPlan: "Όνομα, κοινό, positioning & concept καναλιού", slides: [], lab: null },
+            { week: 4,  title: "Λογότυπο & Τυπογραφία για την Οθόνη", tools: ["Animate"], labPlan: "Σχεδιασμός λογοτύπου και παραλλαγών σε vector", slides: [], lab: null },
+            { week: 5,  title: "Το Ident ως Σύστημα", tools: ["Animate"], labPlan: "Ψηφιακά storyboards για σειρά 3 idents", slides: [], lab: null },
+            { week: 6,  title: "Αρχές Κίνησης & Timing", tools: ["Animate", "Premiere"], labPlan: "Frame-by-frame, classic tweens & animatic", slides: [], lab: null },
+            { week: 7,  title: "Μεθοδολογία Κριτικής: Παρουσίαση Προεργασίας", tools: ["Κριτική"], labPlan: "Παρουσίαση προεργασίας & peer review", slides: [], lab: null },
+            { week: 8,  title: "Ηχητική Ταυτότητα", tools: ["Premiere"], labPlan: "Sonic logo & ήχος για τα idents", slides: [], lab: null },
+            { week: 9,  title: "Motion Graphics για Idents", tools: ["After Effects", "Animate"], labPlan: "Logo reveal, κινητική τυπογραφία, compositing", slides: [], lab: null },
+            { week: 10, title: "Η Δομή του Promo / Τρέιλερ", tools: ["Έρευνα", "Premiere"], labPlan: "Ανάλυση τρέιλερ & σενάριο promo", slides: [], lab: null },
+            { week: 11, title: "Το Μοντάζ του Τρέιλερ", tools: ["Premiere", "After Effects"], labPlan: "Μοντάζ promo, κοπές στη μουσική, end board", slides: [], lab: null },
+            { week: 12, title: "Προδιαγραφές Μετάδοσης & Παράδοση", tools: ["After Effects", "Premiere"], labPlan: "Safe areas, loudness (EBU R128), χρώμα, export", slides: [], lab: null },
+            { week: 13, title: "Τελικές Παρουσιάσεις", tools: ["Κριτική"], labPlan: "Παρουσίαση τελικών έργων & peer assessment", slides: [], lab: null }
+        ];
+
+
+        // =========================================================================
+        // VISUALS (αφηρημένα SVG ανά διαφάνεια — πεδίο v)
+        // =========================================================================
+        const C = 'width="100%" height="100%" viewBox="0 0 400 300" stroke="black" fill="none" stroke-width="2"';
+        const T = 'font-family="JetBrains Mono, monospace" font-size="10" font-weight="700" fill="black" stroke="none"';
+        const VIZ = {
+            screen: `<svg ${C}><rect x="40" y="40" width="320" height="200"/><rect x="60" y="56" width="280" height="168" stroke="#2563eb" stroke-dasharray="6 6"/><rect x="172" y="112" width="56" height="56" fill="#2563eb" stroke="none" class="anim-pulse"/><line x1="150" y1="265" x2="250" y2="265"/><line x1="200" y1="240" x2="200" y2="265"/><text x="64" y="72" ${T} fill="#2563eb">SAFE AREA</text></svg>`,
+            flow: `<svg ${C}><line x1="10" y1="150" x2="390" y2="150" stroke-dasharray="4 6"/><rect x="15" y="115" width="95" height="70" fill="white"/><rect x="118" y="128" width="14" height="44" fill="#2563eb" stroke="none" class="anim-pulse"/><rect x="140" y="115" width="60" height="70" fill="white"/><rect x="208" y="128" width="14" height="44" fill="#2563eb" stroke="none" class="anim-pulse" style="animation-delay:.8s"/><rect x="230" y="115" width="155" height="70" fill="white"/><text x="25" y="154" ${T}>ΠΡΟΓΡΑΜΜΑ</text><text x="148" y="154" ${T}>ΔΙΑΦ.</text><text x="240" y="154" ${T}>ΠΡΟΓΡΑΜΜΑ</text><text x="110" y="210" ${T} fill="#2563eb">IDENT</text><text x="200" y="210" ${T} fill="#2563eb">IDENT</text></svg>`,
+            functions: `<svg ${C}><circle cx="200" cy="150" r="34" fill="#2563eb" stroke="none" class="anim-pulse"/><g stroke-dasharray="4 5"><line x1="200" y1="116" x2="200" y2="50"/><line x1="234" y1="150" x2="330" y2="150"/><line x1="200" y1="184" x2="200" y2="250"/><line x1="166" y1="150" x2="70" y2="150"/></g><text x="165" y="42" ${T}>ΑΝΑΓΝΩΡΙΣΗ</text><text x="300" y="140" ${T}>ΜΕΤΑΒΑΣΗ</text><text x="170" y="268" ${T}>ΔΙΑΘΕΣΗ</text><text x="30" y="140" ${T}>ΑΞΙΕΣ</text></svg>`,
+            timeline: `<svg ${C}><line x1="30" y1="150" x2="370" y2="150" stroke-width="3"/><g fill="white"><circle cx="50" cy="150" r="8"/><circle cx="115" cy="150" r="8"/><circle cx="180" cy="150" r="8"/><circle cx="245" cy="150" r="8"/><circle cx="310" cy="150" r="8"/></g><circle cx="360" cy="150" r="10" fill="#2563eb" stroke="none" class="anim-pulse"/><text x="34" y="130" ${T}>1960s</text><text x="100" y="180" ${T}>1982</text><text x="165" y="130" ${T}>1991</text><text x="230" y="180" ${T}>2006</text><text x="295" y="130" ${T}>2015</text><text x="340" y="185" ${T} fill="#2563eb">ΣΗΜΕΡΑ</text></svg>`,
+            blocks: `<svg ${C}><rect x="160" y="110" width="38" height="38" fill="black" class="anim-in" style="--dx:-140px;--dy:-60px"/><rect x="202" y="110" width="38" height="38" fill="#2563eb" stroke="none" class="anim-in" style="--dx:150px;--dy:-80px;animation-delay:.25s"/><rect x="160" y="152" width="38" height="38" fill="#2563eb" stroke="none" class="anim-in" style="--dx:-120px;--dy:90px;animation-delay:.5s"/><rect x="202" y="152" width="38" height="38" fill="black" class="anim-in" style="--dx:130px;--dy:80px;animation-delay:.75s"/><text x="140" y="240" ${T}>ΣΥΝΑΡΜΟΛΟΓΗΣΗ</text></svg>`,
+            system: `<svg ${C}><defs><pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="8" stroke="#2563eb" stroke-width="3"/></pattern></defs><circle cx="90" cy="140" r="45" fill="black"/><circle cx="200" cy="140" r="45" stroke-dasharray="8 6"/><circle cx="310" cy="140" r="45" fill="url(#hatch)"/><text x="120" y="230" ${T}>ΣΤΑΘΕΡΟ: ΜΟΡΦΗ</text><text x="112" y="250" ${T} fill="#2563eb">ΜΕΤΑΒΛΗΤΟ: ΥΛΙΚΟ</text></svg>`,
+            grid: `<svg ${C}><line x1="200" y1="40" x2="200" y2="260"/><text x="70" y="60" ${T}>ΣΤΑΘΕΡΑ</text><text x="250" y="60" ${T} fill="#2563eb">ΜΕΤΑΒΛΗΤΑ</text><g fill="black"><rect x="70" y="85" width="70" height="14"/><rect x="70" y="115" width="70" height="14"/><rect x="70" y="145" width="70" height="14"/><rect x="70" y="175" width="70" height="14"/></g><g fill="#2563eb" stroke="none"><rect x="250" y="85" width="50" height="14" class="anim-pulse"/><rect x="250" y="115" width="85" height="14" class="anim-pulse" style="animation-delay:.4s"/><rect x="250" y="145" width="35" height="14" class="anim-pulse" style="animation-delay:.8s"/><rect x="250" y="175" width="70" height="14" class="anim-pulse" style="animation-delay:1.2s"/></g></svg>`,
+            container: `<svg ${C}><path d="M110 230 L110 80 L160 80 L200 140 L240 80 L290 80 L290 230 L250 230 L250 150 L200 210 L150 150 L150 230 Z" stroke-width="3"><animate attributeName="fill" values="#2563eb;#000000;#ffffff;#93c5fd;#2563eb" dur="4s" repeatCount="indefinite"/></path><text x="120" y="265" ${T}>ΣΤΑΘΕΡΟ ΠΕΡΙΓΡΑΜΜΑ</text></svg>`,
+            circle: `<svg ${C}><g class="anim-spin"><circle cx="200" cy="150" r="90" stroke-dasharray="3 10" stroke="#2563eb"/><g fill="black" stroke="none"><circle cx="200" cy="60" r="7"/><circle cx="264" cy="86" r="7"/><circle cx="290" cy="150" r="7"/><circle cx="264" cy="214" r="7"/><circle cx="200" cy="240" r="7"/><circle cx="136" cy="214" r="7"/><circle cx="110" cy="150" r="7"/><circle cx="136" cy="86" r="7"/></g></g></svg>`,
+            anamorph: `<svg ${C}><circle cx="40" cy="150" r="8" fill="#2563eb" stroke="none"/><g stroke="#2563eb" stroke-dasharray="4 5" stroke-width="1.5"><line x1="48" y1="150" x2="240" y2="70"/><line x1="48" y1="150" x2="330" y2="110"/><line x1="48" y1="150" x2="270" y2="200"/><line x1="48" y1="150" x2="350" y2="240"/></g><rect x="235" y="60" width="20" height="40" fill="black"/><rect x="320" y="95" width="30" height="20" fill="black"/><rect x="262" y="190" width="22" height="22" fill="black"/><rect x="340" y="228" width="40" height="18" fill="black"/><text x="20" y="180" ${T}>ΣΗΜΕΙΟ</text><text x="20" y="194" ${T}>ΘΕΑΣΗΣ</text></svg>`,
+            package: `<svg ${C}><rect x="30" y="30" width="340" height="200"/><rect x="320" y="42" width="36" height="16" fill="#2563eb" stroke="none"/><text x="290" y="54" ${T}>DOG</text><rect x="44" y="180" width="170" height="24" fill="black"/><text x="220" y="196" ${T}>LOWER THIRD</text><rect x="30" y="245" width="160" height="40" stroke-dasharray="5 5"/><rect x="210" y="245" width="160" height="40" fill="#2563eb" stroke="none"/><text x="60" y="269" ${T}>PROMO</text><text x="240" y="269" ${T} fill="white">END BOARD</text></svg>`,
+            trailer: `<svg ${C}><line x1="30" y1="250" x2="370" y2="250"/><line x1="30" y1="250" x2="30" y2="40"/><path d="M30 230 C 60 120, 80 120, 100 200 S 170 150, 200 150 S 260 80, 290 50 L 310 230 L 370 200" stroke="#2563eb" stroke-width="3" class="anim-stroke"/><text x="40" y="270" ${T}>HOOK</text><text x="140" y="270" ${T}>BUILD</text><text x="270" y="270" ${T}>PEAK</text><text x="330" y="270" ${T} fill="#2563eb">CTA</text></svg>`,
+            devices: `<svg ${C}><rect x="20" y="90" width="170" height="96"/><rect x="215" y="50" width="80" height="142"/><rect x="315" y="95" width="70" height="70"/><g fill="#2563eb" stroke="none"><rect x="92" y="125" width="26" height="26" class="anim-pulse"/><rect x="242" y="108" width="26" height="26" class="anim-pulse"/><rect x="337" y="117" width="26" height="26" class="anim-pulse"/></g><text x="80" y="210" ${T}>16:9</text><text x="240" y="215" ${T}>9:16</text><text x="336" y="190" ${T}>1:1</text><text x="130" y="250" ${T}>🔇 ΚΑΙ ΧΩΡΙΣ ΗΧΟ</text></svg>`,
+            analysis: `<svg ${C}><rect x="20" y="90" width="360" height="110"/><g fill="black" stroke="none"><rect x="28" y="96" width="10" height="8"/><rect x="28" y="186" width="10" height="8"/><rect x="362" y="96" width="10" height="8"/><rect x="362" y="186" width="10" height="8"/></g><rect x="50" y="110" width="90" height="70"/><rect x="155" y="110" width="90" height="70" fill="#dbeafe"/><rect x="260" y="110" width="90" height="70"/><rect x="190" y="132" width="22" height="22" fill="#2563eb" stroke="none"/><line x1="200" y1="60" x2="200" y2="230" stroke="#2563eb" class="anim-pulse"/><text x="150" y="250" ${T}>FRAME BY FRAME</text></svg>`,
+            project: `<svg ${C}><g fill="white"><rect x="20" y="200" width="60" height="40"/><rect x="95" y="165" width="60" height="75"/><rect x="170" y="130" width="60" height="110"/><rect x="245" y="95" width="60" height="145"/></g><rect x="320" y="60" width="60" height="180" fill="#2563eb" stroke="none"/><text x="28" y="225" ${T}>ΕΡΕΥΝΑ</text><text x="100" y="190" ${T}>BRAND</text><text x="175" y="155" ${T}>LOGO</text><text x="250" y="120" ${T}>IDENTS</text><text x="326" y="85" ${T} fill="white">PROMO</text></svg>`
+        };
+        const vizFor = (key) => VIZ[key] || `<svg ${C}><rect x="100" y="100" width="200" height="100" class="anim-stroke"/></svg>`;
+
+        // =========================================================================
+        // STATE
+        // =========================================================================
+        let activeWeek = 0;
+        let currentSlide = 0;
+        let quizState = { currentQuestion: 0, score: 0, answered: false };
+        let currentFlashcard = 0;
+        let isFlipped = false;
+
+        const toolClass = (t) => ({ 'After Effects': 't-ae', 'Animate': 't-an', 'Premiere': 't-pr' }[t] || '');
+        const toolBadges = (tools) => (tools || []).map(t => `<span class="tool-badge ${toolClass(t)}">${t}</span>`).join('');
+
+        // =========================================================================
+        // NAVIGATION
+        // =========================================================================
+        function show(id) {
+            ['cover', 'app', 'lab'].forEach(x => {
+                const el = document.getElementById(x);
+                if (x === id) { el.classList.remove('hidden'); if (x !== 'cover') el.classList.add('flex'); }
+                else { el.classList.add('hidden'); el.classList.remove('flex'); }
+            });
+            window.scrollTo(0, 0);
+        }
+        function goHome() { show('cover'); }
+        function enterCourse() { show('app'); currentSlide = 0; initSidebar(); renderSlide(); }
+        function enterLab() { show('lab'); jumpToLabWeek(activeWeek); }
+        function toggleSidebar(id) { document.getElementById(id).classList.toggle('open'); }
+        function closeSidebars() { document.querySelectorAll('.side-panel').forEach(s => s.classList.remove('open')); }
+
+        // =========================================================================
+        // THEORY
+        // =========================================================================
+        function buildSlides(w) {
+            if (!w.slides || w.slides.length === 0) return [{ type: 'tba' }];
+            const list = [{ type: 'overview' }];
+            w.slides.forEach((s, i) => list.push({ type: 'slide', s, n: i + 1 }));
+            if ((w.discussion && w.discussion.length) || (w.glossary && w.glossary.length)) list.push({ type: 'wrap' });
+            return list;
+        }
+
+        function initSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.innerHTML = '';
+            courseData.forEach((w, i) => {
+                const el = document.createElement('div');
+                el.className = `sidebar-item ${i === activeWeek ? 'active' : ''}`;
+                el.tabIndex = 0;
+                const ready = w.slides && w.slides.length > 0;
+                el.innerHTML = `W${w.week}${ready ? '' : '<span class="tba">ΣΥΝΤΟΜΑ</span>'}<span class="sub">${w.title}</span>`;
+                el.onclick = () => { jumpToWeek(i); closeSidebars(); };
+                el.onkeydown = (e) => { if (e.key === 'Enter') el.onclick(); };
+                sidebar.appendChild(el);
+            });
+        }
+
+        function renderOverview(w) {
+            const agenda = w.agenda || [];
+            const total = agenda.reduce((a, b) => a + b.min, 0) || 1;
+            const fills = ['bg-black', 'bg-blue-600', 'bg-white', 'bg-blue-200', 'bg-gray-400', 'bg-yellow-300'];
+            const bar = agenda.map((a, i) => `<div class="${fills[i % fills.length]} border-r-2 border-black last:border-r-0" style="width:${(a.min / total) * 100}%" title="${a.label}"></div>`).join('');
+            const legend = agenda.map((a, i) => `<li class="flex items-center gap-3 py-1"><span class="inline-block w-4 h-4 border-2 border-black ${fills[i % fills.length]}"></span><span class="mono text-xs font-bold w-12">${a.min}′</span><span>${a.label}</span></li>`).join('');
+            const readings = (w.readings || []).map(r => `<li class="mb-2"><span class="mono text-[10px] font-bold border border-black px-1 mr-2">${r.type}</span>${r.url ? `<a href="${r.url}" target="_blank" rel="noopener" class="underline hover:text-blue-600">${r.ref}</a>` : r.ref}</li>`).join('');
+            return `
+                <div class="slide-anim max-w-5xl">
+                    <div class="mono text-blue-600 font-bold text-xs mb-4 uppercase tracking-widest border-b border-gray-200 pb-2">Εβδομάδα ${w.week} / Επισκόπηση</div>
+                    <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none mb-4">${w.title}</h2>
+                    <div class="mb-8">${toolBadges(w.tools)}</div>
+                    <div class="grid md:grid-cols-2 gap-10">
+                        <div>
+                            <h3 class="font-black text-lg mb-3">Μετά από αυτή την εβδομάδα θα μπορείς να:</h3>
+                            <ol class="list-decimal ml-5 space-y-2 text-gray-800">${(w.objectives || []).map(o => `<li>${o}</li>`).join('')}</ol>
+                        </div>
+                        <div>
+                            <h3 class="font-black text-lg mb-3">Πρόγραμμα τετραώρου (${total}′)</h3>
+                            <div class="flex h-6 border-2 border-black mb-3">${bar}</div>
+                            <ul class="text-sm">${legend}</ul>
+                        </div>
+                    </div>
+                    ${readings ? `<div class="mt-10 border-t-2 border-black pt-6"><h3 class="font-black text-lg mb-3">Βιβλιογραφία & πηγές</h3><ul class="text-sm text-gray-800">${readings}</ul></div>` : ''}
+                    <button onclick="nextSlide()" class="btn-nav mt-10">Ξεκίνα τη θεωρία</button>
+                </div>`;
+        }
+
+        function renderContentSlide(w, s, n) {
+            return `
+                <div class="slide-anim flex flex-col lg:flex-row gap-10 lg:gap-12 items-start">
+                    <div class="lg:w-2/3 min-w-0">
+                        <div class="mono text-blue-600 font-bold text-xs mb-4 uppercase tracking-widest border-b border-gray-200 pb-2">Module ${w.week}.${n}</div>
+                        <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none mb-8 text-black">${s.t}</h2>
+                        <div class="slide-content text-base md:text-lg text-gray-800">${s.c}</div>
+                        ${s.caseStudy ? `<div class="case-box"><h4>Παράδειγμα / Δραστηριότητα</h4>${s.caseStudy}</div>` : ''}
+                        ${s.note ? `<div class="academic-note">${s.note}</div>` : ''}
+                    </div>
+                    <div class="lg:w-1/3 w-full lg:sticky lg:top-0">
+                        <div class="img-box">${vizFor(s.v)}</div>
+                    </div>
+                </div>`;
+        }
+
+        function renderWrap(w) {
+            const disc = (w.discussion || []).map(d => `<li>${d}</li>`).join('');
+            const glos = (w.glossary || []).map(g => `<div class="border-2 border-black p-4 bg-white"><div class="font-black text-blue-600 mb-1">${g.term}</div><div class="text-sm text-gray-700">${g.def}</div></div>`).join('');
+            return `
+                <div class="slide-anim max-w-5xl">
+                    <div class="mono text-blue-600 font-bold text-xs mb-4 uppercase tracking-widest border-b border-gray-200 pb-2">Εβδομάδα ${w.week} / Κλείσιμο</div>
+                    <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none mb-8">Συζήτηση & Γλωσσάριο</h2>
+                    ${disc ? `<h3 class="font-black text-lg mb-3">Ερωτήσεις για συζήτηση στην τάξη</h3><ol class="list-decimal ml-5 space-y-3 text-gray-800 mb-10 text-lg">${disc}</ol>` : ''}
+                    ${glos ? `<h3 class="font-black text-lg mb-3">Γλωσσάριο εβδομάδας</h3><div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">${glos}</div>` : ''}
+                    <button onclick="enterLab()" class="btn-nav btn-blue mt-10">Πήγαινε στο εργαστήριο</button>
+                </div>`;
+        }
+
+        function renderTBA(w, mode) {
+            return `
+                <div class="max-w-3xl mx-auto text-center mt-10 md:mt-20 slide-anim">
+                    <div class="mono text-xs font-bold text-blue-600 mb-4">ΕΒΔΟΜΑΔΑ ${w.week}</div>
+                    <h2 class="text-3xl md:text-4xl font-black mb-4">${w.title}</h2>
+                    <div class="mb-6">${toolBadges(w.tools)}</div>
+                    <p class="text-gray-700 mb-2"><strong>Εργαστήριο:</strong> ${w.labPlan || '—'}</p>
+                    <p class="text-gray-500 mt-6">Το υλικό της ${mode === 'lab' ? 'εργαστηριακής' : 'θεωρητικής'} ενότητας θα αναρτηθεί πριν από το μάθημα.</p>
+                    ${mode === 'lab' ? `<button onclick="enterCourse()" class="btn-nav mt-8">Επιστροφή στη θεωρία</button>` : ''}
+                </div>`;
+        }
+
+        function renderSlide() {
+            const w = courseData[activeWeek];
+            const list = buildSlides(w);
+            if (currentSlide >= list.length) currentSlide = list.length - 1;
+            const item = list[currentSlide];
+            const viewer = document.getElementById('slide-viewer');
+
+            document.getElementById('week-display').innerText = `WEEK ${w.week}`;
+            document.getElementById('slide-display').innerText = `SLIDE ${currentSlide + 1} / ${list.length}`;
+
+            if (item.type === 'overview') viewer.innerHTML = renderOverview(w);
+            else if (item.type === 'slide') viewer.innerHTML = renderContentSlide(w, item.s, item.n);
+            else if (item.type === 'wrap') viewer.innerHTML = renderWrap(w);
+            else viewer.innerHTML = renderTBA(w, 'theory');
+            viewer.scrollTop = 0;
+
+            document.querySelectorAll('#sidebar .sidebar-item').forEach((el, i) => el.classList.toggle('active', i === activeWeek));
+            document.getElementById('btn-prev').disabled = (activeWeek === 0 && currentSlide === 0);
+            const nextBtn = document.getElementById('btn-next');
+            const atEnd = activeWeek === courseData.length - 1 && currentSlide === list.length - 1;
+            nextBtn.innerText = atEnd ? 'FINISH' : 'NEXT';
+            nextBtn.disabled = atEnd;
+        }
+
+        function nextSlide() {
+            const len = buildSlides(courseData[activeWeek]).length;
+            if (currentSlide < len - 1) currentSlide++;
+            else if (activeWeek < courseData.length - 1) { activeWeek++; currentSlide = 0; }
+            renderSlide();
+        }
+        function prevSlide() {
+            if (currentSlide > 0) currentSlide--;
+            else if (activeWeek > 0) { activeWeek--; currentSlide = buildSlides(courseData[activeWeek]).length - 1; }
+            renderSlide();
+        }
+        function jumpToWeek(i) { activeWeek = i; currentSlide = 0; renderSlide(); }
+
+        // =========================================================================
+        // LAB
+        // =========================================================================
+        function initLabSidebar() {
+            const sidebar = document.getElementById('lab-sidebar');
+            sidebar.innerHTML = '';
+            courseData.forEach((w, i) => {
+                const el = document.createElement('div');
+                el.className = `sidebar-item sidebar-item-lab ${i === activeWeek ? 'active' : ''}`;
+                el.tabIndex = 0;
+                el.innerHTML = `LAB ${w.week}${w.lab ? '' : '<span class="tba">ΣΥΝΤΟΜΑ</span>'}<span class="sub">${w.labPlan || ''}</span>`;
+                el.onclick = () => { jumpToLabWeek(i); closeSidebars(); };
+                el.onkeydown = (e) => { if (e.key === 'Enter') el.onclick(); };
+                sidebar.appendChild(el);
+            });
+        }
+
+        function jumpToLabWeek(i) {
+            activeWeek = i;
+            quizState = { currentQuestion: 0, score: 0, answered: false };
+            currentFlashcard = 0;
+            isFlipped = false;
+            initLabSidebar();
+            renderLab();
+            document.getElementById('lab-content').scrollTop = 0;
+        }
+
+        function renderLab() {
+            const w = courseData[activeWeek];
+            const labContent = document.getElementById('lab-content');
+            if (!w.lab) { labContent.innerHTML = renderTBA(w, 'lab'); return; }
+            const l = w.lab;
+
+            const videosHTML = (l.videos || []).map(v => v.url ? `
+                <div class="mb-8">
+                    <p class="font-bold mb-2 text-lg">${v.title}</p>
+                    <iframe class="w-full aspect-video border-2 border-black" src="${v.url}" title="${v.title}" frameborder="0" allowfullscreen></iframe>
+                </div>` : `
+                <div class="mb-8">
+                    <p class="font-bold mb-2 text-lg">${v.title}</p>
+                    <div class="w-full aspect-video border-2 border-dashed border-black flex items-center justify-center bg-gray-50 text-gray-500 mono text-sm text-center p-4">Το βίντεο θα αναρτηθεί εδώ πριν από το μάθημα</div>
+                </div>`).join('');
+
+            const flashcardsHTML = (l.flashcards && l.flashcards.length) ? `
+                <div class="lab-card">
+                    <div class="lab-card-title">03. Flashcards (${l.flashcards.length})</div>
+                    <p class="font-bold mb-4 text-sm text-gray-500">Πάτα την κάρτα για να δεις την απάντηση.</p>
+                    <div id="flashcard-container" class="relative w-full h-80 perspective-1000 cursor-pointer" onclick="toggleFlashcard()" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleFlashcard();}"></div>
+                    <div class="flex justify-between items-center mt-6">
+                        <button onclick="prevFlashcard()" class="btn-nav py-2 px-4 text-xs">PREV</button>
+                        <div class="mono text-sm font-bold" id="flashcard-counter"></div>
+                        <button onclick="nextFlashcard()" class="btn-nav py-2 px-4 text-xs">NEXT</button>
+                    </div>
+                </div>` : '';
+
+            const ex = l.exercise || {};
+            const levelsHTML = (ex.levels || []).map(lv => `
+                <div class="level-card">
+                    <div class="flex flex-wrap justify-between items-baseline gap-2 mb-3 border-b-2 border-black pb-2">
+                        <h3 class="font-black text-lg">${lv.level}: ${lv.title}</h3>
+                        <span class="mono text-xs font-bold text-blue-600">${lv.time}</span>
+                    </div>
+                    ${lv.html}
+                </div>`).join('');
+
+            const rubricHTML = (l.rubric || []).map(r => `
+                <div class="rubric-row">
+                    <div><div class="font-bold">${r.criterion}</div><div class="text-sm text-gray-600">${r.desc || ''}</div><div class="rubric-bar" style="width:${r.weight}%"></div></div>
+                    <div class="mono font-black text-2xl text-right">${r.weight}%</div>
+                </div>`).join('');
+
+            labContent.innerHTML = `
+                <div class="max-w-4xl mx-auto slide-anim">
+                    <h1 class="text-3xl md:text-5xl font-black uppercase mb-4"><span class="text-blue-600">LAB ${w.week}:</span> ${l.title}</h1>
+                    <div class="mb-8">${toolBadges(w.tools)}</div>
+                    <div class="lab-card"><div class="lab-card-title">01. Βίντεο εργαστηρίου</div>${videosHTML}</div>
+                    <div class="lab-card" id="quiz-container"></div>
+                    ${flashcardsHTML}
+                    <div class="lab-card bg-blue-50 border-blue-600 border-4">
+                        <div class="lab-card-title !border-blue-600 !text-blue-600">04. Άσκηση εβδομάδας</div>
+                        <div class="text-lg leading-relaxed mb-6">${ex.intro || ''}</div>
+                        <div class="space-y-6">${levelsHTML}</div>
+                    </div>
+                    ${(l.deliverable || rubricHTML) ? `
+                    <div class="lab-card">
+                        <div class="lab-card-title">05. Παραδοτέο & κριτήρια αξιολόγησης</div>
+                        <div class="leading-relaxed mb-6">${l.deliverable || ''}</div>
+                        ${rubricHTML}
+                    </div>` : ''}
+                    ${l.critique ? `
+                    <div class="lab-card" style="box-shadow:4px 4px 0 #2563eb">
+                        <div class="lab-card-title">06. 4η ώρα: Κριτική στην αίθουσα</div>
+                        <div class="leading-relaxed">${l.critique}</div>
+                    </div>` : ''}
+                </div>`;
+
+            renderQuiz();
+            if (flashcardsHTML) renderFlashcard();
+        }
+
+        // --- FLASHCARD ENGINE ---
+        function renderFlashcard() {
+            const container = document.getElementById('flashcard-container');
+            if (!container) return;
+            const cards = courseData[activeWeek].lab.flashcards;
+            const fc = cards[currentFlashcard];
+            container.innerHTML = `
+                <div class="flashcard-inner relative w-full h-full text-center transform-style-3d transition-transform duration-500 ${isFlipped ? 'rotate-y-180' : ''}">
+                    <div class="absolute w-full h-full bg-white border-2 border-black flex items-center justify-center p-6 md:p-8 backface-hidden shadow-[4px_4px_0px_black] select-none">
+                        <p class="text-lg md:text-2xl font-bold leading-relaxed">${fc.q}</p>
+                    </div>
+                    <div class="absolute w-full h-full bg-blue-600 text-white border-2 border-black flex items-center justify-center p-6 md:p-8 backface-hidden rotate-y-180 shadow-[4px_4px_0px_black] select-none overflow-y-auto">
+                        <p class="text-base md:text-xl font-medium leading-relaxed">${fc.a}</p>
+                    </div>
+                </div>`;
+            document.getElementById('flashcard-counter').innerText = `${currentFlashcard + 1} / ${cards.length}`;
+        }
+        function toggleFlashcard() {
+            isFlipped = !isFlipped;
+            const inner = document.querySelector('.flashcard-inner');
+            if (inner) inner.classList.toggle('rotate-y-180', isFlipped);
+        }
+        function nextFlashcard() {
+            if (currentFlashcard < courseData[activeWeek].lab.flashcards.length - 1) { currentFlashcard++; isFlipped = false; renderFlashcard(); }
+        }
+        function prevFlashcard() {
+            if (currentFlashcard > 0) { currentFlashcard--; isFlipped = false; renderFlashcard(); }
+        }
+
+        // --- QUIZ ENGINE ---
+        function renderQuiz() {
+            const container = document.getElementById('quiz-container');
+            const quizData = courseData[activeWeek].lab.quiz;
+            if (!quizData || quizData.length === 0) { container.innerHTML = `<div class="lab-card-title">02. Έλεγχος γνώσεων</div><p>Δεν υπάρχει quiz αυτή την εβδομάδα.</p>`; return; }
+
+            if (quizState.currentQuestion >= quizData.length) {
+                const percentage = Math.round((quizState.score / quizData.length) * 100);
+                container.innerHTML = `
+                    <div class="lab-card-title">02. Έλεγχος γνώσεων (αποτελέσματα)</div>
+                    <div class="text-center py-8">
+                        <div class="text-6xl font-black text-blue-600 mb-4">${percentage}%</div>
+                        <p class="text-xl font-bold mb-2">Σκορ: ${quizState.score} / ${quizData.length}</p>
+                        <p class="text-gray-600">${percentage >= 80 ? 'Είσαι έτοιμος/η για την άσκηση.' : 'Ξαναδιάβασε τις ενότητες της θεωρίας όπου έκανες λάθος.'}</p>
+                        <button onclick="restartQuiz()" class="btn-nav mt-8">Ξανά το quiz</button>
+                    </div>`;
+                return;
+            }
+
+            const q = quizData[quizState.currentQuestion];
+            const optionsHTML = q.options.map((opt, idx) => `
+                <button id="opt-${idx}" onclick="selectAnswer(${idx})" class="quiz-btn" ${quizState.answered ? 'disabled' : ''}>${opt}</button>`).join('');
+            const feedbackHTML = quizState.answered ? `
+                <div class="mt-6 p-4 border-l-4 ${quizState.lastCorrect ? 'border-green-500 bg-green-50' : 'border-red-500 bg-red-50'} slide-anim">
+                    <p class="font-bold text-lg mb-2 ${quizState.lastCorrect ? 'text-green-800' : 'text-red-800'}">${quizState.lastCorrect ? 'Σωστό ✓' : 'Λάθος ✗'}</p>
+                    <p class="text-sm">${q.explanation}</p>
+                    <button onclick="nextQuestion()" class="btn-nav bg-black text-white mt-4">Επόμενη ερώτηση</button>
+                </div>` : '';
+
+            container.innerHTML = `
+                <div class="lab-card-title">02. Έλεγχος γνώσεων (${quizState.currentQuestion + 1} / ${quizData.length})</div>
+                <p class="font-bold mb-6 text-xl leading-tight">${q.q}</p>
+                <div class="flex flex-col gap-2">${optionsHTML}</div>
+                ${feedbackHTML}`;
+
+            if (quizState.answered) {
+                document.getElementById(`opt-${q.correct}`).classList.add('correct');
+                if (!quizState.lastCorrect) document.getElementById(`opt-${quizState.chosenIndex}`).classList.add('wrong');
+            }
+        }
+        function selectAnswer(index) {
+            if (quizState.answered) return;
+            const q = courseData[activeWeek].lab.quiz[quizState.currentQuestion];
+            const isCorrect = index === q.correct;
+            if (isCorrect) quizState.score++;
+            Object.assign(quizState, { answered: true, lastCorrect: isCorrect, chosenIndex: index });
+            renderQuiz();
+        }
+        function nextQuestion() { quizState.currentQuestion++; quizState.answered = false; renderQuiz(); }
+        function restartQuiz() { quizState = { currentQuestion: 0, score: 0, answered: false }; renderQuiz(); }
+
+        // --- KEYBOARD: βελάκια για διαφάνειες ---
+        document.addEventListener('keydown', (e) => {
+            if (document.getElementById('app').classList.contains('hidden')) return;
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+    </script>
+</body>
+</html>
