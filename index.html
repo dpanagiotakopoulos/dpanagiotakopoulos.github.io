@@ -123,7 +123,7 @@
         .cv-download-btn:hover { background: var(--accent); color: #fff; transform: translateY(-2px); }
 
         /* --- ΝΕΟΣ ΚΩΔΙΚΑΣ ΓΙΑ ΤΟ 3D ΠΟΡΤΡΕΤΟ ΚΑΙ ΤΟΥΣ ΦΟΙΤΗΤΕΣ --- */
-        .portrait-3d-box {
+       .portrait-3d-box {
              width: 100%; 
              height: 180px; 
              margin-bottom: 20px; 
@@ -369,10 +369,7 @@
 
         <aside class="glass-sidebar glass-panel">
            <div class="sidebar-header">
-                <!-- ΝΕΟ: Το 3D Πορτρέτο σου με εφέ κίνησης -->
-                <div class="portrait-3d-box">
-                    <img src="profile_3d.png" alt="3D Dimitris" class="portrait-3d-img">
-                </div>
+               <div id="sidebar-3d-portrait" class="portrait-3d-box"></div>
 
                 <h1>Dr. Dimitris<br>Panagiotakopoulos</h1>
                 <div class="header-meta mono">
@@ -1379,7 +1376,7 @@
 
         setLanguage(currentLang);
 
-        /* ========================================================
+       /* ========================================================
            🪐 INTERACTIVE 3D MODELS (HERO + 4 PILLARS)
            ======================================================== */
         (function initAll3D() {
@@ -1450,6 +1447,44 @@
                     renderer.setSize(container.clientWidth, container.clientHeight);
                 });
             }
+
+            /* 0. SIDEBAR 3D PORTRAIT (Από εικόνα σε Wireframe) */
+            createInteractiveScene('sidebar-3d-portrait', (group) => {
+                // Δημιουργούμε ένα επίπεδο με πολλά πολύγωνα (80x80) για να έχει λεπτομέρεια
+                const geom = new THREE.PlaneGeometry(3, 3.5, 80, 80);
+                
+                // Χρησιμοποιούμε Standard Material για να μπορεί να παραμορφωθεί (displace)
+                const mat = new THREE.MeshStandardMaterial({ 
+                    color: 0x0284c7, 
+                    wireframe: true,
+                    displacementScale: 0.5 // Πόσο έντονο θα είναι το 3D ανάγλυφο
+                });
+                
+                const mesh = new THREE.Mesh(geom, mat);
+                group.add(mesh);
+
+                // Φως για να φαίνεται σωστά το υλικό
+                const ambientLight = new THREE.AmbientLight(0xffffff, 2);
+                group.add(ambientLight);
+
+                // Φορτώνουμε την εικόνα προφίλ και την εφαρμόζουμε ως χάρτη βάθους
+                const loader = new THREE.TextureLoader();
+                loader.load('profile.jpg', (texture) => {
+                    mat.displacementMap = texture;
+                    mat.needsUpdate = true;
+                });
+
+                return {
+                    onFrame: () => { 
+                        // Ελαφριά κίνηση σαν να "αναπνέει"
+                        mesh.rotation.y = Math.sin(Date.now() * 0.0005) * 0.15;
+                        mesh.rotation.x = Math.sin(Date.now() * 0.0003) * 0.1;
+                    },
+                    updateTheme: (isDark) => {
+                        mat.color.setHex(isDark ? 0x38bdf8 : 0x0284c7);
+                    }
+                };
+            });
 
             /* 1. HERO SENSORY CORE */
             createInteractiveScene('three-hero', (group) => {
@@ -1545,6 +1580,3 @@
                 themeUpdaters.forEach(fn => fn(isDark));
             };
         })();
-    </script>
-</body>
-</html>
