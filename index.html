@@ -122,8 +122,8 @@
         }
         .cv-download-btn:hover { background: var(--accent); color: #fff; transform: translateY(-2px); }
 
-        /* --- ΝΕΟΣ ΚΩΔΙΚΑΣ ΓΙΑ ΤΟ 3D ΠΟΡΤΡΕΤΟ ΚΑΙ ΤΟΥΣ ΦΟΙΤΗΤΕΣ --- */
-       .portrait-3d-box {
+        /* 3D Sidebar Box */
+        .portrait-3d-box {
              width: 100%; 
              height: 180px; 
              margin-bottom: 20px; 
@@ -135,6 +135,7 @@
         }
         .portrait-3d-box:active { cursor: grabbing; }
 
+        /* Student Badge */
         .student-badge {
             margin-top: 15px;
             padding: 10px;
@@ -152,7 +153,6 @@
             color: #fff;
             transform: translateY(-2px);
         }
-        /* -------------------------------------------------------- */
 
         .sidebar-nav { display: flex; flex-direction: column; gap: 8px; flex-grow: 1; margin-top: 20px; }
         .nav-item {
@@ -368,8 +368,9 @@
         </aside>
 
         <aside class="glass-sidebar glass-panel">
-           <div class="sidebar-header">
-               <div id="sidebar-3d-portrait" class="portrait-3d-box"></div>
+            <div class="sidebar-header">
+                <!-- 3D Πορτρέτο -->
+                <div id="sidebar-3d-portrait" class="portrait-3d-box"></div>
 
                 <h1>Dr. Dimitris<br>Panagiotakopoulos</h1>
                 <div class="header-meta mono">
@@ -388,10 +389,10 @@
                     <span>ACADEMIC CV (PDF)</span>
                 </a>
 
-                <!-- ΝΕΟ: Badge για Φοιτητές -->
-                <div class="student-badge">
+                <!-- Badge για Φοιτητές -->
+                <a href="#teaching" class="student-badge" style="display: block; text-decoration: none;">
                     <span class="mono" id="txt-student-badge">🎓 OPEN FOR THESIS SUPERVISION</span>
-                </div>
+                </a>
             </div>
             
             <nav class="sidebar-nav">
@@ -402,8 +403,9 @@
                 <a href="#art" class="nav-item" id="nav-art">Art Portfolio</a>
                 <a href="#projects" class="nav-item" id="nav-prj">Funded Projects</a>
                 <a href="#publications" class="nav-item" id="nav-5">Publications</a>
-<a href="#blog" class="nav-item" id="nav-blog">Articles</a>
-<a href="#activity" class="nav-item" id="nav-6">Activity</a>
+                <a href="#blog" class="nav-item" id="nav-blog">Articles & Essays</a>
+                <a href="#teaching" class="nav-item" id="nav-teach">Teaching</a>
+                <a href="#activity" class="nav-item" id="nav-6">Activity</a>
                 <a href="#vcard" class="nav-item" id="nav-vcard">Digital vCard</a>
                 <a href="#contact" class="nav-item" id="nav-7">Contact</a>
             </nav>
@@ -449,7 +451,6 @@
                         <a href="https://www.didaktorika.gr/eadd/handle/10442/62414" target="_blank" class="phd-meta-link">
                             <span>[EADD / National Archive Record: 10442/62414] ↗</span>
                         </a>
-                        <!-- Supervisor Link in Dissertation -->
                         <a href="https://gd.uniwa.gr/profile/dr-metzitakos-rossetos/" target="_blank" class="phd-meta-link" style="margin-top: -10px;">
                             <span id="txt-phd-supervisor">Supervisor: Dr. Rossetos Metzitakos ↗</span>
                         </a>
@@ -491,9 +492,9 @@
                     <div class="list-col-right">
                         <span class="list-title" id="edu-1-t">Ph.D. (8 EQF)</span>
                         <span class="list-meta" id="edu-1-d">
-                            <a href="https://gd.uniwa.gr/en/doctoral-studies-programme/" target="_blank" class="pub-link" style="margin-left: 0; margin-right: 5px;">University of West Attica</a> — Dept. of Graphic Design & Visual Communication.<br>
+                            <a href="https://gd.uniwa.gr/en/doctoral-studies-programme/" target="_blank" class="pub-link" style="margin-left: 0; margin-right: 5px;">University of West Attica ↗</a> — Dept. of Graphic Design & Visual Communication.<br>
                             <em>Thesis:</em> "Digital Scent Technology in Metaverse Environments"<br>
-                            <em>Supervised by:</em> <a href="https://gd.uniwa.gr/profile/dr-metzitakos-rossetos/" target="_blank" class="pub-link" style="margin-left: 0;">Dr. Rossetos Metzitakos</a><br>
+                            <em>Supervised by:</em> <a href="https://gd.uniwa.gr/profile/dr-metzitakos-rossetos/" target="_blank" class="pub-link" style="margin-left: 0;">Dr. Rossetos Metzitakos ↗</a><br>
                             Conducting independent, high-standard original scientific research under an advisory committee to contribute meaningfully to science and staff academic/research institutions. 
                             <a href="https://www.didaktorika.gr/eadd/handle/10442/62414" target="_blank" class="pub-link">[EADD Record: 10442/62414]</a>
                         </span>
@@ -505,7 +506,7 @@
                     <div class="list-col-right">
                         <span class="list-title" id="edu-2-t">Pedagogical & Teaching Competence Certification</span>
                         <span class="list-meta" id="edu-2-d">
-                            <a href="https://avarts.ionio.gr/artedu/" target="_blank" class="pub-link" style="margin-left: 0; margin-right: 5px;">Ionian University</a> — Teaching Practicum: 7th Gymnasium of Corfu.<br>
+                            <a href="https://avarts.ionio.gr/artedu/" target="_blank" class="pub-link" style="margin-left: 0; margin-right: 5px;">Ionian University ↗</a> — Teaching Practicum: 7th Gymnasium of Corfu.<br>
                             Full certification and professional qualification for teaching Arts and Multimedia in Primary & Secondary Education, focusing on modern instructional design, experiential learning, and interactive methodologies.
                         </span>
                     </div>
@@ -516,7 +517,7 @@
                     <div class="list-col-right">
                         <span class="list-title" id="edu-3-t">MSc in Intelligent Packaging: New Technologies & Marketing</span>
                         <span class="list-meta" id="edu-3-d">
-                            <a href="http://intelligentpackaging.uniwa.gr/" target="_blank" class="pub-link" style="margin-left: 0; margin-right: 5px;">University of West Attica</a> (90 ECTS, 7 EQF).<br>
+                            <a href="http://intelligentpackaging.uniwa.gr/" target="_blank" class="pub-link" style="margin-left: 0; margin-right: 5px;">University of West Attica ↗</a> (90 ECTS, 7 EQF).<br>
                             Bridging the physical and digital worlds through intelligent packaging technologies, innovative design, mobile technology integration, and comprehensive marketing strategy.
                         </span>
                     </div>
@@ -527,7 +528,7 @@
                     <div class="list-col-right">
                         <span class="list-title" id="edu-4-t">Integrated Master in Audio Visual Arts</span>
                         <span class="list-meta" id="edu-4-d">
-                            <a href="https://avarts.ionio.gr/" target="_blank" class="pub-link" style="margin-left: 0; margin-right: 5px;">Ionian University</a> — Dept. of Audio & Visual Arts (300 ECTS, 7 EQF).<br>
+                            <a href="https://avarts.ionio.gr/" target="_blank" class="pub-link" style="margin-left: 0; margin-right: 5px;">Ionian University ↗</a> — Dept. of Audio & Visual Arts (300 ECTS, 7 EQF).<br>
                             Five-year program covering a broad spectrum of audiovisual approaches, offering a strong theoretical foundation that empowers creative and interactive digital arts.
                         </span>
                     </div>
@@ -538,67 +539,15 @@
                     <div class="list-col-right">
                         <span class="list-title" id="edu-5-t">Erasmus+ Exchange (MFA Module)</span>
                         <span class="list-meta" id="edu-5-d">
-                            <a href="https://www.cardiffmet.ac.uk/courses/postgraduate/master-of-fine-art/?utm_source=gemini" target="_blank" class="pub-link" style="margin-left: 0; margin-right: 5px;">Cardiff Metropolitan University</a> (UK).<br>
+                            <a href="https://www.cardiffmet.ac.uk/courses/postgraduate/master-of-fine-art/?utm_source=gemini" target="_blank" class="pub-link" style="margin-left: 0; margin-right: 5px;">Cardiff Metropolitan University ↗</a> (UK).<br>
                             Fine arts studio practice, critical research, and artistic experimentation in sculpture and spatial installations within an international academic setting.
                         </span>
                     </div>
                 </div>
             </section>
 
-            <section id="teaching">
-                <span class="section-label mono" id="lbl-5">05 // TEACHING EXPERIENCE</span>
-                <div class="list-row">
-                    <div class="list-col-left">2020 - 2026</div>
-                    <div class="list-col-right">
-                        <span class="list-title" id="tea-1-t">Teaching Assistant (Academic Fellow)</span>
-                        <span class="list-meta" id="tea-1-d">University of West Attica. Courses: 1) <em>Multimedia Graphic Design</em>, 2) <em>Digital Interactive Multimedia Applications</em></span>
-                    </div>
-                </div>
-                <div class="list-row">
-                    <div class="list-col-left">2020 - 2026</div>
-                    <div class="list-col-right">
-                        <span class="list-title" id="tea-2-t">Mentoring & Thesis Supervision</span>
-                        <span class="list-meta" id="tea-2-d">Master thesis Co-Supervisions & Mentoring programme, University of West Attica.</span>
-                    </div>
-                </div>
-            </section>
-
-            <section id="mobility">
-                <span class="section-label mono" id="lbl-6">06 // INTERNATIONAL MOBILITY</span>
-                
-                <div class="mobility-grid">
-                    <div class="mobility-content">
-                        <div class="list-row" style="background:transparent; border:none; padding:0; margin:0; box-shadow:none;">
-                            <div class="list-col-left" style="width:100px;">2026</div>
-                            <div class="list-col-right">
-                                <span class="list-title" id="mob-2-t">Visiting Researcher</span>
-                                <span class="list-meta" id="mob-2-d">Kenyatta University, Nairobi, Kenya.</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mobility-img-box">
-                        <img src="kenya.jpg.jpg" alt="Kenyatta University" class="mobility-img">
-                    </div>
-                </div>
-
-                <div class="mobility-grid">
-                    <div class="mobility-content">
-                        <div class="list-row" style="background:transparent; border:none; padding:0; margin:0; box-shadow:none;">
-                            <div class="list-col-left" style="width:100px;">2025</div>
-                            <div class="list-col-right">
-                                <span class="list-title" id="mob-1-t">Erasmus+ ICM – Visiting PhD Researcher</span>
-                                <span class="list-meta" id="mob-1-d">Technical University of Moldova (UTM), Chișinău.</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mobility-img-box">
-                        <img src="phd-research-mobility-moldova.jpg" alt="Technical University of Moldova" class="mobility-img">
-                    </div>
-                </div>
-            </section>
-
             <section id="themes">
-                <span class="section-label mono" id="lbl-7">07 // RESEARCH THEMES & CASE STUDIES</span>
+                <span class="section-label mono" id="lbl-7">04 // RESEARCH THEMES & CASE STUDIES</span>
                 <div class="bento-grid">
                     <div class="project-card card-large">
                         <img src="project8.jpg" alt="Sacred Futurism Art" class="p-img">
@@ -708,8 +657,91 @@
                 </div>
             </section>
 
+            <section id="teaching">
+                <span class="section-label mono" id="lbl-5">05 // TEACHING & THESIS SUPERVISION</span>
+                
+                <div class="list-row">
+                    <div class="list-col-left">2020 - 2026</div>
+                    <div class="list-col-right">
+                        <span class="list-title" id="tea-1-t">Teaching Assistant (Academic Fellow)</span>
+                        <span class="list-meta" id="tea-1-d">University of West Attica. Courses: 1) <em>Multimedia Graphic Design</em>, 2) <em>Digital Interactive Multimedia Applications</em></span>
+                    </div>
+                </div>
+                <div class="list-row">
+                    <div class="list-col-left">2020 - 2026</div>
+                    <div class="list-col-right">
+                        <span class="list-title" id="tea-2-t">Mentoring & Thesis Supervision</span>
+                        <span class="list-meta" id="tea-2-d">Master thesis Co-Supervisions & Mentoring programme, University of West Attica.</span>
+                    </div>
+                </div>
+
+                <div style="margin-top: 45px; margin-bottom: 20px;">
+                    <h3 style="font-family: var(--font-head); font-size: 1.3rem; margin-bottom: 10px; color: var(--fg);" id="sup-title">Open Topics for Thesis Supervision</h3>
+                    <p style="color: var(--fg-muted); font-size: 0.95rem; line-height: 1.5;" id="sup-desc">
+                        I am currently accepting highly motivated undergraduate and postgraduate students. Below are some indicative research areas, though I am always open to discussing your own innovative proposals:
+                    </p>
+                </div>
+
+                <div class="bento-grid">
+                    <div class="project-card" style="padding: 20px;">
+                        <span class="p-tag mono">[XR / HCI]</span>
+                        <h4 class="p-title" id="sup-1-t" style="font-size: 1.1rem; margin-top: 5px;">Olfactory Interfaces & Metaverse</h4>
+                        <p class="p-desc" id="sup-1-d" style="margin-bottom: 0;">Design and evaluation of VR/AR experiences focusing on digital scent technology and sensory immersion.</p>
+                    </div>
+                    <div class="project-card" style="padding: 20px;">
+                        <span class="p-tag mono">[IOT / TOURISM]</span>
+                        <h4 class="p-title" id="sup-2-t" style="font-size: 1.1rem; margin-top: 5px;">Intelligent Packaging & Phygital UX</h4>
+                        <p class="p-desc" id="sup-2-d" style="margin-bottom: 0;">Leveraging AR, NFC, and IoT technologies to bridge physical objects with digital transmedia content.</p>
+                    </div>
+                    <div class="project-card" style="padding: 20px;">
+                        <span class="p-tag mono">[ETHICS / UX]</span>
+                        <h4 class="p-title" id="sup-3-t" style="font-size: 1.1rem; margin-top: 5px;">Ethical Metaverse Design</h4>
+                        <p class="p-desc" id="sup-3-d" style="margin-bottom: 0;">Research on participatory design, neurorights, inclusivity, and mental privacy in Web 4.0.</p>
+                    </div>
+                    <div class="project-card" style="padding: 20px;">
+                        <span class="p-tag mono">[ART / AI]</span>
+                        <h4 class="p-title" id="sup-4-t" style="font-size: 1.1rem; margin-top: 5px;">Affective Computing & Interactive Art</h4>
+                        <p class="p-desc" id="sup-4-d" style="margin-bottom: 0;">Exploring emotional recognition systems, generative AI, and human-robot interaction in contemporary art installations.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="mobility">
+                <span class="section-label mono" id="lbl-6">06 // INTERNATIONAL MOBILITY</span>
+                
+                <div class="mobility-grid">
+                    <div class="mobility-content">
+                        <div class="list-row" style="background:transparent; border:none; padding:0; margin:0; box-shadow:none;">
+                            <div class="list-col-left" style="width:100px;">2026</div>
+                            <div class="list-col-right">
+                                <span class="list-title" id="mob-2-t">Visiting Researcher</span>
+                                <span class="list-meta" id="mob-2-d">Kenyatta University, Nairobi, Kenya.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mobility-img-box">
+                        <img src="kenya.jpg.jpg" alt="Kenyatta University" class="mobility-img">
+                    </div>
+                </div>
+
+                <div class="mobility-grid">
+                    <div class="mobility-content">
+                        <div class="list-row" style="background:transparent; border:none; padding:0; margin:0; box-shadow:none;">
+                            <div class="list-col-left" style="width:100px;">2025</div>
+                            <div class="list-col-right">
+                                <span class="list-title" id="mob-1-t">Erasmus+ ICM – Visiting PhD Researcher</span>
+                                <span class="list-meta" id="mob-1-d">Technical University of Moldova (UTM), Chișinău.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mobility-img-box">
+                        <img src="phd-research-mobility-moldova.jpg" alt="Technical University of Moldova" class="mobility-img">
+                    </div>
+                </div>
+            </section>
+
             <section id="art">
-                <span class="section-label mono" id="lbl-art">08 // ART PORTFOLIO</span>
+                <span class="section-label mono" id="lbl-art">07 // ART PORTFOLIO</span>
                 <div class="bento-grid">
                     <div class="project-card">
                         <img src="art_nature.jpg" alt="Nature" class="p-img">
@@ -965,51 +997,51 @@
             </section>
 
             <section id="blog">
-    <span class="section-label mono" id="lbl-blog">10 // POPULAR SCIENCE ARTICLES</span>
-    
-    <div class="list-row">
-        <div class="list-col-left">2024</div>
-        <div class="list-col-right">
-            <span class="list-title" id="blog-1-t">Who decides what you smell in the metaverse?</span>
-            <span class="list-meta">
-                <span id="blog-1-d">An exploration of the ethical and design implications of olfactory experiences in virtual worlds.</span>
-                <a href="https://medium.com/@dpana/who-decides-what-you-smell-in-the-metaverse-456836129e2e" target="_blank" class="pub-link">[READ ON MEDIUM]</a>
-            </span>
-        </div>
-    </div>
+                <span class="section-label mono" id="lbl-blog">10 // ARTICLES & ESSAYS</span>
+                
+                <div class="list-row">
+                    <div class="list-col-left">2024</div>
+                    <div class="list-col-right">
+                        <span class="list-title" id="blog-1-t">Who decides what you smell in the metaverse?</span>
+                        <span class="list-meta">
+                            <span id="blog-1-d">An exploration of the ethical and design implications of olfactory experiences in virtual worlds.</span>
+                            <a href="https://medium.com/@dpana/who-decides-what-you-smell-in-the-metaverse-456836129e2e" target="_blank" class="pub-link">[READ ARTICLE ↗]</a>
+                        </span>
+                    </div>
+                </div>
 
-    <div class="list-row">
-        <div class="list-col-left">2024</div>
-        <div class="list-col-right">
-            <span class="list-title" id="blog-2-t">Who gets to design the Metaverse?</span>
-            <span class="list-meta">
-                <span id="blog-2-d">Discussing the democratization, inclusivity, and architectural authority in creating the Metaverse.</span>
-                <a href="https://medium.com/@dpana/who-gets-to-design-the-metaverse-4234ec701725" target="_blank" class="pub-link">[READ ON MEDIUM]</a>
-            </span>
-        </div>
-    </div>
+                <div class="list-row">
+                    <div class="list-col-left">2024</div>
+                    <div class="list-col-right">
+                        <span class="list-title" id="blog-2-t">Who gets to design the Metaverse?</span>
+                        <span class="list-meta">
+                            <span id="blog-2-d">Discussing the democratization, inclusivity, and architectural authority in creating the Metaverse.</span>
+                            <a href="https://medium.com/@dpana/who-gets-to-design-the-metaverse-4234ec701725" target="_blank" class="pub-link">[READ ARTICLE ↗]</a>
+                        </span>
+                    </div>
+                </div>
 
-    <div class="list-row">
-        <div class="list-col-left">2024</div>
-        <div class="list-col-right">
-            <span class="list-title" id="blog-3-t">Can the Internet smell?</span>
-            <span class="list-meta">
-                <span id="blog-3-d">A look into the Internet of Senses and how digital scent technology is becoming a reality.</span>
-                <a href="https://medium.com/@dpana/can-the-internet-smell-50adfd695942" target="_blank" class="pub-link">[READ ON MEDIUM]</a>
-            </span>
-        </div>
-    </div>
-    
-    <div style="margin-top: 20px;">
-        <a href="https://medium.com/@dpana" target="_blank" class="cv-download-btn" style="width: auto; padding: 12px 25px;">
-            <svg style="width: 18px; height: 18px; fill: currentColor;" viewBox="0 0 1043.63 592.71"><path d="M588.67 296.36c0 163.67-131.78 296.35-294.33 296.35S0 460 0 296.36 131.78 0 294.34 0s294.33 132.69 294.33 296.36M911.56 296.36c0 154.06-65.89 279-147.17 279s-147.17-124.94-147.17-279 65.88-279 147.16-279 147.17 124.9 147.17 279M1043.63 296.36c0 138-23.17 249.94-51.76 249.94s-51.75-111.91-51.75-249.94 23.17-249.94 51.75-249.94 51.76 111.9 51.76 249.94"/></svg>
-            <span id="blog-all" style="margin-left: 8px;">VIEW ALL ARTICLES ON MEDIUM</span>
-        </a>
-    </div>
-</section>
+                <div class="list-row">
+                    <div class="list-col-left">2024</div>
+                    <div class="list-col-right">
+                        <span class="list-title" id="blog-3-t">Can the Internet smell?</span>
+                        <span class="list-meta">
+                            <span id="blog-3-d">A look into the Internet of Senses and how digital scent technology is becoming a reality.</span>
+                            <a href="https://medium.com/@dpana/can-the-internet-smell-50adfd695942" target="_blank" class="pub-link">[READ ARTICLE ↗]</a>
+                        </span>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 20px;">
+                    <a href="https://medium.com/@dpana" target="_blank" class="cv-download-btn" style="width: auto; padding: 12px 25px;">
+                        <svg style="width: 18px; height: 18px; fill: currentColor;" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                        <span id="blog-all" style="margin-left: 8px;">VIEW ALL ARTICLES</span>
+                    </a>
+                </div>
+            </section>
 
             <section id="activity">
-                <span class="section-label mono" id="lbl-10">10 // ACADEMIC SERVICE & EDITORIAL ACTIVITY</span>
+                <span class="section-label mono" id="lbl-10">11 // ACADEMIC SERVICE & EDITORIAL ACTIVITY</span>
                 <div class="list-row">
                     <div class="list-col-left">2025 - Pres.</div>
                     <div class="list-col-right">
@@ -1034,7 +1066,7 @@
             </section>
 
             <section id="talks">
-                <span class="section-label mono" id="lbl-11">11 // INVITED TALKS</span>
+                <span class="section-label mono" id="lbl-11">12 // INVITED TALKS</span>
                 <div class="list-row">
                     <div class="list-col-left">2024</div>
                     <div class="list-col-right">
@@ -1059,21 +1091,21 @@
             </section>
 
             <section id="languages">
-                <span class="section-label mono" id="lbl-12">12 // LANGUAGES</span>
+                <span class="section-label mono" id="lbl-12">13 // LANGUAGES</span>
                 <div style="padding: 10px;">
                     <p id="txt-lang" style="margin: 0; font-weight: bold; color: var(--accent);">Greek (Native), English (Fluent), Italian (Fluent).</p>
                 </div>
             </section>
 
             <section id="vcard">
-                <span class="section-label mono" id="lbl-vcard">13 // DIGITAL VCARD</span>
+                <span class="section-label mono" id="lbl-vcard">14 // DIGITAL VCARD</span>
                 <div class="vcard-container">
                     <iframe class="vcard-frame" src="card.html"></iframe>
                 </div>
             </section>
 
             <section id="contact">
-                <span class="section-label mono" id="lbl-13">14 // CONTACT & LOCATION</span>
+                <span class="section-label mono" id="lbl-13">15 // CONTACT & LOCATION</span>
                 <div class="contact-cta">
                     <p style="margin: 0; font-style: italic; font-size: 1.1rem; color: var(--accent);" id="txt-contact-quote">
                         "Feel free to reach out for research inquiries, collaborations, or student supervision. I am always open to discussing innovative projects and ideas."
@@ -1136,12 +1168,9 @@
             "txt-3d-hint": "⟳ DRAG TO ROTATE 3D SENSORY CORE",
             "nav-1": "About", "nav-2": "Dissertation", "nav-3": "Education",
             "nav-4": "Research Themes", "nav-art": "Art Portfolio", "nav-prj": "Funded Projects", 
-            "nav-5": "Publications", 
-            
-            // --- ΝΕΑ ΠΡΟΣΘΗΚΗ: Το όνομα στο μενού για το Medium ---
-            "nav-blog": "Medium Articles", 
-            
+            "nav-5": "Publications", "nav-blog": "Articles & Essays", "nav-teach": "Teaching",
             "nav-6": "Activity", "nav-vcard": "Digital vCard", "nav-7": "Contact",
+            "txt-student-badge": "🎓 OPEN FOR THESIS SUPERVISION",
             "lbl-1": "01 // PROFILE",
             "txt-bio-1": "Dr. Dimitris Panagiotakopoulos holds a Ph.D. and was a member of the \"Design, Interior Architecture & Audiovisual Documentation\" research laboratory at the University of West Attica, where he also served as an Academic Fellow (Teaching Assistant).",
             "txt-bio-2": "His research interests lie within the broader scope of multimedia science, focusing on interaction design and the production process. His doctoral thesis specifically explores <strong>Digital Scent Technology</strong> within the Metaverse, investigating how multisensory interfaces can enhance user experience.",
@@ -1161,17 +1190,23 @@
             "edu-3-d": "<a href=\"http://intelligentpackaging.uniwa.gr/\" target=\"_blank\" style=\"color: var(--accent); font-weight: bold; text-decoration: none;\">University of West Attica ↗</a> (90 ECTS, 7 EQF).<br>Bridging the physical and digital worlds through intelligent packaging technologies, innovative design, mobile technology integration, and comprehensive marketing strategy.",
             "edu-4-d": "<a href=\"https://avarts.ionio.gr/\" target=\"_blank\" style=\"color: var(--accent); font-weight: bold; text-decoration: none;\">Ionian University ↗</a> — Dept. of Audio & Visual Arts (300 ECTS, 7 EQF).<br>Five-year program covering a broad spectrum of audiovisual approaches, offering a strong theoretical foundation that empowers creative and interactive digital arts.",
             "edu-5-d": "<a href=\"https://www.cardiffmet.ac.uk/courses/postgraduate/master-of-fine-art/?utm_source=gemini\" target=\"_blank\" style=\"color: var(--accent); font-weight: bold; text-decoration: none;\">Cardiff Metropolitan University ↗</a> (UK).<br>Fine arts studio practice, critical research, and artistic experimentation in sculpture and spatial installations within an international academic setting.",
-            "aw-1-t": "Most Popular Article Award", "aw-1-d": "Awarded by <em>IEEE IT Professional</em> for the article \"Digital Scent Technology Toward the Internet of Senses and the Metaverse\".",
-            "aw-2-t": "Doctorate Scholarship", "aw-2-d": "Special Account for Research Funds (ELKE), University of West Attica.",
-            "aw-3-t": "Erasmus+ Scholarship for Traineeship", "aw-3-d": "University of Bologna, Italy (Digital Humanities).",
-            "aw-4-t": "Erasmus+ Scholarship for Studies", "aw-4-d": "Cardiff Metropolitan University, UK (Master of Fine Arts).",
-            "lbl-5": "05 // TEACHING EXPERIENCE",
+            "lbl-5": "05 // TEACHING & THESIS SUPERVISION",
             "tea-1-t": "Teaching Assistant (Academic Fellow)", "tea-1-d": "University of West Attica. Courses: 1) <em>Multimedia Graphic Design</em>, 2) <em>Digital Interactive Multimedia Applications</em>",
             "tea-2-t": "Mentoring & Thesis Supervision", "tea-2-d": "Master thesis Co-Supervisions & Mentoring programme, University of West Attica.",
+            "sup-title": "Open Topics for Thesis Supervision",
+            "sup-desc": "I am currently accepting highly motivated undergraduate and postgraduate students. Below are some indicative research areas, though I am always open to discussing your own innovative proposals:",
+            "sup-1-t": "Olfactory Interfaces & Metaverse",
+            "sup-1-d": "Design and evaluation of VR/AR experiences focusing on digital scent technology and sensory immersion.",
+            "sup-2-t": "Intelligent Packaging & Phygital UX",
+            "sup-2-d": "Leveraging AR, NFC, and IoT technologies to bridge physical objects with digital transmedia content.",
+            "sup-3-t": "Ethical Metaverse Design",
+            "sup-3-d": "Research on participatory design, neurorights, inclusivity, and mental privacy in Web 4.0.",
+            "sup-4-t": "Affective Computing & Interactive Art",
+            "sup-4-d": "Exploring emotional recognition systems, generative AI, and human-robot interaction in contemporary art installations.",
             "lbl-6": "06 // INTERNATIONAL MOBILITY",
             "mob-1-t": "Erasmus+ ICM – Visiting PhD Researcher", "mob-1-d": "Technical University of Moldova (UTM), Chișinău.",
             "mob-2-t": "Visiting Researcher", "mob-2-d": "Kenyatta University, Nairobi, Kenya.",
-            "lbl-7": "07 // RESEARCH THEMES & CASE STUDIES",
+            "lbl-7": "04 // RESEARCH THEMES & CASE STUDIES",
             "pj-1-t": "Sacred Futurism", "pj-1-d": "The project presents a series of artworks and their analysis under the theme of Sacred Futurism. It explores the contrast between the sacred and technology by depicting robots in the roles of traditional holy figures, rendered in a Byzantine style. Set against post-apocalyptic landscapes, the works address ecological destruction while suggesting that, in a dystopian future, robots may rebuild society based on ethical values and the protection of life. The analysis examines the relationship between religion, the metaverse, robotics, and artificial intelligence, discussing concepts such as transhumanism and \"Robot Theology.\"",
             "pj-2-t": "Digital Scent Technology & IoS", "pj-2-d": "Exploring multisensory interface technologies for HCI, focusing on digital scent. Reviews current electrical interfaces, chemical odor delivery, and the commercial potential of the Internet of Senses (IoS) and 6G infrastructure.",
             "pj-3-t": "Spatial User Interfaces", "pj-3-d": "Developing 3D controls for olfactory diffusion in immersive environments. The project addresses the lack of visual tools for designing scent in the Metaverse.",
@@ -1183,7 +1218,7 @@
             "pj-9-t": "ETHICAL METAVERSE", "pj-9-d": "Participatory Design (PD) as an ethical necessity for building an inclusive Metaverse. Rooted in the philosophy of Ubuntu.",
             "pj-10-t": "KAFKAESQUE LABYRINTH", "pj-10-d": "Through an innovative educational approach to Kafka's work, hypertext fiction practices are employed. In search of the thread of interpretation, thoughts, experiences, and reflections are transformed into a creative artistic response. The interpretative process emerges as a field where art and technology intersect. <br><br> @ Panagiotakopoulos / Hyper-Kafka Memory Rooms",
             "pj-11-t": "FLOQ BOX", "pj-11-d": "The Flow Box is inspired by the concept of \"fluidity\" in the modern world and explores human emotions. The device uses Affective Computing technologies to recognize the user's emotions, which it then metabolizes and represents through holographic simulation. With industrial materials (PVC, metal) and sharp geometries, the Flow Box is not just a box, but a communication channel between the subconscious and visual representation, transforming unboxing into a deeply personal, experiential experience.",
-            "lbl-art": "08 // ART PORTFOLIO",
+            "lbl-art": "07 // ART PORTFOLIO",
             "art-1-t": "Flow in the Forest", "art-1-d": "Landscape composition with running water and atmospheric fog. A study on nature's textures and forest light.",
             "art-2-t": "Matter and Motion", "art-2-d": "Mixed technique with clay and paper strips. The contrast between the solidity of the base and the lightness of geometric lines.",
             "art-3-t": "Symbols and Matter", "art-3-d": "Spatial installation. Clay with metal elements in dialogue with traditional iconography, exploring memory and decay.",
@@ -1194,28 +1229,25 @@
             "art-8-t": "Chrome & Void", "art-8-d": "Digital abstraction focusing on metallic surfaces and the absence of light in virtual spaces.",
             "lbl-8": "08 // FUNDED RESEARCH PROJECTS", "res-1-d": "Creation of a thematic channel for the Europeana platform. <a href=\"https://pro.europeana.eu/project/byzantine-art-and-archaeology\" target=\"_blank\" class=\"pub-link\">[VIEW PROJECT]</a>",
             "lbl-9": "09 // SELECTED PUBLICATIONS",
-            
-            // --- ΝΕΑ ΠΡΟΣΘΗΚΗ: Οι αγγλικές μεταφράσεις για τα άρθρα ---
-            "lbl-blog": "10 // MEDIUM ARTICLES",
+            "lbl-blog": "10 // ARTICLES & ESSAYS",
             "blog-1-t": "Who decides what you smell in the metaverse?",
             "blog-1-d": "An exploration of the ethical and design implications of olfactory experiences in virtual worlds.",
             "blog-2-t": "Who gets to design the Metaverse?",
             "blog-2-d": "Discussing the democratization, inclusivity, and architectural authority in creating the Metaverse.",
             "blog-3-t": "Can the Internet smell?",
             "blog-3-d": "A look into the Internet of Senses and how digital scent technology is becoming a reality.",
-            "blog-all": "VIEW ALL ARTICLES ON MEDIUM",
-            
-            "lbl-10": "10 // ACADEMIC SERVICE & EDITORIAL ACTIVITY",
+            "blog-all": "VIEW ALL ARTICLES",
+            "lbl-10": "11 // ACADEMIC SERVICE & EDITORIAL ACTIVITY",
             "act-1-t": "Editorial Board Member",
             "act-2-t": "Peer Reviewer", "act-2-d": "Cumulus Athens 2026 Conference. Evaluation and comments on submitted articles.",
             "act-3-t": "Publication Editor", "act-3-d": "<em>Proceedings of the 6th Scientific Conference: Intelligent Packaging.</em> ISBN: 978-618-5690-02-1.",
-            "lbl-11": "11 // INVITED TALKS",
+            "lbl-11": "12 // INVITED TALKS",
             "tlk-1-t": "Introduction to the Metaverse Phenomenon", "tlk-1-d": "14th Primary of Corfu, Scientific Project Partner of CulturePolis.",
             "tlk-2-t": "Enhancing Experience in Intelligent Packaging",
             "tlk-3-t": "From Reality to Digital (3D Survey)",
-            "lbl-12": "12 // LANGUAGES", "txt-lang": "Greek (Native), English (Fluent), Italian (Fluent).",
-            "lbl-vcard": "13 // DIGITAL VCARD",
-            "lbl-13": "14 // CONTACT & LOCATION",
+            "lbl-12": "13 // LANGUAGES", "txt-lang": "Greek (Native), English (Fluent), Italian (Fluent).",
+            "lbl-vcard": "14 // DIGITAL VCARD",
+            "lbl-13": "15 // CONTACT & LOCATION",
             "txt-contact-quote": "\"Feel free to reach out for research inquiries, collaborations, or student supervision. I am always open to discussing innovative projects and ideas.\"",
             "c-1": "Status", "c-dept": "Independent Researcher",
             "c-2": "Location", "c-uni": "Athens", "c-str": "Greece", "c-city": "",
@@ -1232,12 +1264,9 @@
             "txt-3d-hint": "⟳ ΣΥΡΕΤΕ ΓΙΑ ΠΕΡΙΣΤΡΟΦΗ 3D ΠΥΡΗΝΑ",
             "nav-1": "Προφίλ", "nav-2": "Διατριβή", "nav-3": "Εκπαίδευση",
             "nav-4": "Έρευνα", "nav-art": "Καλλιτεχνικό Έργο", "nav-prj": "Χρηματοδοτούμενα Έργα",
-            "nav-5": "Δημοσιεύσεις", 
-            
-            // --- ΝΕΑ ΠΡΟΣΘΗΚΗ: Το όνομα στο μενού για το Medium στα Ελληνικά ---
-            "nav-blog": "Άρθρα (Medium)", 
-            
+            "nav-5": "Δημοσιεύσεις", "nav-blog": "Άρθρα & Δοκίμια", "nav-teach": "Διδασκαλία",
             "nav-6": "Δραστηριότητα", "nav-vcard": "Ψηφιακή vCard", "nav-7": "Επικοινωνία",
+            "txt-student-badge": "🎓 ΑΝΟΙΧΤΟ ΓΙΑ ΕΠΙΒΛΕΨΗ ΠΤΥΧΙΑΚΩΝ/ΔΙΠΛΩΜΑΤΙΚΩΝ",
             "lbl-1": "01 // ΠΡΟΦΙΛ",
             "txt-bio-1": "Ο Δρ. Δημήτρης Παναγιωτακόπουλος είναι Διδάκτωρ και υπήρξε μέλος του ερευνητικού εργαστηρίου «Σχεδιασμού, Εσωτερικής Αρχιτεκτονικής & Οπτικοακουστικής Τεκμηρίωσης» του Πανεπιστημίου Δυτικής Αττικής, όπου υπηρέτησε και ως Ακαδημαϊκός Υπότροφος.",
             "txt-bio-2": "Τα ερευνητικά του ενδιαφέροντα εντάσσονται στο ευρύτερο πεδίο της επιστήμης των πολυμέσων, με έμφαση στον σχεδιασμό αλληλεπίδρασης. Η διδακτορική του διατριβή εξετάζει συγκεκριμένα την <strong>Τεχνολογία Ψηφιακής Οσμής</strong> (Digital Scent) στο Metaverse, διερευνώντας πώς οι πολυαισθητηριακές διεπαφές μπορούν να ενισχύσουν την εμπειρία του χρήστη.",
@@ -1257,18 +1286,23 @@
             "edu-3-d": "<a href=\"http://intelligentpackaging.uniwa.gr/\" target=\"_blank\" style=\"color: var(--accent); font-weight: bold; text-decoration: none;\">Πανεπιστήμιο Δυτικής Αττικής ↗</a> (90 ECTS, 7 EQF).<br>Σύνδεση του φυσικού με τον ψηφιακό κόσμο μέσα από τεχνολογίες ευφυούς συσκευασίας, μελέτη και σχεδιασμό καινοτόμων εφαρμογών, αξιοποίηση της κινητής τηλεφωνίας και ολοκληρωμένη προώθηση μέσω της επιστήμης του Marketing.",
             "edu-4-d": "<a href=\"https://avarts.ionio.gr/\" target=\"_blank\" style=\"color: var(--accent); font-weight: bold; text-decoration: none;\">Ιόνιο Πανεπιστήμιο ↗</a> — Τμήμα Τεχνών Ήχου & Εικόνας (300 ECTS, 7 EQF).<br>Πενταετές πρόγραμμα σπουδών που καλύπτει ένα ευρύ φάσμα προσεγγίσεων της εικόνας και του ήχου, προσφέροντας ένα ισχυρό θεωρητικό υπόβαθρο πάνω στο οποίο θεμελιώνονται οι δημιουργικές πτυχές των οπτικοακουστικών και διαδραστικών τεχνών.",
             "edu-5-d": "<a href=\"https://www.cardiffmet.ac.uk/courses/postgraduate/master-of-fine-art/?utm_source=gemini\" target=\"_blank\" style=\"color: var(--accent); font-weight: bold; text-decoration: none;\">Cardiff Metropolitan University ↗</a> (Ηνωμένο Βασίλειο).<br>Εργαστηριακή πρακτική καλών τεχνών, κριτική έρευνα και καλλιτεχνικός πειραματισμός στη γλυπτική και τις χωρικές εγκαταστάσεις σε διεθνές ακαδημαϊκό περιβάλλον.",
-            "lbl-4": "04 // ΒΡΑΒΕΙΑ & ΥΠΟΤΡΟΦΙΕΣ",
-            "aw-1-t": "Βραβείο Δημοφιλέστερου Άρθρου", "aw-1-d": "Απονεμήθηκε από το <em>IEEE IT Professional</em> για το άρθρο «Digital Scent Technology Toward the Internet of Senses and the Metaverse».",
-            "aw-2-t": "Υποτροφία Διδακτορικών Σπουδών", "aw-2-d": "Ειδικός Λογαριασμός Κονδυλίων Έρευνας (ΕΛΚΕ), ΠΑΔΑ.",
-            "aw-3-t": "Υποτροφία Erasmus+ για Πρακτική Άσκηση", "aw-3-d": "Πανεπιστήμιο της Μπολόνια, Ιταλία (Ψηφιακές Ανθρωπιστικές Επιστήμες).",
-            "aw-4-t": "Υποτροφία Erasmus+ για Σπουδές", "aw-4-d": "Cardiff Metropolitan University, ΗΒ (Master of Fine Arts).",
-            "lbl-5": "05 // ΔΙΔΑΚΤΙΚΗ ΕΜΠΕΙΡΙΑ",
+            "lbl-5": "05 // ΔΙΔΑΚΤΙΚΟ ΕΡΓΟ & ΕΠΙΒΛΕΨΗ ΠΤΥΧΙΑΚΩΝ",
             "tea-1-t": "Ακαδημαϊκός Υπότροφος (Βοηθός Διδασκαλίας)", "tea-1-d": "Πανεπιστήμιο Δυτικής Αττικής. Μαθήματα: 1) <em>Σχεδιασμός Πολυμέσων</em>, 2) <em>Ψηφιακές Διαδραστικές Εφαρμογές Πολυμέσων</em>",
             "tea-2-t": "Mentoring & Επίβλεψη Πτυχιακών", "tea-2-d": "Συνεπιβλέψεις μεταπτυχιακών εργασιών & πρόγραμμα Mentoring, ΠΑΔΑ.",
+            "sup-title": "Προτεινόμενα Θέματα Πτυχιακών & Διπλωματικών",
+            "sup-desc": "Αυτή την περίοδο δέχομαι φοιτητές για επίβλεψη εργασιών. Παρακάτω παρουσιάζονται ενδεικτικοί ερευνητικοί άξονες, ωστόσο είμαι πάντα ανοιχτός να συζητήσουμε τις δικές σας καινοτόμες προτάσεις:",
+            "sup-1-t": "Οσφρητικές Διεπαφές & Metaverse",
+            "sup-1-d": "Σχεδιασμός και αξιολόγηση εμπειριών VR/AR με επίκεντρο την τεχνολογία ψηφιακής οσμής και την πολυαισθητηριακή εμβύθιση.",
+            "sup-2-t": "Ευφυής Συσκευασία & Phygital UX",
+            "sup-2-d": "Αξιοποίηση τεχνολογιών AR, NFC και IoT για τη γεφύρωση φυσικών αντικειμένων με ψηφιακό transmedia περιεχόμενο.",
+            "sup-3-t": "Ηθικός Σχεδιασμός στο Metaverse",
+            "sup-3-d": "Έρευνα γύρω από τον συμμετοχικό σχεδιασμό, τα νευροδικαιώματα, τη συμπερίληψη και την πνευματική ιδιωτικότητα στο Web 4.0.",
+            "sup-4-t": "Affective Computing & Διαδραστική Τέχνη",
+            "sup-4-d": "Διερεύνηση συστημάτων συναισθηματικής αναγνώρισης, Generative AI και αλληλεπίδρασης ανθρώπου-ρομπότ στη σύγχρονη τέχνη.",
             "lbl-6": "06 // ΔΙΕΘΝΗΣ ΚΙΝΗΤΙΚΟΤΗΤΑ",
             "mob-1-t": "Erasmus+ ICM – Επισκέπτης Ερευνητής PhD", "mob-1-d": "Τεχνικό Πανεπιστήμιο της Μολδαβίας (UTM), Κισινάου.",
             "mob-2-t": "Επισκέπτης Ερευνητής", "mob-2-d": "Kenyatta University, Ναϊρόμπι, Κένυα.",
-            "lbl-7": "07 // ΕΡΕΥΝΗΤΙΚΑ ΘΕΜΑΤΑ & CASE STUDIES",
+            "lbl-7": "04 // ΕΡΕΥΝΗΤΙΚΑ ΘΕΜΑΤΑ & CASE STUDIES",
             "pj-1-t": "Sacred Futurism", "pj-1-d": "Το έργο παρουσιάζει μια σειρά καλλιτεχνικών έργων και την ανάλυσή τους με θέμα τον Ιερό Φουτουρισμό. Εξερευνά την αντίθεση μεταξύ του ιερού και της τεχνολογίας, απεικονίζοντας ρομπότ σε ρόλους παραδοσιακών αγίων μορφών, σε βυζαντινό στυλ. Τοποθετημένα σε μετα-αποκαλυπτικά τοπία, τα έργα πραγματεύονται την οικολογική καταστροφή, προτείνοντας ότι σε ένα δυστοπικό μέλλον, τα ρομπότ μπορεί να ανοικοδομήσουν την κοινωνία βασισμένα σε ηθικές αξίες. Η ανάλυση εξετάζει τη σχέση θρησκείας, metaverse, ρομποτικής και AI, συζητώντας έννοιες όπως ο μετανθρωπισμός και η «Θεολογία των Ρομπότ».",
             "pj-2-t": "Digital Scent Technology & IoS", "pj-2-d": "Εξερεύνηση πολυαισθητηριακών διεπαφών για HCI, με έμφαση στην ψηφιακή οσμή. Ανασκόπηση των τρεχουσών ηλεκτρικών διεπαφών, της χημικής παροχής οσμών και των εμπορικών δυνατοτήτων του Internet of Senses (IoS) και των υποδομών 6G.",
             "pj-3-t": "Spatial User Interfaces", "pj-3-d": "Ανάπτυξη τρισδιάστατων χειριστηρίων (3D controls) για τη διάχυση οσμών σε εμβυθιστικά περιβάλλοντα. Το έργο αντιμετωπίζει την έλλειψη οπτικών εργαλείων για τον σχεδιασμό οσμής στο Metaverse.",
@@ -1280,7 +1314,7 @@
             "pj-9-t": "ΗΘΙΚΟ METAVERSE", "pj-9-d": "Ο Συμμετοχικός Σχεδιασμός (PD) ως ηθική αναγκαιότητα για την οικοδόμηση ενός συμπεριληπτικού Metaverse. Ριζωμένο στη φιλοσοφία του Ubuntu.",
             "pj-10-t": "ΚΑΦΚΙΚΟΣ ΛΑΒΥΡΙΝΘΟΣ", "pj-10-d": "Μέσα από μια καινοτόμο εκπαιδευτική προσέγγιση στο έργο του Κάφκα, επιστρατεύονται πρακτικές υπερκειμενικής μυθοπλασίας. Αναζητώντας το μίτο της ερμηνείας, σκέψεις, βιώματα και στοχασμοί μετουσιώνονται σε μια δημιουργική καλλιτεχνική απόκριση. Η ερμηνευτική διαδικασία αναδύεται ως ένα πεδίο όπου η τέχνη συναντά την τεχνολογία. <br><br> @ Panagiotakopoulos / Hyper-Kafka Memory Rooms",
             "pj-11-t": "FLOQ BOX", "pj-11-d": "Το Flow Box αποτελεί είναι εμπνευσμένο από την έννοια της «ρευστότητας» του σύγχρονου κόσμου και εξερευνά την εξερεύνηση των ανθρώπινων συναισθημάτων. Η συσκευή χρησιμοποιεί τεχνολογίες Affective Computing για την αναγνώριση των συναισθημάτων του χρήστη, τα οποία στη συνέχεια μεταβολίζει και αναπαριστά μέσω ολογραμματικής προσομοίωσης. Βιομηχανικά υλικά (PVC, μέταλλο) και αιχμηρές γεωμετρίες, το Flow Box δεν είναι απλώς ένα κουτί, αλλά ένας δίαυλος επικοινωνίας μεταξύ του υποσυνείδητου και της οπτικής αναπαράστασης, μετατρέποντας την αποσυσκευασία (unboxing) σε μια βαθιά προσωπική, βιωματική εμπειρία.",
-            "lbl-art": "08 // ΚΑΛΛΙΤΕΧΝΙΚΟ ΧΑΡΤΟΦΥΛΑΚΙΟ",
+            "lbl-art": "07 // ΚΑΛΛΙΤΕΧΝΙΚΟ ΧΑΡΤΟΦΥΛΑΚΙΟ",
             "art-1-t": "Ροή στο Δάσος", "art-1-d": "Σύνθεση τοπίου με τρεχούμενο νερό και ατμοσφαιρική ομίχλη. Μια μελέτη πάνω στις υφές της φύσης και το φως του δάσους.",
             "art-2-t": "Ύλη και Κίνηση", "art-2-d": "Μικτή τεχνική με πηλό και λωρίδες χαρτιού. Η αντίθεση ανάμεσα στη στιβαρότητα της βάσης και την ελαφρότητα των γεωμετρικών γραμμών.",
             "art-3-t": "Σύμβολα και Ύλη", "art-3-d": "Εγκατάσταση στο χώρο. Πηλός με μεταλλικά στοιχεία σε διάλογο με την παραδοσιακή εικονογραφία, εξερευνώντας τη μνήμη και τη φθορά.",
@@ -1291,295 +1325,272 @@
             "art-8-t": "Chrome & Void", "art-8-d": "Ψηφιακή αφαίρεση με επίκεντρο τις μεταλλικές επιφάνειες και την απουσία φωτός σε εικονικούς χώρους.",
             "lbl-8": "08 // ΧΡΗΜΑΤΟΔΟΤΟΥΜΕΝΑ ΕΡΕΥΝΗΤΙΚΑ ΕΡΓΑ", "res-1-d": "Δημιουργία θεματικού καναλιού για την πλατφόρμα Europeana. <a href=\"https://pro.europeana.eu/project/byzantine-art-and-archaeology\" target=\"_blank\" class=\"pub-link\">[VIEW PROJECT]</a>",
             "lbl-9": "09 // ΕΠΙΛΕΓΜΕΝΕΣ ΔΗΜΟΣΙΕΥΣΕΙΣ",
-            
-            // --- ΝΕΑ ΠΡΟΣΘΗΚΗ: Οι ελληνικές μεταφράσεις για τα άρθρα ---
-            "lbl-blog": "10 // ΑΡΘΡΑ ΣΤΟ MEDIUM",
+            "lbl-blog": "10 // ΑΡΘΡΑ & ΔΟΚΙΜΙΑ",
             "blog-1-t": "Who decides what you smell in the metaverse?",
             "blog-1-d": "Μια εξερεύνηση των ηθικών και σχεδιαστικών προεκτάσεων των οσφρητικών εμπειριών στους εικονικούς κόσμους.",
             "blog-2-t": "Who gets to design the Metaverse?",
             "blog-2-d": "Συζήτηση για τον εκδημοκρατισμό, τη συμπερίληψη και την αρχιτεκτονική εξουσία στη δημιουργία του Metaverse.",
             "blog-3-t": "Can the Internet smell?",
             "blog-3-d": "Μια ματιά στο Internet of Senses και στο πώς η τεχνολογία ψηφιακής οσμής γίνεται πραγματικότητα.",
-            "blog-all": "ΟΛΑ ΤΑ ΑΡΘΡΑ ΣΤΟ MEDIUM",
-            
-            "lbl-10": "10 // ΑΚΑΔΗΜΑΪΚΟ ΕΡΓΟ & ΣΥΝΤΑΚΤΙΚΗ ΔΡΑΣΤΗΡΙΟΤΗΤΑ",
+            "blog-all": "ΠΡΟΒΟΛΗ ΟΛΩΝ ΤΩΝ ΑΡΘΡΩΝ",
+            "lbl-10": "11 // ΑΚΑΔΗΜΑΪΚΟ ΕΡΓΟ & ΣΥΝΤΑΚΤΙΚΗ ΔΡΑΣΤΗΡΙΟΤΗΤΑ",
             "act-1-t": "Μέλος Συντακτικής Επιτροπής",
             "act-2-t": "Peer Reviewer (Κριτής)", "act-2-d": "Συνέδριο Cumulus Athens 2026. Αξιολόγηση και σχολιασμός υποβληθέντων άρθρων.",
             "act-3-t": "Επιμελητής Έκδοσης", "act-3-d": "<em>Πρακτικά 6ου Επιστημονικού Συνεδρίου: Ευφυής Συσκευασία.</em> ISBN: 978-618-5690-02-1.",
-            "lbl-11": "11 // ΟΜΙΛΙΕΣ",
+            "lbl-11": "12 // ΟΜΙΛΙΕΣ",
             "tlk-1-t": "Εισαγωγή στο Φαινόμενο του Metaverse", "tlk-1-d": "14ο Δημοτικό Σχολείο Κέρκυρας, Επιστημονικός Συνεργάτης CulturePolis.",
             "tlk-2-t": "Ενίσχυση της Εμπειρίας στην Ευφυή Συσκευασία",
             "tlk-3-t": "Από την Πραγματικότητα στο Ψηφιακό (3D Survey)",
-            "lbl-12": "12 // ΓΛΩΣΣΕΣ", "txt-lang": "Ελληνικά (Μητρική), Αγγλικά (Άριστα), Ιταλικά (Άριστα).",
-            "lbl-vcard": "13 // ΨΗΦΙΑΚΗ VCARD",
-            "lbl-13": "14 // ΕΠΙΚΟΙΝΩΝΙΑ",
+            "lbl-12": "13 // ΓΛΩΣΣΕΣ", "txt-lang": "Ελληνικά (Μητρική), Αγγλικά (Άριστα), Ιταλικά (Άριστα).",
+            "lbl-vcard": "14 // ΨΗΦΙΑΚΗ VCARD",
+            "lbl-13": "15 // ΕΠΙΚΟΙΝΩΝΙΑ",
             "txt-contact-quote": "\"Feel free to reach out for research inquiries, collaborations, or student supervision. I am always open to discussing innovative projects and ideas.\"",
-            "c-1
-        function safeGetItem(key, defaultValue) {
-            try { return localStorage.getItem(key) || defaultValue; } 
-            catch (e) { return defaultValue; }
+            "c-1": "Ιδιότητα", "c-dept": "Ανεξάρτητος Ερευνητής",
+            "c-2": "Τοποθεσία", "c-uni": "Αθήνα", "c-str": "Ελλάδα", "c-city": "",
+            "c-3": "Ώρες", "c-hrs": "Κατόπιν Ραντεβού",
+            "c-teams-lbl": "Διαδικτυακή Συνάντηση",
+            "btn-teams": "Προγραμματισμός μέσω MS Teams",
+            "footer-txt": "ΑΚΑΔΗΜΑΪΚΟ ΠΡΟΦΙΛ."
         }
-        function safeSetItem(key, value) {
-            try { localStorage.setItem(key, value); } 
-            catch (e) { }
+    };
+
+    function safeGetItem(key, defaultValue) {
+        try { return localStorage.getItem(key) || defaultValue; } 
+        catch (e) { return defaultValue; }
+    }
+    function safeSetItem(key, value) {
+        try { localStorage.setItem(key, value); } 
+        catch (e) { }
+    }
+
+    const themeBtn = document.getElementById('theme-btn');
+    
+    function updateTheme(theme) {
+        const isDark = theme === 'dark';
+        if (isDark) {
+            document.body.setAttribute('data-theme', 'dark');
+        } else {
+            document.body.removeAttribute('data-theme');
         }
+        if (window.updateAll3DThemes) window.updateAll3DThemes(isDark);
+    }
+    
+    let savedTheme = 'light'; 
+    updateTheme(savedTheme);
+    safeSetItem('theme', savedTheme);
 
-        const themeBtn = document.getElementById('theme-btn');
-        
-        function updateTheme(theme) {
-            const isDark = theme === 'dark';
-            if (isDark) {
-                document.body.setAttribute('data-theme', 'dark');
-            } else {
-                document.body.removeAttribute('data-theme');
-            }
-            if (window.updateAll3DThemes) window.updateAll3DThemes(isDark);
-        }
-        
-        let savedTheme = 'light'; 
-        updateTheme(savedTheme);
-        safeSetItem('theme', savedTheme);
+    themeBtn.addEventListener('click', (e) => {
+        e.preventDefault(); 
+        const current = document.body.getAttribute('data-theme');
+        const newTheme = current === 'dark' ? 'light' : 'dark';
+        updateTheme(newTheme);
+        safeSetItem('theme', newTheme);
+    });
 
-        themeBtn.addEventListener('click', (e) => {
-            e.preventDefault(); 
-            const current = document.body.getAttribute('data-theme');
-            const newTheme = current === 'dark' ? 'light' : 'dark';
-            updateTheme(newTheme);
-            safeSetItem('theme', newTheme);
-        });
-
-        const langBtn = document.getElementById('lang-btn');
-        let currentLang = safeGetItem('lang', 'en');
-        
-        function setLanguage(lang) {
-            const data = translations[lang];
-            for (const key in data) {
-                const element = document.getElementById(key);
-                if (element) {
-                    if (key === 'btn-teams' || key === 'btn-cv-dl') {
-                        element.innerHTML = data[key];
-                    } else {
-                        element.innerHTML = data[key];
-                    }
+    const langBtn = document.getElementById('lang-btn');
+    let currentLang = safeGetItem('lang', 'en');
+    
+    function setLanguage(lang) {
+        const data = translations[lang];
+        for (const key in data) {
+            const element = document.getElementById(key);
+            if (element) {
+                if (key === 'btn-teams' || key === 'btn-cv-dl') {
+                    element.innerHTML = data[key];
+                } else {
+                    element.innerHTML = data[key];
                 }
             }
-            langBtn.innerText = lang === 'en' ? 'GR' : 'EN';
-            document.documentElement.lang = lang;
         }
-        
-        langBtn.addEventListener('click', (e) => {
-            e.preventDefault(); 
-            currentLang = currentLang === 'en' ? 'gr' : 'en';
-            setLanguage(currentLang);
-            safeSetItem('lang', currentLang);
-        });
-
+        langBtn.innerText = lang === 'en' ? 'GR' : 'EN';
+        document.documentElement.lang = lang;
+    }
+    
+    langBtn.addEventListener('click', (e) => {
+        e.preventDefault(); 
+        currentLang = currentLang === 'en' ? 'gr' : 'en';
         setLanguage(currentLang);
+        safeSetItem('lang', currentLang);
+    });
 
-       /* ========================================================
-           🪐 INTERACTIVE 3D MODELS (HERO + 4 PILLARS)
-           ======================================================== */
-        (function initAll3D() {
-            if (!window.THREE) return;
-            const themeUpdaters = [];
+    setLanguage(currentLang);
 
-            /* Helper function for interactive setup */
-            function createInteractiveScene(containerId, buildSceneCallback) {
-                const container = document.getElementById(containerId);
-                if (!container) return;
+    /* ========================================================
+       🪐 INTERACTIVE 3D MODELS (HERO + 4 PILLARS + SIDEBAR)
+       ======================================================== */
+    (function initAll3D() {
+        if (!window.THREE) return;
+        const themeUpdaters = [];
 
-                const scene = new THREE.Scene();
-                const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
-                camera.position.z = 5;
+        function createInteractiveScene(containerId, buildSceneCallback) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
 
-                const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-                renderer.setSize(container.clientWidth, container.clientHeight);
-                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-                container.appendChild(renderer.domElement);
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+            camera.position.z = 5;
 
-                const group = new THREE.Group();
-                scene.add(group);
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            container.appendChild(renderer.domElement);
 
-                const sceneObjects = buildSceneCallback(group);
-                if (sceneObjects && sceneObjects.updateTheme) {
-                    themeUpdaters.push(sceneObjects.updateTheme);
-                }
+            const group = new THREE.Group();
+            scene.add(group);
 
-                /* Damped Interaction Controls */
-                let isDragging = false;
-                let prevX = 0, prevY = 0;
-                let targetRotX = 0, targetRotY = 0;
-
-                container.addEventListener('mousedown', (e) => { isDragging = true; prevX = e.clientX; prevY = e.clientY; });
-                window.addEventListener('mouseup', () => { isDragging = false; });
-                window.addEventListener('mousemove', (e) => {
-                    if (!isDragging) return;
-                    targetRotY += (e.clientX - prevX) * 0.01;
-                    targetRotX += (e.clientY - prevY) * 0.01;
-                    prevX = e.clientX; prevY = e.clientY;
-                });
-
-                container.addEventListener('touchstart', (e) => {
-                    if (e.touches.length === 1) { isDragging = true; prevX = e.touches[0].clientX; prevY = e.touches[0].clientY; }
-                }, { passive: true });
-                window.addEventListener('touchend', () => { isDragging = false; });
-                window.addEventListener('touchmove', (e) => {
-                    if (!isDragging || e.touches.length !== 1) return;
-                    targetRotY += (e.touches[0].clientX - prevX) * 0.01;
-                    targetRotX += (e.touches[0].clientY - prevY) * 0.01;
-                    prevX = e.touches[0].clientX; prevY = e.touches[0].clientY;
-                }, { passive: true });
-
-                function animate() {
-                    requestAnimationFrame(animate);
-                    targetRotY += 0.003;
-                    group.rotation.y += (targetRotY - group.rotation.y) * 0.1;
-                    group.rotation.x += (targetRotX - group.rotation.x) * 0.1;
-                    if (sceneObjects && sceneObjects.onFrame) sceneObjects.onFrame();
-                    renderer.render(scene, camera);
-                }
-                animate();
-
-                window.addEventListener('resize', () => {
-                    if (!container) return;
-                    camera.aspect = container.clientWidth / container.clientHeight;
-                    camera.updateProjectionMatrix();
-                    renderer.setSize(container.clientWidth, container.clientHeight);
-                });
+            const sceneObjects = buildSceneCallback(group);
+            if (sceneObjects && sceneObjects.updateTheme) {
+                themeUpdaters.push(sceneObjects.updateTheme);
             }
 
-            /* 0. SIDEBAR 3D PORTRAIT (Από εικόνα σε Wireframe) */
-            createInteractiveScene('sidebar-3d-portrait', (group) => {
-                // Δημιουργούμε ένα επίπεδο με πολλά πολύγωνα (80x80) για να έχει λεπτομέρεια
-                const geom = new THREE.PlaneGeometry(3, 3.5, 80, 80);
-                
-                // Χρησιμοποιούμε Standard Material για να μπορεί να παραμορφωθεί (displace)
-                const mat = new THREE.MeshStandardMaterial({ 
-                    color: 0x0284c7, 
-                    wireframe: true,
-                    displacementScale: 0.5 // Πόσο έντονο θα είναι το 3D ανάγλυφο
-                });
-                
-                const mesh = new THREE.Mesh(geom, mat);
-                group.add(mesh);
+            let isDragging = false;
+            let prevX = 0, prevY = 0;
+            let targetRotX = 0, targetRotY = 0;
 
-                // Φως για να φαίνεται σωστά το υλικό
-                const ambientLight = new THREE.AmbientLight(0xffffff, 2);
-                group.add(ambientLight);
-
-                // Φορτώνουμε την εικόνα προφίλ και την εφαρμόζουμε ως χάρτη βάθους
-                const loader = new THREE.TextureLoader();
-                loader.load('profile.jpg', (texture) => {
-                    mat.displacementMap = texture;
-                    mat.needsUpdate = true;
-                });
-
-                return {
-                    onFrame: () => { 
-                        // Ελαφριά κίνηση σαν να "αναπνέει"
-                        mesh.rotation.y = Math.sin(Date.now() * 0.0005) * 0.15;
-                        mesh.rotation.x = Math.sin(Date.now() * 0.0003) * 0.1;
-                    },
-                    updateTheme: (isDark) => {
-                        mat.color.setHex(isDark ? 0x38bdf8 : 0x0284c7);
-                    }
-                };
+            container.addEventListener('mousedown', (e) => { isDragging = true; prevX = e.clientX; prevY = e.clientY; });
+            window.addEventListener('mouseup', () => { isDragging = false; });
+            window.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                targetRotY += (e.clientX - prevX) * 0.01;
+                targetRotX += (e.clientY - prevY) * 0.01;
+                prevX = e.clientX; prevY = e.clientY;
             });
 
-            /* 1. HERO SENSORY CORE */
-            createInteractiveScene('three-hero', (group) => {
-                const geom = new THREE.IcosahedronGeometry(1.6, 1);
-                const mat = new THREE.MeshBasicMaterial({ color: 0x0284c7, wireframe: true, transparent: true, opacity: 0.8 });
-                const coreMesh = new THREE.Mesh(geom, mat);
-                group.add(coreMesh);
+            container.addEventListener('touchstart', (e) => {
+                if (e.touches.length === 1) { isDragging = true; prevX = e.touches[0].clientX; prevY = e.touches[0].clientY; }
+            }, { passive: true });
+            window.addEventListener('touchend', () => { isDragging = false; });
+            window.addEventListener('touchmove', (e) => {
+                if (!isDragging || e.touches.length !== 1) return;
+                targetRotY += (e.touches[0].clientX - prevX) * 0.01;
+                targetRotX += (e.touches[0].clientY - prevY) * 0.01;
+                prevX = e.touches[0].clientX; prevY = e.touches[0].clientY;
+            }, { passive: true });
 
-                const innerGeom = new THREE.OctahedronGeometry(0.8);
-                const innerMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8, wireframe: true, transparent: true, opacity: 0.4 });
-                const innerMesh = new THREE.Mesh(innerGeom, innerMat);
-                group.add(innerMesh);
+            function animate() {
+                requestAnimationFrame(animate);
+                targetRotY += 0.003;
+                group.rotation.y += (targetRotY - group.rotation.y) * 0.1;
+                group.rotation.x += (targetRotX - group.rotation.x) * 0.1;
+                if (sceneObjects && sceneObjects.onFrame) sceneObjects.onFrame();
+                renderer.render(scene, camera);
+            }
+            animate();
 
-                const partCount = 120;
-                const posArray = new Float32Array(partCount * 3);
-                for (let i = 0; i < partCount * 3; i += 3) {
-                    const r = 2.0 + Math.random() * 1.5;
-                    const t = Math.random() * Math.PI * 2;
-                    const p = Math.acos((Math.random() * 2) - 1);
-                    posArray[i] = r * Math.sin(p) * Math.cos(t);
-                    posArray[i+1] = r * Math.sin(p) * Math.sin(t);
-                    posArray[i+2] = r * Math.cos(p);
-                }
-                const partGeom = new THREE.BufferGeometry();
-                partGeom.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-                const partMat = new THREE.PointsMaterial({ size: 0.04, color: 0x0284c7, transparent: true, opacity: 0.7 });
-                const particles = new THREE.Points(partGeom, partMat);
-                group.add(particles);
-
-                return {
-                    onFrame: () => { innerMesh.rotation.y -= 0.005; particles.rotation.y += 0.001; },
-                    updateTheme: (isDark) => {
-                        const clr = isDark ? 0x38bdf8 : 0x0284c7;
-                        mat.color.setHex(clr);
-                        partMat.color.setHex(clr);
-                    }
-                };
+            window.addEventListener('resize', () => {
+                if (!container) return;
+                camera.aspect = container.clientWidth / container.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(container.clientWidth, container.clientHeight);
             });
+        }
 
-            /* 2. PILLAR 1: THE SHIFT (WAVE GRID) */
-            createInteractiveScene('three-shift', (group) => {
-                const geom = new THREE.TorusGeometry(1.2, 0.35, 12, 32);
-                const mat = new THREE.MeshBasicMaterial({ color: 0x0284c7, wireframe: true });
-                const mesh = new THREE.Mesh(geom, mat);
-                group.add(mesh);
-                return {
-                    onFrame: () => { mesh.rotation.z += 0.005; },
-                    updateTheme: (isDark) => mat.color.setHex(isDark ? 0x38bdf8 : 0x0284c7)
-                };
-            });
-
-            /* 3. PILLAR 2: THE THEORY (DUAL RINGS) */
-            createInteractiveScene('three-theory', (group) => {
-                const geom1 = new THREE.RingGeometry(0.8, 1.2, 24);
-                const geom2 = new THREE.RingGeometry(0.5, 0.9, 24);
-                const mat = new THREE.MeshBasicMaterial({ color: 0x0284c7, wireframe: true, side: THREE.DoubleSide });
-                const ring1 = new THREE.Mesh(geom1, mat);
-                const ring2 = new THREE.Mesh(geom2, mat);
-                ring2.rotation.x = Math.PI / 2;
-                group.add(ring1);
-                group.add(ring2);
-                return {
-                    onFrame: () => { ring1.rotation.z += 0.005; ring2.rotation.y += 0.005; },
-                    updateTheme: (isDark) => mat.color.setHex(isDark ? 0x38bdf8 : 0x0284c7)
-                };
-            });
-
-            /* 4. PILLAR 3: INNOVATION (SPATIAL GUI CONTROLLER) */
-            createInteractiveScene('three-innov', (group) => {
-                const geom = new THREE.OctahedronGeometry(1.2, 0);
-                const mat = new THREE.MeshBasicMaterial({ color: 0x0284c7, wireframe: true });
-                const mesh = new THREE.Mesh(geom, mat);
-                group.add(mesh);
-                return {
-                    onFrame: () => { mesh.rotation.x += 0.005; },
-                    updateTheme: (isDark) => mat.color.setHex(isDark ? 0x38bdf8 : 0x0284c7)
-                };
-            });
-
-            /* 5. PILLAR 4: ETHICS (NEURORIGHTS SHIELD) */
-            createInteractiveScene('three-ethics', (group) => {
-                const geom = new THREE.DodecahedronGeometry(1.2, 0);
-                const mat = new THREE.MeshBasicMaterial({ color: 0x0284c7, wireframe: true });
-                const mesh = new THREE.Mesh(geom, mat);
-                group.add(mesh);
-                return {
-                    onFrame: () => { mesh.rotation.z += 0.003; },
-                    updateTheme: (isDark) => mat.color.setHex(isDark ? 0x38bdf8 : 0x0284c7)
-                };
-            });
-
-            window.updateAll3DThemes = function(isDark) {
-                themeUpdaters.forEach(fn => fn(isDark));
+        /* 0. SIDEBAR 3D PORTRAIT (Abstract Geometric - Λειτουργεί χωρίς server) */
+        createInteractiveScene('sidebar-3d-portrait', (group) => {
+            const geom = new THREE.TorusKnotGeometry(1.2, 0.35, 100, 16);
+            const mat = new THREE.MeshBasicMaterial({ color: 0x0284c7, wireframe: true, transparent: true, opacity: 0.8 });
+            const mesh = new THREE.Mesh(geom, mat);
+            group.add(mesh);
+            return {
+                onFrame: () => { mesh.rotation.y += 0.005; mesh.rotation.x += 0.002; },
+                updateTheme: (isDark) => mat.color.setHex(isDark ? 0x38bdf8 : 0x0284c7)
             };
-        })();
-</script>
+        });
+
+        /* 1. HERO SENSORY CORE */
+        createInteractiveScene('three-hero', (group) => {
+            const geom = new THREE.IcosahedronGeometry(1.6, 1);
+            const mat = new THREE.MeshBasicMaterial({ color: 0x0284c7, wireframe: true, transparent: true, opacity: 0.8 });
+            const coreMesh = new THREE.Mesh(geom, mat);
+            group.add(coreMesh);
+
+            const innerGeom = new THREE.OctahedronGeometry(0.8);
+            const innerMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8, wireframe: true, transparent: true, opacity: 0.4 });
+            const innerMesh = new THREE.Mesh(innerGeom, innerMat);
+            group.add(innerMesh);
+
+            const partCount = 120;
+            const posArray = new Float32Array(partCount * 3);
+            for (let i = 0; i < partCount * 3; i += 3) {
+                const r = 2.0 + Math.random() * 1.5;
+                const t = Math.random() * Math.PI * 2;
+                const p = Math.acos((Math.random() * 2) - 1);
+                posArray[i] = r * Math.sin(p) * Math.cos(t);
+                posArray[i+1] = r * Math.sin(p) * Math.sin(t);
+                posArray[i+2] = r * Math.cos(p);
+            }
+            const partGeom = new THREE.BufferGeometry();
+            partGeom.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+            const partMat = new THREE.PointsMaterial({ size: 0.04, color: 0x0284c7, transparent: true, opacity: 0.7 });
+            const particles = new THREE.Points(partGeom, partMat);
+            group.add(particles);
+
+            return {
+                onFrame: () => { innerMesh.rotation.y -= 0.005; particles.rotation.y += 0.001; },
+                updateTheme: (isDark) => {
+                    const clr = isDark ? 0x38bdf8 : 0x0284c7;
+                    mat.color.setHex(clr);
+                    partMat.color.setHex(clr);
+                }
+            };
+        });
+
+        /* 2. PILLAR 1: THE SHIFT (WAVE GRID) */
+        createInteractiveScene('three-shift', (group) => {
+            const geom = new THREE.TorusGeometry(1.2, 0.35, 12, 32);
+            const mat = new THREE.MeshBasicMaterial({ color: 0x0284c7, wireframe: true });
+            const mesh = new THREE.Mesh(geom, mat);
+            group.add(mesh);
+            return {
+                onFrame: () => { mesh.rotation.z += 0.005; },
+                updateTheme: (isDark) => mat.color.setHex(isDark ? 0x38bdf8 : 0x0284c7)
+            };
+        });
+
+        /* 3. PILLAR 2: THE THEORY (DUAL RINGS) */
+        createInteractiveScene('three-theory', (group) => {
+            const geom1 = new THREE.RingGeometry(0.8, 1.2, 24);
+            const geom2 = new THREE.RingGeometry(0.5, 0.9, 24);
+            const mat = new THREE.MeshBasicMaterial({ color: 0x0284c7, wireframe: true, side: THREE.DoubleSide });
+            const ring1 = new THREE.Mesh(geom1, mat);
+            const ring2 = new THREE.Mesh(geom2, mat);
+            ring2.rotation.x = Math.PI / 2;
+            group.add(ring1);
+            group.add(ring2);
+            return {
+                onFrame: () => { ring1.rotation.z += 0.005; ring2.rotation.y += 0.005; },
+                updateTheme: (isDark) => mat.color.setHex(isDark ? 0x38bdf8 : 0x0284c7)
+            };
+        });
+
+        /* 4. PILLAR 3: INNOVATION (SPATIAL GUI CONTROLLER) */
+        createInteractiveScene('three-innov', (group) => {
+            const geom = new THREE.OctahedronGeometry(1.2, 0);
+            const mat = new THREE.MeshBasicMaterial({ color: 0x0284c7, wireframe: true });
+            const mesh = new THREE.Mesh(geom, mat);
+            group.add(mesh);
+            return {
+                onFrame: () => { mesh.rotation.x += 0.005; },
+                updateTheme: (isDark) => mat.color.setHex(isDark ? 0x38bdf8 : 0x0284c7)
+            };
+        });
+
+        /* 5. PILLAR 4: ETHICS (NEURORIGHTS SHIELD) */
+        createInteractiveScene('three-ethics', (group) => {
+            const geom = new THREE.DodecahedronGeometry(1.2, 0);
+            const mat = new THREE.MeshBasicMaterial({ color: 0x0284c7, wireframe: true });
+            const mesh = new THREE.Mesh(geom, mat);
+            group.add(mesh);
+            return {
+                onFrame: () => { mesh.rotation.z += 0.003; },
+                updateTheme: (isDark) => mat.color.setHex(isDark ? 0x38bdf8 : 0x0284c7)
+            };
+        });
+
+        window.updateAll3DThemes = function(isDark) {
+            themeUpdaters.forEach(fn => fn(isDark));
+        };
+    })();
+    </script>
 </body>
 </html>
