@@ -122,6 +122,38 @@
         }
         .cv-download-btn:hover { background: var(--accent); color: #fff; transform: translateY(-2px); }
 
+        /* --- ΝΕΟΣ ΚΩΔΙΚΑΣ ΓΙΑ ΤΟ 3D ΠΟΡΤΡΕΤΟ ΚΑΙ ΤΟΥΣ ΦΟΙΤΗΤΕΣ --- */
+        .portrait-3d-box {
+             width: 100%; 
+             height: 180px; 
+             margin-bottom: 20px; 
+             border-radius: 16px;
+             background: var(--glass-card);
+             border: var(--glass-border);
+             overflow: hidden;
+             cursor: grab;
+        }
+        .portrait-3d-box:active { cursor: grabbing; }
+
+        .student-badge {
+            margin-top: 15px;
+            padding: 10px;
+            background: var(--accent-glow);
+            border: 1px dashed var(--accent);
+            border-radius: 12px;
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--accent);
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .student-badge:hover {
+            background: var(--accent);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        /* -------------------------------------------------------- */
+
         .sidebar-nav { display: flex; flex-direction: column; gap: 8px; flex-grow: 1; margin-top: 20px; }
         .nav-item {
             padding: 10px 18px; border-radius: 12px; color: var(--fg);
@@ -336,7 +368,10 @@
         </aside>
 
         <aside class="glass-sidebar glass-panel">
-            <div class="sidebar-header">
+           <div class="sidebar-header">
+                <!-- ΝΕΟ: Container για το 3D Πορτρέτο -->
+                <div id="sidebar-3d-portrait" class="portrait-3d-box"></div>
+
                 <h1>Dr. Dimitris<br>Panagiotakopoulos</h1>
                 <div class="header-meta mono">
                     <span id="txt-h-rank">Ph.D.</span><span>//</span>
@@ -349,11 +384,15 @@
                     <a href="https://orcid.org/0000-0001-7087-772X" target="_blank">ORCID</a>
                 </div>
 
-                <!-- Updated Instant Download CV Action linking to Drive -->
                 <a href="https://drive.google.com/file/d/1zj-C8QEyuFXd3v2W203f8P7fuiXxXrzn/view?usp=sharing" target="_blank" class="cv-download-btn" id="btn-cv-dl">
                     <svg style="width: 16px; height: 16px; fill: currentColor;" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
                     <span>ACADEMIC CV (PDF)</span>
                 </a>
+
+                <!-- ΝΕΟ: Badge για Φοιτητές -->
+                <div class="student-badge">
+                    <span class="mono" id="txt-student-badge">🎓 OPEN FOR THESIS SUPERVISION</span>
+                </div>
             </div>
             
             <nav class="sidebar-nav">
