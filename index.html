@@ -1483,17 +1483,79 @@
             });
         }
 
-        /* 0. SIDEBAR 3D PORTRAIT (Abstract Geometric - Λειτουργεί χωρίς server) */
-        createInteractiveScene('sidebar-3d-portrait', (group) => {
-            const geom = new THREE.TorusKnotGeometry(1.2, 0.35, 100, 16);
-            const mat = new THREE.MeshBasicMaterial({ color: 0x0284c7, wireframe: true, transparent: true, opacity: 0.8 });
-            const mesh = new THREE.Mesh(geom, mat);
-            group.add(mesh);
-            return {
-                onFrame: () => { mesh.rotation.y += 0.005; mesh.rotation.x += 0.002; },
-                updateTheme: (isDark) => mat.color.setHex(isDark ? 0x38bdf8 : 0x0284c7)
-            };
-        });
+      /* 0. SIDEBAR 3D PORTRAIT (Metaverse Particle Network) */
+            createInteractiveScene('sidebar-3d-portrait', (group) => {
+                // Δημιουργούμε σωματίδια (particles)
+                const particleCount = 60;
+                const geometry = new THREE.BufferGeometry();
+                const positions = new Float32Array(particleCount * 3);
+
+                // Τοποθετούμε τα σωματίδια τυχαία μέσα σε μια σφαίρα
+                for (let i = 0; i < particleCount; i++) {
+                    const r = 1.2 * Math.cbrt(Math.random()); // Ακτίνα
+                    const theta = Math.random() * 2 * Math.PI;
+                    const phi = Math.acos(2 * Math.random() - 1);
+                    
+                    positions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+                    positions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+                    positions[i * 3 + 2] = r * Math.cos(phi);
+                }
+
+                geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+                // Υλικό για τα σωματίδια (κουκκίδες)
+                const particleMaterial = new THREE.PointsMaterial({
+                    color: 0x0284c7,
+                    size: 0.08,
+                    transparent: true,
+                    opacity: 0.8
+                });
+                const particles = new THREE.Points(geometry, particleMaterial);
+                group.add(particles);
+
+                // Υλικό για τις γραμμές (συνδέσεις μεταξύ των κόμβων)
+                const lineMaterial = new THREE.LineBasicMaterial({
+                    color: 0x38bdf8,
+                    transparent: true,
+                    opacity: 0.3
+                });
+
+                // Βρίσκουμε ποια σωματίδια είναι κοντά το ένα στο άλλο για να τα ενώσουμε
+                const linePositions = [];
+                for (let i = 0; i < particleCount; i++) {
+                    for (let j = i + 1; j < particleCount; j++) {
+                        const dx = positions[i * 3] - positions[j * 3];
+                        const dy = positions[i * 3 + 1] - positions[j * 3 + 1];
+                        const dz = positions[i * 3 + 2] - positions[j * 3 + 2];
+                        const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+                        
+                        // Αν είναι αρκετά κοντά, φτιάχνουμε γραμμή
+                        if (dist < 0.6) {
+                            linePositions.push(
+                                positions[i * 3], positions[i * 3 + 1], positions[i * 3 + 2],
+                                positions[j * 3], positions[j * 3 + 1], positions[j * 3 + 2]
+                            );
+                        }
+                    }
+                }
+
+                const lineGeometry = new THREE.BufferGeometry();
+                lineGeometry.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
+                const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
+                group.add(lines);
+
+                return {
+                    onFrame: () => { 
+                        // Πολύ ομαλή, αιθέρια περιστροφή όλου του δικτύου
+                        group.rotation.y += 0.002; 
+                        group.rotation.x += 0.001;
+                    },
+                    updateTheme: (isDark) => {
+                        particleMaterial.color.setHex(isDark ? 0x38bdf8 : 0x0284c7);
+                        lineMaterial.color.setHex(isDark ? 0x0284c7 : 0x38bdf8);
+                    }
+                };
+            });
 
         /* 1. HERO SENSORY CORE */
         createInteractiveScene('three-hero', (group) => {
