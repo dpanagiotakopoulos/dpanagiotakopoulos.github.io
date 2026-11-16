@@ -170,22 +170,6 @@
         
         .mono { font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; }
 
-        /* Tech Stack Marquee */
-        .marquee-container {
-            width: 100%; overflow: hidden; background: var(--glass-card); border: var(--glass-border);
-            border-radius: 20px; padding: 20px 0; margin-bottom: 40px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            display: flex; white-space: nowrap;
-        }
-        .marquee {
-            display: inline-block;
-            animation: scroll 25s linear infinite;
-            font-family: var(--font-mono); font-weight: bold; font-size: 1.1rem; color: var(--accent);
-        }
-        .marquee span { margin: 0 30px; }
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); } /* requires duplicating the content inside */
-        }
 
         .about-grid { display: flex; gap: 40px; margin-bottom: 40px; align-items: flex-start; }
         .profile-img-container { width: 280px; flex-shrink: 0; border-radius: 24px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
